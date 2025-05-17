@@ -1,12 +1,149 @@
 <html>
+  <head>
+    <title>ES6</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
 
-<head>
-  <title>ES6</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-</head>
+  <body>
+    <script src="index.js"></script>
 
-<body>
-  <script src="index.js"></script>
-</body>
+    <h2>Variables scope</h2>
+    <div>
+      <p>
+        Scope refers to the current context of execution in which variables are
+        accessible. In JavaScript, scope determines where variables can be used.
+      </p>
+      <ul>
+        🔸 Types of Scope:
+        <li>
+          1. Global Scope A variable declared outside any function or block is
+          in the global scope and can be accessed anywhere.
+        </li>
+        <pre><code>
+          let globalVar = 'I am global'; function showVar() {
+          console.log(globalVar); // ✅ accessible }
+        </code></pre>
+        <li>
+          2. Function Scope Variables declared with var inside a function are
+          accessible only inside that function.
+        </li>
+        <pre><code
+          >function testScope() { var localVar = 'I am local';
+          console.log(localVar); // ✅ accessible } console.log(localVar); // ❌
+          Error: localVar is not defined
+        </code></pre>
+        <li>
+          3. Block Scope Variables declared with let or const are only
+          accessible within the block { ... } they are defined in.
+        </li>
+        <pre><code>
+          if (true) { let blockVar = 'Inside block'; console.log(blockVar); // ✅
+        accessible } console.log(blockVar); // ❌ Error
+        </code></pre>
+      </ul>
+    </div>
+    <div>
+      <p>
+        Good to Know: Always prefer let or const over var. Use const if you
+        don’t plan to reassign the variable. Keeping variables limited to a
+        small scope helps avoid bugs and confusion.
+      </p>
+    </div>
+    <h2>Variable reassigment</h2>
 
+    <ul>
+      Reassignment means changing the value of a variable after it has been
+      declared.
+
+      <li>🔸 Using let Variables declared with let can be reassigned.</li>
+      <pre><code>
+let name = "Alice";
+name = "Bob"; // ✅ This is allowed
+
+console.log(name); // "Bob"
+
+    </code></pre>
+      <li>
+        🔸 Using const Variables declared with const cannot be reassigned.
+      </li>
+      <pre><code>
+  const city = "Paris";
+city = "London"; // ❌ Error: Assignment to constant variable
+
+</code></pre>
+      <p>
+        🔹 But if a const holds an object or array, the contents of the object
+        or array can be changed:
+      </p>
+      <pre><code>
+  const person = { name: "Alice" };
+person.name = "Bob"; // ✅ This is allowed
+
+console.log(person.name); // "Bob"
+
+</code></pre>
+    </ul>
+    <h2>Variable redeclaration</h2>
+    <p>
+      Variable redeclaration means declaring a variable again using the same
+      name in the same scope. In JavaScript, the behavior depends on whether
+      you're using var, let, or const.
+    </p>
+    <ul>
+      <li>✅ var allows redeclaration</li>
+      <pre><code>
+        var x = 10;
+var x = 20; // No error
+console.log(x); // 20
+
+      </code></pre>
+      <p>
+        var is function-scoped Can be redeclared and reassigned Not recommended
+        due to possible confusion and bugs
+      </p>
+      <li>⚠️ let and const do not allow redeclaration in the same scope</li>
+      <pre><code>
+        let y = 5;
+// let y = 10; // ❌ SyntaxError: Identifier 'y' has already been declared
+
+const z = 3;
+// const z = 3; // ❌ SyntaxError: Identifier 'z' has already been declared
+
+      </code></pre>
+      <p>
+        let and const are block-scoped Cannot be redeclared in the same block
+        let can be reassigned, but const cannot
+      </p>
+    </ul>
+    <h2>Hoisting</h2>
+    <p>
+      Hoisting is JavaScript's default behavior of moving declarations to the
+      top of the current scope (function or global). 💡 Only declarations are
+      hoisted, not initializations.
+    </p>
+    <ul>
+      <li>✅ Example with var:</li>
+      <pre><code>
+    console.log(a); // undefined — declaration is hoisted, but not the value
+var a = 5;
+
+  </code></pre>
+      <p>JavaScript internally treats it like:</p>
+      <pre><code>
+    var a;       // declaration hoisted
+console.log(a); // undefined
+a = 5;       // initialization happens later
+
+  </code></pre>
+      <li>⚠️ Example with let and const:</li>
+      <pre><code>console.log(b); // ❌ ReferenceError: Cannot access 'b' before initialization
+let b = 10;
+</code></pre>
+    </ul>
+    <p>
+      let and const are hoisted, but not initialized. They're in a "temporal
+      dead zone" from the start of the block until the line where they're
+      declared.
+    </p>
+  </body>
 </html>
