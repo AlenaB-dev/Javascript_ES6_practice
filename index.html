@@ -65,6 +65,7 @@ console.log(name); // "Bob"
     </code></pre>
       <li>
         🔸 Using const Variables declared with const cannot be reassigned.
+        (Const is variable that can't be reassigned)
       </li>
       <pre><code>
   const city = "Paris";
@@ -144,6 +145,31 @@ let b = 10;
       let and const are hoisted, but not initialized. They're in a "temporal
       dead zone" from the start of the block until the line where they're
       declared.
+    </p>
+    <h3>Variables usage guadelines</h3>
+    <ul>
+      <li>Make code readable for other developers</li>
+      <li>Always declare variables before first usage</li>
+      <li>
+        Always add "use strict" at the beggining of each JS file, it makes code
+        more secure
+      </li>
+      <li>Don't expose to the outer scopes locally used variables</li>
+    </ul>
+    <h4>Opinion 1. Let is new Var</h4>
+    <p>Use const whenever is possible. In other cases use let.</p>
+    <h4>Opinion2. Let is Var extension</h4>
+    <p>
+      Var - for variables that are used across entire function. Declared usually
+      at the beggining of the scope
+    </p>
+    <p>
+      Let - for temporal variables that are limited to the block scopes.
+      Declared directly in the block or just before it
+    </p>
+    <p>
+      Const - for variables that shouldn't be reassigned. Declaration place
+      depends on the const usage.
     </p>
   </body>
 </html>
