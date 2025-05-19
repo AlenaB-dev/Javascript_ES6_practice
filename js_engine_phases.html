@@ -7,5 +7,83 @@
   </head>
   <body>
     <script src="index.js"></script>
+
+    <h1>JS engine phases</h1>
+    <ul>
+      <li>Compilation. Create activation Object with all variables</li>
+      <li>Execution. Execute code line by line</li>
+    </ul>
+
+    <h2>Variable lifecycle phases</h2>
+    <ul>
+      <li>Declaration. Register in the corresponding scope.</li>
+      <li>
+        Initialization. Allocate memory for the variable. Variable declared with
+        "var" will get automatic value "undefined".
+      </li>
+      <li>Assigment. Assign value to all initialized variable.</li>
+    </ul>
+    <h3>Var lifecycle</h3>
+    <ul>
+      <li>
+        Compilation phase include declaratiob and initialization. Variable is
+        "initialized" and value is "undefined"
+      </li>
+      <li>
+        Execution phase incule assigment. Variable is "assigned" and has "value"
+      </li>
+    </ul>
+    <h3>Undeclared variable lifesysle</h3>
+    <ul>
+      <li>Compilation phase - nothing will happened.</li>
+      <li>
+        Execution phase will include all three phases, 1. Declaration 2>
+        Initialization 3. Assigment, together. Variable is "declared" in the
+        global scope, "initialized", "assigned" and value is "value".
+      </li>
+      <p>*this can happen only without using "use strict" mode.</p>
+    </ul>
+    <h3>Let lifecycle</h3>
+    <ul>
+      <li>
+        Compilation phase. Declaration - temporal dead zone (TDZ) - variable is
+        "declared" but "uninitialized".
+      </li>
+      <li>
+        Execution phase. Initialization - "initialized" with "indefined".
+        Assigment - variable is "assigned" and has "value".
+      </li>
+    </ul>
+    <h3>Const lifecycle</h3>
+    <ul>
+      <li>
+        Declaration phase. Temporal dead zone (TDZ) - variable is "declared" but
+        "uninitialized".
+      </li>
+      <li>
+        Execution phase. Initialization and Assigment - variable is
+        "initialized", "assigned" and has "value".
+      </li>
+    </ul>
+    <p>
+      *TDZ - special interval between start of the code execution until
+      declaration using variables let or const. Accessing variable in the
+      Temporal dead zone will lead to the following error - RefernceError:
+      Variable is not defined.
+    </p>
+    <h3>Function lifecycle</h3>
+    <ul>
+      <li>
+        Compilation phase. Declaration, Initialization and Assigment all in one
+        stage. Variable is "declared", "initialized", "assigned" and value is
+        "value"
+      </li>
+      <li>Execution phase - variable is ready to use.</li>
+    </ul>
+    <h3>What is hoisting?</h3>
+    <p>
+      Hoisting is a term that describes proces of compilation and execution
+      phases.
+    </p>
   </body>
 </html>
