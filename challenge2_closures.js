@@ -23,13 +23,15 @@ const LEN = menuItems.length;
 
 // через for loop добавили active class к пунктам меню
 for (let i = 0; i < LEN; i++) {
-  menuItems[i].onclick = function () {
+  const menuItem = menuItems[i];
+
+  menuItem.onclick = function () {
     // убираем класс  active
     for (let j = 0; j < LEN; j++) {
       menuItems[j].classList.remove("active");
     }
     // через for loop добавили active class к пунктам меню
-    menuItems[i].classList.add("active");
+    menuItem.classList.add("active");
     console.log(menuItems[i].innerHTML); // вывод в консоль
   };
 }
