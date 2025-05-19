@@ -37,62 +37,63 @@
 // console.log(onlyOddNumbers(numbers2));
 
 // rewritten code
-
 "use strict";
 
-var arrayOfNumbers1 = [23, 87, 110, 11, 20, 5, 34];
-var arrayOfNumbers2 = [11, 21, 31];
-const oddNumbers = [];
-const evenNumbersQuantity = 0;
+const numbers1 = [23, 87, 110, 11, 20, 5, 34];
+const numbers2 = [11, 21, 31];
 
-const onlyOddNumbers = function (array) {
-  let numberLenght = array.lenght;
+const onlyOddNumbers = function (arr) {
+  var oddNumbers = [];
+  var evenNumbersQuatity = 0;
+  const LEN = arr.length;
 
-  for (let i = 0; i < numberLenght; i++)
-    array[i] % 2 ? oddNumbers.push(array[i]) : evenNumbersQuantity++;
+  for (let i = 0; i < LEN; i++) {
+    arr[i] % 2 ? oddNumbers.push(arr[i]) : evenNumbersQuatity++;
+  }
+
+  if (evenNumbersQuatity === 0) {
+    let info = "Array contains only odd numbers";
+    console.log(info);
+  } else {
+    let info = "There are " + evenNumbersQuatity + " even numbers";
+    console.log(info);
+  }
+  return {
+    oddNumbers: oddNumbers,
+    evenNumbersQuatity: evenNumbersQuatity,
+  };
 };
 
-var messageAboutNumbers;
-{
-  if (evenNumbersQuantity === 0) {
-    messageAboutNumbers = "Array contains only odd numbers";
-    console.log(messageAboutNumbers);
-  } else {
-    messageAboutNumbers = "There are " + evenNumbersQuantity + " even numbers";
-    console.log(messageAboutNumbers);
-  }
-}
+console.log(onlyOddNumbers(numbers1));
+console.log(onlyOddNumbers(numbers2));
 
-console.log(onlyOddNumbers(arrayOfNumbers1));
-console.log(onlyOddNumbers(arrayOfNumbers2));
+// ("use strict");
 
-// /*
-// Modify "personInfo" function to match console.log output at the end of the challenge.
+// const arrayOfNumbers1 = [23, 87, 110, 11, 20, 5, 34];
+// const arrayOfNumbers2 = [11, 21, 31];
 
-// Object that is returned by "personInfo" function must contain only shorthand property names.
-// */
+// const onlyOddNumbers = function (array) {
+//   var oddNumbers = [];
+//   var evenNumbersQuantity = 0;
+//   const LEN = array.lenght;
 
-// const personInfo = (/* parameters */) => {
-//   /* return ... */
-// };
-
-// const person = {
-//   name: "Alice",
-//   age: 19,
-//   location: {
-//     country: "England",
-//     city: "London"
+//   for (let i = 0; i < LEN; i++) {
+//     array[i] % 2 ? oddNumbers.push(array[i]) : evenNumbersQuantity++;
 //   }
+
+//   if (evenNumbersQuantity === 0) {
+//     let messageAboutNumbers = "Array contains only odd numbers";
+//     console.log(messageAboutNumbers);
+//   } else {
+//     let messageAboutNumbers =
+//       "There are " + evenNumbersQuantity + " even numbers";
+//     console.log(messageAboutNumbers);
+//   }
+//   return {
+//     oddNumbers: oddNumbers,
+//     evenNumbersQuantity: evenNumbersQuantity,
+//   };
 // };
 
-// console.log(personInfo(person));
-// /*
-// {
-//   name: "Alice",
-//   personAge: 19,
-//   origin: "England",
-//   homeCity: "London",
-//   friendsQty: 0,
-//   recordCreatedAt: *current year*
-// }
-// */
+// console.log(onlyOddNumbers(arrayOfNumbers1));
+// console.log(onlyOddNumbers(arrayOfNumbers2));
