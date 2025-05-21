@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow functions</title>
+  </head>
+  <body>
+    <p>
+      An arrow function is a shorter way to write functions in JavaScript,
+      introduced in ES6. It's especially useful for simple functions and is
+      often used in array methods like map, filter, or forEach.
+    </p>
+
+    <pre><code>
+        const functionName = (parameters) => {
+  // function body
+};
+    </code></pre>
+
+    <p>Examples:</p>
+    <p>1. Simple function:</p>
+    <pre><code>
+        const add = (a, b) => a + b;
+console.log(add(2, 3)); // Output: 5
+    </code></pre>
+
+    <p>2. Function with one parameter (no parentheses needed):</p>
+    <pre><code>
+        const greet = name => `Hello, ${name}!`;
+console.log(greet("Alice")); // Output: Hello, Alice!
+    </code></pre>
+
+    <p>3. Function with multiple lines:</p>
+    <pre><code>
+        const multiply = (a, b) => {
+  const result = a * b;
+  return result;
+};
+    </code></pre>
+    <ul>
+      ⚠️ Key Differences from Regular Functions:
+      <li>
+        No this binding — arrow functions don’t have their own this, they
+        inherit it from the surrounding scope.
+      </li>
+      <li>
+        Cannot be used as constructors — you can’t use new with an arrow
+        function.
+      </li>
+      <li>
+        No arguments object — arrow functions don’t have their own arguments.
+      </li>
+    </ul>
+  </body>
+</html>
