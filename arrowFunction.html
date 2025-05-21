@@ -6,37 +6,35 @@
     <title>Arrow functions</title>
   </head>
   <body>
+    <script src="arrow_function_practice.js"></script>
     <p>
       An arrow function is a shorter way to write functions in JavaScript,
       introduced in ES6. It's especially useful for simple functions and is
       often used in array methods like map, filter, or forEach.
     </p>
-
+    <p>Arrow functions are anonymous.</p>
     <pre><code>
         const functionName = (parameters) => {
-  // function body
-};
+        // function body
+        };
     </code></pre>
-
     <p>Examples:</p>
     <p>1. Simple function:</p>
     <pre><code>
         const add = (a, b) => a + b;
-console.log(add(2, 3)); // Output: 5
+        console.log(add(2, 3)); // Output: 5
     </code></pre>
-
     <p>2. Function with one parameter (no parentheses needed):</p>
     <pre><code>
         const greet = name => `Hello, ${name}!`;
-console.log(greet("Alice")); // Output: Hello, Alice!
+        console.log(greet("Alice")); // Output: Hello, Alice!
     </code></pre>
-
     <p>3. Function with multiple lines:</p>
     <pre><code>
         const multiply = (a, b) => {
-  const result = a * b;
-  return result;
-};
+        const result = a * b;
+        return result;
+        };
     </code></pre>
     <ul>
       ⚠️ Key Differences from Regular Functions:
@@ -52,5 +50,37 @@ console.log(greet("Alice")); // Output: Hello, Alice!
         No arguments object — arrow functions don’t have their own arguments.
       </li>
     </ul>
+
+    <h2>Arrow and "this"</h2>
+    <p>
+      Arrow function don't have own "this". "this" in arrow functions is always
+      statically defined bu the surrounding lexical scope.
+    </p>
+    <p>Example 1: Regular function vs Arrow function</p>
+    <pre><code>
+      const obj = {
+        name: "Alice",
+        regularFunc: function () {
+        console.log(this.name); // "Alice"
+     },
+      arrowFunc: () => {
+      console.log(this.name); // undefined (or global `this.name` if exists)
+       }
+      };
+
+     obj.regularFunc(); // "Alice"
+     obj.arrowFunc();   // undefined
+
+    </code></pre>
+    <p>
+      Why? regularFunc has its own this, which refers to obj. arrowFunc does not
+      have its own this, so it uses this from the scope where it was defined
+      (which is likely the global scope, where this.name is undefined).
+    </p>
+    <p>
+      🚫 Don't use arrow functions for: Object methods when you need access to
+      the object via this. Constructor functions (new) — arrow functions can't
+      be constructors.
+    </p>
   </body>
 </html>
