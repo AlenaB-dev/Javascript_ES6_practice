@@ -50,5 +50,37 @@
         No arguments object — arrow functions don’t have their own arguments.
       </li>
     </ul>
+
+    <h2>Arrow and "this"</h2>
+    <p>
+      Arrow function don't have own "this". "this" in arrow functions is always
+      statically defined bu the surrounding lexical scope.
+    </p>
+    <p>Example 1: Regular function vs Arrow function</p>
+    <pre><code>
+      const obj = {
+        name: "Alice",
+        regularFunc: function () {
+        console.log(this.name); // "Alice"
+     },
+      arrowFunc: () => {
+      console.log(this.name); // undefined (or global `this.name` if exists)
+       }
+      };
+
+     obj.regularFunc(); // "Alice"
+     obj.arrowFunc();   // undefined
+
+    </code></pre>
+    <p>
+      Why? regularFunc has its own this, which refers to obj. arrowFunc does not
+      have its own this, so it uses this from the scope where it was defined
+      (which is likely the global scope, where this.name is undefined).
+    </p>
+    <p>
+      🚫 Don't use arrow functions for: Object methods when you need access to
+      the object via this. Constructor functions (new) — arrow functions can't
+      be constructors.
+    </p>
   </body>
 </html>
