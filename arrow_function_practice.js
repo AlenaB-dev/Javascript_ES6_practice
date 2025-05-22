@@ -1,88 +1,88 @@
-/**
- * EXAMPLE 1
- */
+// /**
+//  * EXAMPLE 1
+//  */
 
-const sum = (a, b) => a + b;
-console.log(sum(1, 2));
+// const sum = (a, b) => a + b;
+// console.log(sum(1, 2));
 
-/**
- * EXAMPLE 2
- */
+// /**
+//  * EXAMPLE 2
+//  */
 
-const post = {
-  title: "Sample letter",
-  comments: 10,
-  shared: true,
-  published: true,
-  postId: 5124,
-};
-
-// // explicit return of the object
-// const processedPost = (post) => {
-//   return {
-//     title: post.title,
-//     comments: post.comments,
-//     popular: post.comments > 5 ? true : false,
-//   };
+// const post = {
+//   title: "Sample letter",
+//   comments: 10,
+//   shared: true,
+//   published: true,
+//   postId: 5124,
 // };
 
-// implicit return of the object. Preferable way.
-const processedPost = (post) => ({
-  title: post.title,
-  comments: post.comments,
-  popular: post.comments > 5 ? true : false,
-});
+// // // explicit return of the object
+// // const processedPost = (post) => {
+// //   return {
+// //     title: post.title,
+// //     comments: post.comments,
+// //     popular: post.comments > 5 ? true : false,
+// //   };
+// // };
 
-console.log(processedPost(post)); // {title: "Sample letter", comments: 10, popular: true}
+// // implicit return of the object. Preferable way.
+// const processedPost = (post) => ({
+//   title: post.title,
+//   comments: post.comments,
+//   popular: post.comments > 5 ? true : false,
+// });
 
-/**
- * EXAMPLE 3
- *
- * Immediately invoked anonymous function expression
- */
+// console.log(processedPost(post)); // {title: "Sample letter", comments: 10, popular: true}
 
-(() => {
-  function greet() {
-    return "Hey, what's up?";
-  }
-  this.greet = greet;
-  return this;
-})(); //> window.greet()  < "Hey, what's up?"
+// /**
+//  * EXAMPLE 3
+//  *
+//  * Immediately invoked anonymous function expression
+//  */
 
-(() => {
-  this.sayBye = () => "Bye, bye"; // > window.sayBye() < "Bye, bye"
-  return this;
-})();
+// (() => {
+//   function greet() {
+//     return "Hey, what's up?";
+//   }
+//   this.greet = greet;
+//   return this;
+// })(); //> window.greet()  < "Hey, what's up?"
 
-/**
- * EXAMPLE 4
- *
- * Arrow and "this"
- */
+// (() => {
+//   this.sayBye = () => "Bye, bye"; // > window.sayBye() < "Bye, bye"
+//   return this;
+// })();
 
-const str = {
-  value: "Delayed greeting",
+// /**
+//  * EXAMPLE 4
+//  *
+//  * Arrow and "this"
+//  */
 
-  // "this" is lost in the callback function
-  brokenGreeting: function () {
-    setTimeout(function () {
-      console.log(this); // Window (in browsers)
-      console.log(this.value); // undefined
-    }, 1000);
-  },
+// const str = {
+//   value: "Delayed greeting",
 
-  // "this" preserved using closure (self)
-  fixedGreeting: function () {
-    const self = this;
-    setTimeout(function () {
-      console.log(self); // { value: ..., fixedGreeting: ... }
-      console.log(self.value); // "Delayed greeting"
-    }, 1000);
-  },
-};
+//   // "this" is lost in the callback function
+//   brokenGreeting: function () {
+//     setTimeout(function () {
+//       console.log(this); // Window (in browsers)
+//       console.log(this.value); // undefined
+//     }, 1000);
+//   },
 
-str.brokenGreeting();
-str.fixedGreeting();
+//   // "this" preserved using closure (self)
+//   fixedGreeting: function () {
+//     const self = this;
+//     setTimeout(function () {
+//       console.log(self); // { value: ..., fixedGreeting: ... }
+//       console.log(self.value); // "Delayed greeting"
+//     }, 1000);
+//   },
+// };
+
+// str.brokenGreeting();
+// str.fixedGreeting();
 
 // // упрощенный вариант with arrow function
 // fixedGreeting: function () {
@@ -91,3 +91,55 @@ str.fixedGreeting();
 //     console.log(this.value); // "Delayed greeting"
 //   }, 1000);
 // }
+
+/**
+ * Difference between arrow and regular function
+ */
+
+/**
+ * EXAMPLE 1
+ *
+ * Object literal
+ */
+
+const num = {
+  value: 100,
+  info: function () {
+    console.log(this); // num object > num.info() [Log] {value: 100, info: function} (arrow_function_practice.js, line 108) < 100
+    return this.value;
+  },
+};
+
+/**
+ * EXAMPLE 2
+ *
+ * Function constructor
+ */
+
+function GroceryItem(title, kind) {
+  this.title = title;
+  this.kind = kind;
+}
+
+// // using arrow function we will get an error - TypeError: function is not a constructor (evaluating 'new GroceryItem("Apple", "fruit")')
+// const GroceryItem = (title, kind) => {
+//   this.title = title;
+//   this.kind = kind;
+// };
+
+// add a method
+
+GroceryItem.prototype.info = function () {
+  return this.title + " is " + this.kind;
+}; // call > apple.info() in consol will give us < "Apple is fruit"
+
+// // using arrow function will give an error - "undefined is undefined"
+// GroceryItem.prototype.info = () => {
+//   return this.title + " is " + this.kind;
+// };
+
+const apple = new GroceryItem("Apple", "fruit");
+console.log(apple); // GroceryItem {title: "Apple", kind: "fruit"}
+
+const brocolli = new GroceryItem("Brocolli", "vegetable");
+console.log(brocolli);
