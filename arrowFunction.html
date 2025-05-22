@@ -82,5 +82,80 @@
       the object via this. Constructor functions (new) — arrow functions can't
       be constructors.
     </p>
+    <h4>Difference between arrow functions and regular functions</h4>
+    <ul>
+      <li>
+        1. this Binding
+        <p>
+          | Feature - `this` behavior | Regular Function Own `this`, depends on
+          **how** the function is called | | Arrow Function Inherits `this` from
+          **surrounding (lexical) scope** |
+        </p>
+        <pre><code>
+          const obj = {
+            name: "Alice",
+            regular: function () {
+              console.log(this.name); // "Alice"
+            },
+          arrow: () => {
+            console.log(this.name); // undefined (from global scope)
+            }
+          };
+
+        obj.regular(); // Alice
+        obj.arrow();   // undefined
+
+        </code></pre>
+      </li>
+      <li>
+        2. Constructor Usage
+        <p>
+          | Feature - Can be used with `new`| Regular Function ✅ Yes | |Arrow
+          Function ❌ No (throws error) |
+        </p>
+        <pre><code>
+          function Person(name) {
+            this.name = name;
+          }
+          const p = new Person("Alice"); // works
+
+          const Animal = (name) => {
+          this.name = name;
+          };
+          // new Animal("Cat"); // ❌ TypeError
+
+        </code>
+        </pre>
+      </li>
+      <li>
+        3. arguments Object.
+        <p>
+          | Feature - 'has argument' | Regular Function ✅ Yes | | Arrow
+          Function|❌ No |
+        </p>
+        <pre><code>
+          function regularFunc() {
+            console.log(arguments); // works
+          }
+
+          const arrowFunc = () => {
+            console.log(arguments); // ReferenceError
+          };
+
+        </code></pre>
+      </li>
+      <li>
+        4. Syntax & Use Cases. 4.1 Arrow function: Short, concise. Great for
+        small functions, callbacks, and closures. 4.2 Regular function: More
+        flexible. Use when you need your own this, arguments, or a constructor.
+      </li>
+    </ul>
+    <p>
+      🧠 When to use what? <br />
+      ✅ Use arrow functions for: Callbacks (map, filter, setTimeout, etc.);
+      Functions inside methods, if you want lexical this <br />
+      ✅ Use regular functions for: Object methods; Functions that need their
+      own this or arguments; Constructor functions.
+    </p>
   </body>
 </html>
