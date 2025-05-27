@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array helper methods</title>
+  </head>
+  <body>
+    <h2>forEach()</h2>
+    <p>
+      The forEach() method is one of the most commonly used array helper methods
+      in JavaScript. It's used to iterate over elements in an array and execute
+      a function for each element.
+    </p>
+    <p>
+      ✅ Use forEach(): <br />
+      1. You need to do something with each item (side effects) <br />
+      2. You don’t need to return or build a new array
+    </p>
+    <h4>🔹 Syntax</h4>
+    <p><pre><code>
+        array.forEach((element, index, array) => {
+            // your code here
+        });
+    </code></pre>
+<li>- element: The current item in the array;</li>
+<li>- index (optional): The index of the current item;</li>
+<li>- array (optional): The array being iterated over;</li>
+</p>
+<h4>🔹 Example</h4>
+<pre><code>
+    const fruits = ['apple', 'banana', 'cherry'];
+
+    fruits.forEach((fruit, index) => {
+        console.log(`${index}: ${fruit}`);
+    });
+
+</code></pre>
+<p>Output: 0: apple 1: banana 2: cherry
+</p>
+<h4>🔹 Key Features</h4>
+<ul><Li>Does not return a new array (unlike map(), filter()).</Li>
+<Li>Does not stop early (unlike a for loop with break).</Li>
+<Li>Mostly used for side effects (e.g., logging, updating the DOM, etc.).</Li></ul>
+<h4>🔹 Real-World Use Case</h4>
+<pre><code>
+    const users = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+    ];
+
+    users.forEach(user => {
+        console.log(`${user.name} is ${user.age} years old.`);
+    });
+</code></pre>
+<h4>🔹 Common Mistakes</h4>
+<p>❌ Trying to return values: forEach() doesn’t return anything useful — use map() if you want to create a new array.</p>
+<pre><code>
+    const result = fruits.forEach(fruit => {
+        return fruit.toUpperCase();
+    });
+    console.log(result); // undefined
+</code></pre>
+    <script src=""></script>
+  </body>
+</html>
