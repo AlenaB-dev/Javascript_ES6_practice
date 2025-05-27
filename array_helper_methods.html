@@ -1,66 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Array helper methods</title>
+    <title>JavaScript Array Methods</title>
+    <style>
+      :root {
+        --bg-color-light: #f9f9f9;
+        --text-color-light: #333;
+        --bg-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --code-bg-light: #eee;
+        --code-bg-dark: #2a2a2a;
+        --accent-color: #007acc;
+      }
+
+      html[data-theme="light"] {
+        --bg-color: var(--bg-color-light);
+        --text-color: var(--text-color-light);
+        --code-bg: var(--code-bg-light);
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
+        --code-bg: var(--code-bg-dark);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        margin-right: 1rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      details {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--code-bg);
+        border-radius: 6px;
+        background: var(--code-bg);
+        padding: 0.5rem 1rem;
+      }
+
+      summary {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: var(--code-bg);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+    </style>
   </head>
   <body>
-    <h2>forEach()</h2>
-    <p>
-      The forEach() method is one of the most commonly used array helper methods
-      in JavaScript. It's used to iterate over elements in an array and execute
-      a function for each element.
-    </p>
-    <p>
-      ✅ Use forEach(): <br />
-      1. You need to do something with each item (side effects) <br />
-      2. You don’t need to return or build a new array
-    </p>
-    <h4>🔹 Syntax</h4>
-    <p><pre><code>
-        array.forEach((element, index, array) => {
-            // your code here
-        });
-    </code></pre>
-<li>- element: The current item in the array;</li>
-<li>- index (optional): The index of the current item;</li>
-<li>- array (optional): The array being iterated over;</li>
-</p>
-<h4>🔹 Example</h4>
-<pre><code>
-    const fruits = ['apple', 'banana', 'cherry'];
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      🌙 Toggle Theme
+    </button>
 
-    fruits.forEach((fruit, index) => {
-        console.log(`${index}: ${fruit}`);
-    });
+    <h1>📚 JavaScript Array Methods</h1>
 
-</code></pre>
-<p>Output: 0: apple 1: banana 2: cherry
-</p>
-<h4>🔹 Key Features</h4>
-<ul><Li>Does not return a new array (unlike map(), filter()).</Li>
-<Li>Does not stop early (unlike a for loop with break).</Li>
-<Li>Mostly used for side effects (e.g., logging, updating the DOM, etc.).</Li></ul>
-<h4>🔹 Real-World Use Case</h4>
-<pre><code>
-    const users = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 },
-    ];
+    <nav>
+      <a href="#foreach">forEach()</a>
+      <a href="#map">map()</a>
+      <!-- Добавляй другие методы тут -->
+    </nav>
 
-    users.forEach(user => {
-        console.log(`${user.name} is ${user.age} years old.`);
-    });
-</code></pre>
-<h4>🔹 Common Mistakes</h4>
-<p>❌ Trying to return values: forEach() doesn’t return anything useful — use map() if you want to create a new array.</p>
-<pre><code>
-    const result = fruits.forEach(fruit => {
-        return fruit.toUpperCase();
-    });
-    console.log(result); // undefined
-</code></pre>
-    <script src=""></script>
+    <!-- forEach -->
+    <details open id="foreach">
+      <summary>forEach()</summary>
+      <p>
+        Used to perform an action for each element of the array (no return
+        value).
+      </p>
+      <pre><code>const fruits = ['apple', 'banana', 'cherry'];
+
+fruits.forEach((fruit, index) => {
+  console.log(`${index}: ${fruit}`);
+});</code></pre>
+      <p><strong>Output:</strong> 0: apple 1: banana 2: cherry</p>
+      <ul>
+        <li>Does not return a new array.</li>
+        <li>Used for side effects (e.g., logging).</li>
+      </ul>
+    </details>
+
+    <!-- map -->
+    <details id="map">
+      <summary>map()</summary>
+      <p>Creates a new array by applying a function to each element.</p>
+      <pre><code>const numbers = [1, 2, 3];
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // [2, 4, 6]</code></pre>
+      <ul>
+        <li>Returns a new array.</li>
+        <li>Original array is not modified.</li>
+      </ul>
+    </details>
+    <details id="filter">
+      <summary>filter()</summary>
+      <p>Описание метода filter...</p>
+      <pre><code>Пример кода</code></pre>
+    </details>
+
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+
+      // Устанавливаем тему при загрузке
+      const savedTheme = localStorage.getItem("theme");
+      const initialTheme = savedTheme || "light";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      updateToggleButton(initialTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateToggleButton(newTheme);
+      }
+
+      function updateToggleButton(theme) {
+        if (theme === "dark") {
+          themeToggleButton.textContent = "☀️ Toggle Theme";
+        } else {
+          themeToggleButton.textContent = "🌙 Toggle Theme";
+        }
+      }
+    </script>
   </body>
 </html>
