@@ -82,5 +82,54 @@
       the object via this. Constructor functions (new) — arrow functions can't
       be constructors.
     </p>
+    <h4>Arguments in the Functions</h4>
+    <ul>
+      <li>
+        1. arguments in regular functions
+        <p>
+          Regular functions have access to a special arguments object, which is
+          an array-like object containing all arguments passed to the function —
+          even if they weren’t declared as parameters.
+        </p>
+        <pre><code>
+        function regularFunction(a, b) {
+          console.log(arguments);
+        }
+
+        regularFunction(1, 2, 3); 
+        // Output: [1, 2, 3] — includes all passed arguments
+
+      </code></pre>
+      </li>
+      <li>
+        2. arguments in arrow functions
+        <p>
+          Arrow functions do not have their own arguments object. If you try to
+          use arguments inside an arrow function, it will refer to the arguments
+          of the enclosing (outer) function, or throw a ReferenceError if none
+          exists.
+        </p>
+        <pre><code>
+        const arrowFunction = (a, b) => {
+          console.log(arguments);
+        };
+
+        arrowFunction(1, 2, 3); 
+        // ❌ ReferenceError: arguments is not defined
+
+</code></pre>
+      </li>
+      <li>
+        2.1. but you can use rest parameters instead:
+        <pre><code>
+          const arrowFunction = (...args) => {
+            console.log(args); // [1, 2, 3]
+          };
+
+          arrowFunction(1, 2, 3);
+</code></pre>
+      </li>
+      <li></li>
+    </ul>
   </body>
 </html>
