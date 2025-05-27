@@ -105,21 +105,80 @@
 
     <!-- forEach -->
     <details open id="foreach">
-      <summary>forEach()</summary>
+      <h2>forEach()</h2>
+
       <p>
-        Used to perform an action for each element of the array (no return
-        value).
+        The <code>forEach()</code> method is one of the most commonly used array
+        helper methods in JavaScript. It's used to iterate over elements in an
+        array and execute a function for each element.
       </p>
+
+      <p>✅ Use <code>forEach()</code> when:</p>
+      <ul>
+        <li>You need to do something with each item (side effects)</li>
+        <li>You don’t need to return or build a new array</li>
+      </ul>
+
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.forEach((element, index, array) => {
+  // your code here
+});</code></pre>
+      <ul>
+        <li><strong>element</strong>: The current item in the array</li>
+        <li>
+          <strong>index</strong> (optional): The index of the current item
+        </li>
+        <li>
+          <strong>array</strong> (optional): The array being iterated over
+        </li>
+      </ul>
+
+      <h4>🔹 Example</h4>
       <pre><code>const fruits = ['apple', 'banana', 'cherry'];
 
 fruits.forEach((fruit, index) => {
   console.log(`${index}: ${fruit}`);
 });</code></pre>
-      <p><strong>Output:</strong> 0: apple 1: banana 2: cherry</p>
+      <p>
+        <strong>Output:</strong><br />0: apple<br />1: banana<br />2: cherry
+      </p>
+
+      <h4>🔹 Key Features</h4>
       <ul>
-        <li>Does not return a new array.</li>
-        <li>Used for side effects (e.g., logging).</li>
+        <li>
+          Does not return a new array (unlike <code>map()</code>,
+          <code>filter()</code>)
+        </li>
+        <li>
+          Does not stop early (unlike a <code>for</code> loop with
+          <code>break</code>)
+        </li>
+        <li>
+          Mostly used for side effects (e.g., logging, updating the DOM, etc.)
+        </li>
       </ul>
+
+      <h4>🔹 Real-World Use Case</h4>
+      <pre><code>const users = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 30 },
+];
+
+users.forEach(user => {
+  console.log(`${user.name} is ${user.age} years old.`);
+});</code></pre>
+
+      <h4>🔹 Common Mistakes</h4>
+      <p>
+        ❌ Trying to return values: <code>forEach()</code> doesn’t return
+        anything useful — use <code>map()</code> if you want to create a new
+        array.
+      </p>
+      <pre><code>const result = fruits.forEach(fruit => {
+  return fruit.toUpperCase();
+});
+
+console.log(result); // undefined</code></pre>
     </details>
 
     <!-- map -->
