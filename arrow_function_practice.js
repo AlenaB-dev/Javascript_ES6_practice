@@ -143,3 +143,56 @@ console.log(apple); // GroceryItem {title: "Apple", kind: "fruit"}
 
 const brocolli = new GroceryItem("Brocolli", "vegetable");
 console.log(brocolli);
+
+/**
+ * Arguments in the Functions
+ */
+
+/**
+ * EXAMPLE 1
+ *
+ * Regular function declaration
+ */
+
+// function sum() {
+//   console.log(arguments); // Arguments (5)
+//   console.log(typeof arguments); // object
+//   console.log(Array.isArray(arguments)); // false
+
+//   const argumentsArray = Array.from(arguments);
+//   console.log(argumentsArray); // Array (5)
+// }
+
+// sum(1, 2, 3, 4, 5);
+
+/**
+ * EXAMPLE 2
+ *
+ * Arrow function expression
+ * imposible to get access to arguments
+ */
+// const sum2 = () => {
+//   console.log(arguments); // ReferenceError: Can't find variable: arguments
+//   console.log(typeof arguments); //
+
+//   const argumentsArray = Array.from(arguments);
+//   console.log(argumentsArray); //
+// };
+
+// sum2(1, 2, 3, 4, 5);
+
+/**
+ * EXAMPLE 2.1
+ * solution
+ */
+
+const sum3 = (...arguments) => {
+  console.log(arguments); // [1, 2, 3, 4, 5] (5)
+  console.log(typeof arguments); // object
+  console.log(Array.isArray(arguments)); // true. Arguments initially is Array and also object. In regular functions its an Object.
+
+  const argumentsArray = Array.from(arguments);
+  console.log(argumentsArray); // [1, 2, 3, 4, 5] (5)
+};
+
+sum3(1, 2, 3, 4, 5);
