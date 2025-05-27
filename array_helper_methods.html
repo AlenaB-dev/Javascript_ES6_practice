@@ -100,11 +100,12 @@
     <nav>
       <a href="#foreach">forEach()</a>
       <a href="#map">map()</a>
+      <a href="#filter">filter()</a>
       <!-- Добавляй другие методы тут -->
     </nav>
 
     <!-- forEach -->
-    <details open id="foreach">
+    <details id="foreach">
       <h2>forEach()</h2>
 
       <p>
@@ -184,19 +185,71 @@ console.log(result); // undefined</code></pre>
     <!-- map -->
     <details id="map">
       <summary>map()</summary>
-      <p>Creates a new array by applying a function to each element.</p>
+      <h2>map()</h2>
+      <p>
+        The <code>map()</code> method is used to create a new array by applying
+        a function to each element of an existing array. It does not modify the
+        original array.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>const newArray = array.map((element, index, array) => {
+  // return transformed element
+});
+</code></pre>
+      <ul>
+        <li><strong>element</strong> — the current item in the array</li>
+        <li>
+          <strong>index </strong>(optional) — the index of the current item
+        </li>
+        <li>
+          <strong>array</strong>(optional) — the array <code>map()</code> was
+          called on
+        </li>
+      </ul>
+      <h4>🔹 Example</h4>
       <pre><code>const numbers = [1, 2, 3];
 const doubled = numbers.map(num => num * 2);
-console.log(doubled); // [2, 4, 6]</code></pre>
+
+console.log(doubled); // [2, 4, 6]
+</code>
+      </pre>
+      <h4>🔹 Key Features</h4>
       <ul>
-        <li>Returns a new array.</li>
-        <li>Original array is not modified.</li>
+        <li>Returns a new array with the same number of elements.</li>
+        <li>Does not change the original array.</li>
+        <li>Commonly used to transform or extract data.</li>
       </ul>
+      <h4>🔹 Real-World Use Case</h4>
+      <pre><code>const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 }
+];
+
+const names = users.map(user => user.name);
+console.log(names); // ["Alice", "Bob"]
+</code></pre>
+      <h4>🔹 Common Mistakes</h4>
+      <p>
+        Forgetting to use <code>return</code> inside the callback when using a
+        function block <code>({})</code>.
+      </p>
+      <pre><code>// Incorrect:
+numbers.map(function(num) {
+  num * 2; // No return, so it returns undefined
+});
+
+// Correct:
+numbers.map(function(num) {
+  return num * 2;
+});
+</code></pre>
     </details>
+
     <details id="filter">
       <summary>filter()</summary>
       <p>Описание метода filter...</p>
       <pre><code>Пример кода</code></pre>
+      <pre><code></code></pre>
     </details>
 
     <script>
