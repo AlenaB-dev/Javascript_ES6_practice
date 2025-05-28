@@ -306,11 +306,57 @@ console.log(activeUsers);
     </details>
 
     <!-- find -->
-    <details id="find">
+    <details open id="find">
       <summary>find()</summary>
-      <p></p>
-      <pre><code></code></pre>
-      <ul></ul>
+      <p>
+        The <code>find()</code> method returns the
+        <strong>first element in the array</strong> that satisfies the provided
+        testing function. If no element matches, it returns
+        <code>undefined</code>. <br />It <strong>does not modify</strong> the
+        original array.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.find(callback(element, index, array), thisArg)
+</code></pre>
+      <ul>
+        <li>
+          <strong>callback</strong>: A function that is called on each element.
+        </li>
+        <li><strong>element</strong>: The current element being processed.</li>
+        <li>
+          <strong>index</strong> (optional): The index of the current element.
+        </li>
+        <li><strong>array </strong>(optional): The array being processed.</li>
+        <li>
+          <strong>thisArg </strong>(optional): Value to use as this inside the
+          callback.
+        </li>
+      </ul>
+      <h4>🔹 Example 1: Find First Number Greater Than 10</h4>
+      <pre><code>const numbers = [3, 8, 12, 5, 20];
+
+const found = numbers.find(num => num > 10);
+
+console.log(found); // 12
+</code></pre>
+      <h4>🔹 Example 2: Find Object by Property</h4>
+      <pre><code>const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" }
+];
+
+const user = users.find(u => u.id === 2);
+
+console.log(user); // { id: 2, name: "Bob" }
+</code></pre>
+      <h4>⚠️ Note:</h4>
+      <ul>
+        <li>
+          <code>find()</code> stops searching as soon as it finds a match.
+        </li>
+        <li>If no match is found, it returns <code>undefined</code>.</li>
+      </ul>
     </details>
 
     <!-- every() and some() -->
