@@ -1,4 +1,4 @@
-console.log("_____________________for loop");
+//console.log("_____________________for loop");
 
 /* Create a function called "arrayInfo" that will return string like 
 "London is located at the index 0 in the myCities array" */
@@ -26,17 +26,17 @@ console.log("_____________________for loop");
 // New York is located at the index 1 myCities array
 // Roma is located at the index 2 myCities array
 
-console.log("_____________________map");
+//console.log("_____________________map");
 
 /**
  * From the "postsJSON" array create "posts" array that will consist of JavaScript object
  */
 
-const postsJSON = [
-  '{"postsId":1335, "commentsQty":5}',
-  '{"postsId":2434, "commentsQty":23}',
-  '{"postsId":5432, "commentsQty":2}',
-];
+// const postsJSON = [
+//   '{"postsId":1335, "commentsQty":5}',
+//   '{"postsId":2434, "commentsQty":23}',
+//   '{"postsId":5432, "commentsQty":2}',
+// ];
 
 // // using for loop
 // var posts = [];
@@ -57,3 +57,25 @@ const postsJSON = [
 // console.log(
 //   posts1
 // ); /**[{postsId: 1335, commentsQty: 5}, {postsId: 2434, commentsQty: 23}, {postsId: 5432, commentsQty: 2}] */
+
+/**
+ * CHALLENGE 4
+ *
+ * FIND()
+ */
+// const posts = [
+//   { postId: 1355, commentsQuantity: 5 },
+//   { postId: 5131, commentsQuantity: 13 },
+//   { postId: 6134, commentsQuantity: 2 },
+// ];
+
+// /* Create a function "findSinglePost" that will have two parameters - "postId" and "posts" and will return object with matched "postId".
+// If post wasn't found - return "undefined"
+// */
+
+// const findSinglePost = (postId, posts) =>
+//   posts.find((post) => post.postId === postId);
+
+// console.log(findSinglePost(6134, posts)); // { postId: 6134, commentsQuantity: 2 }
+
+// console.log(findSinglePost(4511, posts)); // undefined
