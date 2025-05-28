@@ -1,5 +1,5 @@
 /**
- * forEach()
+ * FOREACH()
  *
  * if in the loop will be make some mistake, such as:
  * let i = 1;
@@ -20,7 +20,7 @@
 // myArray1.forEach((elemet) => console.log(elemet)); // 1, true, asd
 
 /**
- * map()
+ * MAP()
  *
  */
 
@@ -77,9 +77,26 @@
  * FILTER()
  */
 
-const myNumbers = [10, 23, 8, 43, 9];
+// const myNumbers = [10, 23, 8, 43, 9];
 
-const filteredNumbers = myNumbers.filter((num) => num >= 10);
+// const filteredNumbers = myNumbers.filter((num) => num >= 10);
 
-console.log(filteredNumbers); // [10, 23, 43]
-console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
+// console.log(filteredNumbers); // [10, 23, 43]
+// console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
+
+/**
+ * FIND()
+ */
+
+const myArray = [10, [], true, "asd", 22, false, {}];
+
+const result = myArray.find((elemet) => typeof elemet === "number");
+
+const result1 = myArray.find((elemet) => typeof elemet === "boolean");
+console.log(result); // 10
+console.log(result1); // true
+
+const result2 = myArray.find((element) => {
+  console.log(element); // 10, [], true, asd
+  return typeof element === "string";
+});
