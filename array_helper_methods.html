@@ -101,13 +101,13 @@
       <a href="#foreach">forEach()</a>
       <a href="#map">map()</a>
       <a href="#filter">filter()</a>
+      <a href="#find">find()</a>
       <!-- Добавляй другие методы тут -->
     </nav>
 
     <!-- forEach -->
     <details id="foreach">
-      <h2>forEach()</h2>
-
+      <summary>forEach()</summary>
       <p>
         The <code>forEach()</code> method is one of the most commonly used array
         helper methods in JavaScript. It's used to iterate over elements in an
@@ -185,7 +185,6 @@ console.log(result); // undefined</code></pre>
     <!-- map -->
     <details id="map">
       <summary>map()</summary>
-      <h2>map()</h2>
       <p>
         The <code>map()</code> method is used to create a new array by applying
         a function to each element of an existing array. It does not modify the
@@ -245,11 +244,81 @@ numbers.map(function(num) {
 </code></pre>
     </details>
 
+    <!-- filter -->
     <details id="filter">
       <summary>filter()</summary>
-      <p>Описание метода filter...</p>
-      <pre><code>Пример кода</code></pre>
+      <p>
+        The <code>filter()</code> method creates
+        <strong>a new array</strong> containing
+        <strong>only the elements that pass a test</strong> (a function you
+        provide). It <strong>does not modify the original array.</strong>
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.filter(callback(element, index, array), thisArg)
+</code></pre>
+      <ul>
+        <li>
+          <strong>callback</strong>: A function that returns
+          <strong>true</strong> to keep the element, or
+          <strong>false </strong>to skip it.
+        </li>
+        <li><strong>element</strong>: The current element being processed.</li>
+        <li>
+          <strong>index</strong> (optional): Index of the current element.
+        </li>
+        <li><strong>array</strong> (optional): The array being processed.</li>
+        <li>
+          <strong>thisArg</strong> (optional): Value to use as this inside the
+          callback.
+        </li>
+      </ul>
+      <h4>🔹 Example 1: Filter Numbers Greater Than 10</h4>
+      <pre><code>const numbers = [5, 12, 8, 20, 3];
+
+const filtered = numbers.filter(num => num > 10);
+
+console.log(filtered); // [12, 20]
+</code></pre>
+      <h4>🔹 Example 2: Filter Even Numbers</h4>
+      <pre><code>const numbers = [1, 2, 3, 4, 5, 6];
+
+const evens = numbers.filter(num => num % 2 === 0);
+
+console.log(evens); // [2, 4, 6]
+</code></pre>
+      <h4>🔹 Example 3: Filter Objects by Property</h4>
+      <pre><code>const users = [
+  { name: "Alice", isActive: true },
+  { name: "Bob", isActive: false },
+  { name: "Charlie", isActive: true }
+];
+
+const activeUsers = users.filter(user => user.isActive);
+
+console.log(activeUsers);
+/*
+[
+  { name: "Alice", isActive: true },
+  { name: "Charlie", isActive: true }
+]
+*/
+</code></pre>
+    </details>
+
+    <!-- find -->
+    <details id="find">
+      <summary>find()</summary>
+      <p></p>
       <pre><code></code></pre>
+      <ul></ul>
+    </details>
+
+    <!-- every() and some() -->
+    <details id="everySome">
+      <summary>every() and some()</summary>
+      <p></p>
+      <pre><code></code></pre>
+      <ul></ul>
     </details>
 
     <script>
