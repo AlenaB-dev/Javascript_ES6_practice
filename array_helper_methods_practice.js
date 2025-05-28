@@ -25,7 +25,7 @@
  */
 
 // using for loop
-const myNumbers = [1, 4, 3];
+// const myNumbers = [1, 4, 3];
 // let mySqNumbers = [];
 
 // for (let i = 0; i < myNumbers.length; i++) {
@@ -63,12 +63,23 @@ const myNumbers = [1, 4, 3];
 
 // map() with Math.pow()
 
-let mySqNumbers = myNumbers.map((element) => Math.pow(element, 2));
-console.log(mySqNumbers); //[1, 16, 9]
-console.log(myNumbers);
+// let mySqNumbers = myNumbers.map((element) => Math.pow(element, 2));
+// console.log(mySqNumbers); //[1, 16, 9]
+// console.log(myNumbers);
 
 // // map() with direct call to Math.pow()
 // // "index" in Math.pow will be treated as exponent value
 
 // let mySqNumbers2 = myNumbers.map(Math.pow);
 // console.log(mySqNumbers2); // [1, 4, 9] - произошли умножение значения на его индекс.
+
+/**
+ * FILTER()
+ */
+
+const myNumbers = [10, 23, 8, 43, 9];
+
+const filteredNumbers = myNumbers.filter((num) => num >= 10);
+
+console.log(filteredNumbers); // [10, 23, 43]
+console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
