@@ -84,19 +84,79 @@
 // console.log(filteredNumbers); // [10, 23, 43]
 // console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
 
+// /**
+//  * FIND()
+//  */
+
+// const myArray = [10, [], true, "asd", 22, false, {}];
+
+// const result = myArray.find((elemet) => typeof elemet === "number");
+
+// const result1 = myArray.find((elemet) => typeof elemet === "boolean");
+// console.log(result); // 10
+// console.log(result1); // true
+
+// const result2 = myArray.find((element) => {
+//   console.log(element); // 10, [], true, asd
+//   return typeof element === "string";
+// });
+
+// /**
+//  * EVERY()
+//  *
+//  * EXAMPLE 1
+//  * If all elements in the array are positive numbers
+//  */
+
+// const myNumbers = [2, -3, 1, 10, -4];
+
+// // created function to check type of element and if it positive
+// const isPositiveNumber = (element) =>
+//   typeof element === "number" && element > 0;
+
+// const allPositiveCheck = myNumbers.every(isPositiveNumber);
+// console.log(allPositiveCheck); // false (because array contain negative numbers)
+
+// /**
+//  * SOME()
+//  */
+
+// const somePositiveCheck = myNumbers.some(isPositiveNumber);
+// console.log(somePositiveCheck); // true ()as array contain some positive numbers
+
 /**
- * FIND()
- */
+ * EVERY() SOME()
+ *
+ * EXAMPLE 2
+ * */
 
-const myArray = [10, [], true, "asd", 22, false, {}];
+const items = [
+  {
+    title: "Computer",
+    quantity: 10,
+  },
+  {
+    title: "Headphones",
+    quantity: 15,
+  },
+  {
+    title: "Microphone",
+    quantity: 3,
+  },
+  { title: "Phone", quantity: 0 },
+];
 
-const result = myArray.find((elemet) => typeof elemet === "number");
+// every() - all items have quantity > 5
+if (items.every((item) => item.quantity > 5))
+  console.log("All items are availabe"); // в консоли будет пусто, параметры не соответвуют заданному условию
 
-const result1 = myArray.find((elemet) => typeof elemet === "boolean");
-console.log(result); // 10
-console.log(result1); // true
+// combined every() and some() - all items have quatity > 0 and some items have quantity <= 5
+if (
+  items.every((item) => item.quantity > 0) &&
+  items.some((item) => item.quantity <= 5)
+)
+  console.log("Some items may be sold soon"); // Some items may be sold soon
 
-const result2 = myArray.find((element) => {
-  console.log(element); // 10, [], true, asd
-  return typeof element === "string";
-});
+// some() - some items have quantity > 0
+if (items.some((item) => item.quantity === 0))
+  console.log("Some items are sold out"); // Some items are sold out
