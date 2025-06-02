@@ -306,7 +306,7 @@ console.log(activeUsers);
     </details>
 
     <!-- find -->
-    <details open id="find">
+    <details id="find">
       <summary>find()</summary>
       <p>
         The <code>find()</code> method returns the
@@ -359,9 +359,124 @@ console.log(user); // { id: 2, name: "Bob" }
       </ul>
     </details>
 
-    <!-- every() and some() -->
+    <!-- every() -->
     <details id="everySome">
-      <summary>every() and some()</summary>
+      <summary>every()</summary>
+      <p>
+        The <code>every()</code> method in JavaScript is an array helper that
+        checks if <strong>all elements</strong> in an array satisfy a condition.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.every(callback(element, index, array))
+</code></pre>
+      <ul>
+        <li>
+          <strong>callback</strong> is a function that runs on each element.
+        </li>
+        <li>Returns <code>true</code> if every element passes the test.</li>
+        <li>Returns <code>false</code> as soon as one fails.</li>
+      </ul>
+      <h4>🔹 Example 1: All numbers positive</h4>
+      <pre><code>const numbers = [2, 4, 6, 8];
+const allPositive = numbers.every(num => num > 0);
+console.log(allPositive); // true
+</code></pre>
+      <h4>🔹 Example 2: Not all conditions met</h4>
+      <pre><code>const numbers = [2, -1, 6];
+
+const allPositive = numbers.every(num => num > 0);
+console.log(allPositive); // false (because -1 is not > 0)
+</code></pre>
+      <h4>🔹 Example 3: Strings of certain length</h4>
+      <pre><code>const words = ["apple", "banana", "cherry"];
+
+const allLongEnough = words.every(word => word.length >= 5);
+console.log(allLongEnough); // true
+</code></pre>
+      <h4>🔹 Common mistake:</h4>
+      <pre><code>const result = [1, 2, 3].every(x => {
+  x > 0; // returns undefined!
+});
+console.log(result); // false
+</code></pre>
+      <p>You must return the condition:</p>
+      <pre><code>const result = [1, 2, 3].every(x => x > 0); // ✅ Correct
+</code></pre>
+    </details>
+
+    <!-- some() -->
+    <details open id="everySome">
+      <summary>some()</summary>
+      <p>
+        Let’s look at the <code>some()</code> array helper method — it’s the
+        opposite of <code>.every()</code>in many ways.
+      </p>
+      <p>✅ What .some() does:</p>
+      <ul>
+        <li>
+          <code>some()</code> checks if <strong>at least one element</strong> in
+          an array passes a condition.
+        </li>
+      </ul>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.some(callback(element, index, array))
+</code></pre>
+      <ul>
+        <li>Returns <code>true</code> if any element satisfies the test.</li>
+        <li>Returns <code>false</code> only if none of them do.</li>
+      </ul>
+      <h4>🔹 Example 1: At least one negative number</h4>
+      <pre><code>const numbers = [1, 2, -3, 4];
+
+const hasNegative = numbers.some(num => num < 0);
+console.log(hasNegative); // true
+</code></pre>
+      <h4>🔹 Example 2: No matches</h4>
+      <pre><code>const numbers = [2, 4, 6];
+
+const hasOdd = numbers.some(num => num % 2 !== 0);
+console.log(hasOdd); // false
+</code></pre>
+      <h4>🔹 Example 3: Strings in array</h4>
+      <pre><code>const fruits = ["apple", "banana", "cherry"];
+
+const hasShortName = fruits.some(fruit => fruit.length < 5);
+console.log(hasShortName); // true ("apple" has 5, but still counts as short here)
+</code></pre>
+      <h4>⚖️ Comparison: <code>every()</code> vs <code>some()</code></h4>
+
+      <table border="1">
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+          <th>Returns true if...</th>
+        </tr>
+        <tr>
+          <td><code>every()</code></td>
+          <td>All elements match condition</td>
+          <td>Every element passes the test</td>
+        </tr>
+        <tr>
+          <td><code>some()</code></td>
+          <td>At least one element matches</td>
+          <td>One or more elements pass the test</td>
+        </tr>
+      </table>
+      <h4>🔁 Tip:</h4>
+      <p>You can combine both to write clear logic:</p>
+      <pre><code>const users = [
+  { name: "Anna", age: 30 },
+  { name: "Bob", age: 17 }
+];
+
+const hasUnderage = users.some(user => user.age < 18); // true
+const allAdults = users.every(user => user.age >= 18); // false
+</code></pre>
+    </details>
+
+    <!-- include() -->
+    <details id="everySome">
+      <summary>include()</summary>
       <p></p>
       <pre><code></code></pre>
       <ul></ul>
