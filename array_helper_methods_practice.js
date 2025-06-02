@@ -84,22 +84,22 @@
 // console.log(filteredNumbers); // [10, 23, 43]
 // console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
 
-/**
- * FIND()
- */
+// /**
+//  * FIND()
+//  */
 
-const myArray = [10, [], true, "asd", 22, false, {}];
+// const myArray = [10, [], true, "asd", 22, false, {}];
 
-const result = myArray.find((elemet) => typeof elemet === "number");
+// const result = myArray.find((elemet) => typeof elemet === "number");
 
-const result1 = myArray.find((elemet) => typeof elemet === "boolean");
-console.log(result); // 10
-console.log(result1); // true
+// const result1 = myArray.find((elemet) => typeof elemet === "boolean");
+// console.log(result); // 10
+// console.log(result1); // true
 
-const result2 = myArray.find((element) => {
-  console.log(element); // 10, [], true, asd
-  return typeof element === "string";
-});
+// const result2 = myArray.find((element) => {
+//   console.log(element); // 10, [], true, asd
+//   return typeof element === "string";
+// });
 
 // /**
 //  * EVERY()
