@@ -102,65 +102,93 @@ If numbers in the array are sorted in descending order - return "Array is sorted
 
 If array is not sorted - return "Array is not sorted"
 */
-console.log("__________not numbers");
+// console.log("__________not numbers");
 
-const arrayCheck = (element) => typeof element === "number";
+// const arrayCheck = (element) => typeof element === "number";
 
-const typeOfElement = a.every(arrayCheck);
-if (!typeOfElement) {
-  console.log("Some elements are not numbers");
-}
+// const typeOfElement = a.every(arrayCheck);
+// if (!typeOfElement) {
+//   console.log("Some elements are not numbers");
+// }
 
-console.log("_____________ascending order");
+// console.log("_____________ascending order");
 
-const isSortedAscending = b.every((num, index, array) => {
-  return index === 0 || num >= array[index - 1];
-});
+// const isSortedAscending = b.every((num, index, array) => {
+//   return index === 0 || num >= array[index - 1];
+// });
 
-if (isSortedAscending) {
-  console.log("Array is sorted is ascending order");
-}
+// if (isSortedAscending) {
+//   console.log("Array is sorted is ascending order");
+// }
 
-console.log("_____________descending order");
+// console.log("_____________descending order");
 
-const isSortDescending = c.every((num, index, array) => {
-  return index === 0 || num <= array[index - 1];
-});
+// const isSortDescending = c.every((num, index, array) => {
+//   return index === 0 || num <= array[index - 1];
+// });
 
-console.log(
-  isSortDescending
-    ? "Array is sorted is descending order"
-    : "Array is not sorted is descending order"
-);
+// console.log(
+//   isSortDescending
+//     ? "Array is sorted is descending order"
+//     : "Array is not sorted is descending order"
+// );
 
-console.log("_____________not sorted");
+// console.log("_____________not sorted");
 
-const isAscending = d.every((num, index, array) => {
-  return index === 0 || num >= array[index - 1];
-});
+// const isAscending = d.every((num, index, array) => {
+//   return index === 0 || num >= array[index - 1];
+// });
 
-const isDescending = d.every((num, index, array) => {
-  return index === 0 || num <= array[index - 1];
-});
+// const isDescending = d.every((num, index, array) => {
+//   return index === 0 || num <= array[index - 1];
+// });
 
-const notSorted = !isAscending && !isDescending;
+// const notSorted = !isAscending && !isDescending;
 
-if (notSorted) {
-  console.log("Array is not sorted");
-}
+// if (notSorted) {
+//   console.log("Array is not sorted");
+// }
 
-// сокращенный вариант проверки
+// // сокращенный вариант проверки
 
-const notSorted1 =
-  !d.every((x, i, a) => i === 0 || x >= a[i - 1]) &&
-  !d.every((x, i, a) => i === 0 || x <= a[i - 1]);
+// const notSorted1 =
+//   !d.every((x, i, a) => i === 0 || x >= a[i - 1]) &&
+//   !d.every((x, i, a) => i === 0 || x <= a[i - 1]);
 
-console.log(notSorted1 ? "Array is NOT sorted" : "Array is sorted");
+// console.log(notSorted1 ? "Array is NOT sorted" : "Array is sorted");
 
-//console.log(arrayCheck(a)); // Some elements are not numbers
-//console.log(arrayCheck(b)); // Array is sorted is ascending order
-//console.log(arrayCheck(c)); // Array is sorted is descending order
-//console.log(arrayCheck(d)); // Array is not sorted
+// checking for a type of element (should be a number)
+const arrayCheck = (inputArray) => {
+  if (inputArray.some((element) => typeof element !== "number")) {
+    return "Some elements are not numbers";
+  }
+
+  // sort in asceding order
+  if (
+    inputArray.every((element, index, array) =>
+      index > 0 ? element >= array[index - 1] : true
+    )
+  ) {
+    return "Array is sorted is ascending order";
+  }
+
+  // sort in desceding order
+  if (
+    inputArray.every((element, index, array) =>
+      index > 0 ? element <= array[index - 1] : true
+    )
+  ) {
+    return "Array is sorted is descending order";
+  }
+
+  // not sorted
+  return "Array is not sorted";
+};
+
+console.log(arrayCheck(a)); // Some elements are not numbers
+console.log(arrayCheck(b)); // Array is sorted is ascending order
+console.log(arrayCheck(c)); // Array is sorted is descending order
+console.log(arrayCheck(d)); // Array is not sorted
 
 /* Hint 1: Use "every" helper method to solve this.
 
