@@ -281,7 +281,7 @@
 //   }
 //   if (typeof searchElement === "object") {
 //     return array
-//       .map((element) => JSON.stringify(element))
+//       .map((element) => JSON.stringify(element)) // map will return a bran new array which will be convert to string
 //       .includes(JSON.stringify(searchElement));
 //   }
 // };
