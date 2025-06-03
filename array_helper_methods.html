@@ -475,7 +475,7 @@ const allAdults = users.every(user => user.age >= 18); // false
     </details>
 
     <!-- include() -->
-    <details open id="everySome">
+    <details id="everySome">
       <summary>include()</summary>
       <p>
         The <code>includes() </code>method is a simple and powerful JavaScript
@@ -531,8 +531,63 @@ console.log(users.includes({ name: "Alena" })); // false (different object refer
     </details>
 
     <!-- reduce() -->
-    <details id="everySome">
+    <details open id="everySome">
       <summary>reduce()</summary>
+      <p>
+        The <code>reduce()</code> array helper method in JavaScript is used to
+        "reduce" an array to a single value — for example, to sum numbers, build
+        a string, or create an object.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.reduce((accumulator, currentValue) => {
+  // return the updated accumulator
+}, initialValue);
+</code></pre>
+
+      <ul>
+        <li>
+          <strong>accumulator</strong> — result from the previous step (or
+          initial value)
+        </li>
+        <li><strong>currentValue</strong> — current element being processed</li>
+        <li>
+          <strong>initialValue</strong> — optional starting value for the
+          accumulator
+        </li>
+      </ul>
+      <h4>🔹 Example 1: Sum of numbers</h4>
+      <pre><code>const numbers = [1, 2, 3, 4];
+
+const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum); // 10
+</code></pre>
+      <h4>🔹 Example 2: Join words into a sentence</h4>
+      <pre><code>const words = ["I", "love", "JavaScript"];
+
+const sentence = words.reduce((acc, word) => acc + " " + word);
+
+console.log(sentence); // "I love JavaScript"
+</code></pre>
+      <h4>🔹 Example 3: Count item quantities</h4>
+      <pre><code>const items = [
+  { type: "apple", quantity: 2 },
+  { type: "banana", quantity: 3 },
+  { type: "apple", quantity: 1 },
+];
+
+const totals = items.reduce((acc, item) => {
+  acc[item.type] = (acc[item.type] || 0) + item.quantity;
+  return acc;
+}, {});
+
+console.log(totals); // { apple: 3, banana: 3 }
+</code></pre>
+    </details>
+
+    <!-- sort() -->
+    <details id="everySome">
+      <summary>sort()</summary>
       <p></p>
       <h4>🔹 Syntax</h4>
       <pre><code></code></pre>
