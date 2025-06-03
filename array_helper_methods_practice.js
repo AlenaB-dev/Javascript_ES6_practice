@@ -130,33 +130,47 @@
  * EXAMPLE 2
  * */
 
-const items = [
-  {
-    title: "Computer",
-    quantity: 10,
-  },
-  {
-    title: "Headphones",
-    quantity: 15,
-  },
-  {
-    title: "Microphone",
-    quantity: 3,
-  },
-  { title: "Phone", quantity: 0 },
-];
+// const items = [
+//   {
+//     title: "Computer",
+//     quantity: 10,
+//   },
+//   {
+//     title: "Headphones",
+//     quantity: 15,
+//   },
+//   {
+//     title: "Microphone",
+//     quantity: 3,
+//   },
+//   { title: "Phone", quantity: 0 },
+// ];
 
-// every() - all items have quantity > 5
-if (items.every((item) => item.quantity > 5))
-  console.log("All items are availabe"); // в консоли будет пусто, параметры не соответвуют заданному условию
+// // every() - all items have quantity > 5
+// if (items.every((item) => item.quantity > 5))
+//   console.log("All items are availabe"); // в консоли будет пусто, параметры не соответвуют заданному условию
 
-// combined every() and some() - all items have quatity > 0 and some items have quantity <= 5
-if (
-  items.every((item) => item.quantity > 0) &&
-  items.some((item) => item.quantity <= 5)
-)
-  console.log("Some items may be sold soon"); // Some items may be sold soon
+// // combined every() and some() - all items have quatity > 0 and some items have quantity <= 5
+// if (
+//   items.every((item) => item.quantity > 0) &&
+//   items.some((item) => item.quantity <= 5)
+// )
+//   console.log("Some items may be sold soon"); // Some items may be sold soon
 
-// some() - some items have quantity > 0
-if (items.some((item) => item.quantity === 0))
-  console.log("Some items are sold out"); // Some items are sold out
+// // some() - some items have quantity > 0
+// if (items.some((item) => item.quantity === 0))
+//   console.log("Some items are sold out"); // Some items are sold out
+
+/**
+ * INCLUDES()
+ */
+
+// const myArray = [2, "asd", true, undefined, null, [1, 2]];
+
+// console.log(true, myArray.includes(true)); // true - true
+// console.log(2, myArray.includes(2)); // 2 - true
+// console.log(22, myArray.includes(22)); // 22 - false
+// console.log("asd", "starting from index 4", myArray.includes("asd", 4)); // asd"starting from index 4"false
+// console.log("[1, 2]", myArray.includes([1, 2])); // [1, 2]false. Same result will be with object
+// console.log("null", myArray.includes(null)); // null - true
+// console.log("undefined", myArray.includes(undefined)); // undefined - true
