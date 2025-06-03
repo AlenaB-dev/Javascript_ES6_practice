@@ -306,7 +306,7 @@ console.log(activeUsers);
     </details>
 
     <!-- find -->
-    <details open id="find">
+    <details id="find">
       <summary>find()</summary>
       <p>
         The <code>find()</code> method returns the
@@ -405,7 +405,7 @@ console.log(result); // false
     </details>
 
     <!-- some() -->
-    <details open id="everySome">
+    <details id="everySome">
       <summary>some()</summary>
       <p>
         Let’s look at the <code>some()</code> array helper method — it’s the
@@ -475,9 +475,66 @@ const allAdults = users.every(user => user.age >= 18); // false
     </details>
 
     <!-- include() -->
-    <details id="everySome">
+    <details open id="everySome">
       <summary>include()</summary>
+      <p>
+        The <code>includes() </code>method is a simple and powerful JavaScript
+        array helper that checks whether
+        <strong>a certain element exists</strong> in an array.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>array.includes(valueToFind, fromIndex);
+</code></pre>
+      <ul>
+        <li>
+          <strong>valueToFind</strong> — the value you want to search for.
+        </li>
+        <li>
+          <strong>fromIndex </strong>(optional) — the index to start the search
+          from (default is 0).
+        </li>
+      </ul>
+      <h4>🔹 Example 1: Basic usage</h4>
+      <pre><code>const fruits = ["apple", "banana", "orange"];
+
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("grape"));  // false
+</code></pre>
+      <h4>🔹 Example 2: Starting from a specific index</h4>
+      <pre><code>const numbers = [1, 2, 3, 4, 2];
+
+console.log(numbers.includes(2));       // true
+console.log(numbers.includes(2, 3));    // true (searches from index 3)
+console.log(numbers.includes(2, 4));    // true (2 is at index 4)
+console.log(numbers.includes(2, 5));    // false (starts after end)
+</code></pre>
+      <h4>⚠️ Notes:</h4>
+      <ul>
+        <li>
+          <code>includes() </code>uses strict equality <code>(===)</code> when
+          comparing.
+        </li>
+        <li>
+          It doesn’t work well with searching inside objects or arrays of
+          objects directly (you’d use <code>some()</code> or
+          <code>find()</code> for that).
+        </li>
+      </ul>
+      <h4>🔹 Example 3: Doesn’t work for deep equality</h4>
+      <pre><code>const users = [{ name: "Alena" }, { name: "Anna" }];
+
+console.log(users.includes({ name: "Alena" })); // false (different object reference)
+</code></pre>
+      <p>To find objects inside an array, you can use <code>some()</code>:</p>
+      <pre><code>console.log(users.some(user => user.name === "Alena")); // true
+</code></pre>
+    </details>
+
+    <!-- reduce() -->
+    <details id="everySome">
+      <summary>reduce()</summary>
       <p></p>
+      <h4>🔹 Syntax</h4>
       <pre><code></code></pre>
       <ul></ul>
     </details>
