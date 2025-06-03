@@ -80,119 +80,147 @@
 
 // console.log(findSinglePost(4511, posts)); // undefined
 
+// /**
+//  * CHALLENGE 5
+//  *
+//  * EVERY() SOME()
+//  */
+
+// const a = [5, "abc", 10, 1];
+// const b = [4, 10, 14, 25, 25, 50];
+// const c = [150, 132, 80, 40];
+// const d = [15, 26, 10, 23, 85];
+
+// /*
+// Create a function "arrayCheck" with one parameter - "inputArray".
+
+// If at least one element in the array is not a number - return "Some elements are not numbers".
+
+// If numbers in the array are sorted in ascending order - return "Array is sorted is ascending order".
+
+// If numbers in the array are sorted in descending order - return "Array is sorted is descending order".
+
+// If array is not sorted - return "Array is not sorted"
+// */
+// // console.log("__________not numbers");
+
+// // const arrayCheck = (element) => typeof element === "number";
+
+// // const typeOfElement = a.every(arrayCheck);
+// // if (!typeOfElement) {
+// //   console.log("Some elements are not numbers");
+// // }
+
+// // console.log("_____________ascending order");
+
+// // const isSortedAscending = b.every((num, index, array) => {
+// //   return index === 0 || num >= array[index - 1];
+// // });
+
+// // if (isSortedAscending) {
+// //   console.log("Array is sorted is ascending order");
+// // }
+
+// // console.log("_____________descending order");
+
+// // const isSortDescending = c.every((num, index, array) => {
+// //   return index === 0 || num <= array[index - 1];
+// // });
+
+// // console.log(
+// //   isSortDescending
+// //     ? "Array is sorted is descending order"
+// //     : "Array is not sorted is descending order"
+// // );
+
+// // console.log("_____________not sorted");
+
+// // const isAscending = d.every((num, index, array) => {
+// //   return index === 0 || num >= array[index - 1];
+// // });
+
+// // const isDescending = d.every((num, index, array) => {
+// //   return index === 0 || num <= array[index - 1];
+// // });
+
+// // const notSorted = !isAscending && !isDescending;
+
+// // if (notSorted) {
+// //   console.log("Array is not sorted");
+// // }
+
+// // // сокращенный вариант проверки
+
+// // const notSorted1 =
+// //   !d.every((x, i, a) => i === 0 || x >= a[i - 1]) &&
+// //   !d.every((x, i, a) => i === 0 || x <= a[i - 1]);
+
+// // console.log(notSorted1 ? "Array is NOT sorted" : "Array is sorted");
+
+// // checking for a type of element (should be a number)
+// const arrayCheck = (inputArray) => {
+//   if (inputArray.some((element) => typeof element !== "number")) {
+//     return "Some elements are not numbers";
+//   }
+
+//   // sort in asceding order
+//   if (
+//     inputArray.every((element, index, array) =>
+//       index > 0 ? element >= array[index - 1] : true
+//     )
+//   ) {
+//     return "Array is sorted is ascending order";
+//   }
+
+//   // sort in desceding order
+//   if (
+//     inputArray.every((element, index, array) =>
+//       index > 0 ? element <= array[index - 1] : true
+//     )
+//   ) {
+//     return "Array is sorted is descending order";
+//   }
+
+//   // not sorted
+//   return "Array is not sorted";
+// };
+
+// console.log(arrayCheck(a)); // Some elements are not numbers
+// console.log(arrayCheck(b)); // Array is sorted is ascending order
+// console.log(arrayCheck(c)); // Array is sorted is descending order
+// console.log(arrayCheck(d)); // Array is not sorted
+
+// /* Hint 1: Use "every" helper method to solve this.
+
+// Hint 2: You should use all three parameters in the callback function "element", "index", "array".
+
+// Hint 3: Each element in the array except first one should be compared to the previous
+// */
+
 /**
- * CHALLENGE 5
+ * CHALLENGE 6
  *
- * EVERY() SOME()
+ * Are Arrays equal or not
  */
 
-const a = [5, "abc", 10, 1];
-const b = [4, 10, 14, 25, 25, 50];
-const c = [150, 132, 80, 40];
-const d = [15, 26, 10, 23, 85];
+const a = [1, 2, 3];
+const b = [1, 2, 3];
 
-/*
-Create a function "arrayCheck" with one parameter - "inputArray".
+console.log(a === b); // false. Прямое сравнение массивов всегда будет давать результат false. Поскольку массив, как объект, указывает на ссылку памяти, где хранится "значение". И эти ссылки всегда будут разными, за исключением случая когда мы сравниваем один и тот же объект (массив).
 
-If at least one element in the array is not a number - return "Some elements are not numbers".
+/* Create a function "arraysAreEqual" with two parameters "arrayOne" and "arrayTwo". 
 
-If numbers in the array are sorted in ascending order - return "Array is sorted is ascending order".
+If two arrays are equal (have same quantity of the elements and all elements match e.g. arrayOne[0] === arrayTwo[0] etc.) return "true".
 
-If numbers in the array are sorted in descending order - return "Array is sorted is descending order".
+Otherwise return "false". */
 
-If array is not sorted - return "Array is not sorted"
-*/
-// console.log("__________not numbers");
+const c = [2, 1, 3];
+const d = [1, 2, 3, 4];
 
-// const arrayCheck = (element) => typeof element === "number";
+const arraysAreEqual = (arrayOne, arrayTwo) =>
+  arrayOne.length === arrayTwo.length && // check if lenght of arrays is equal
+  arrayOne.every((element, index) => element === arrayTwo[index]); // проверяем каждый ли элемент из первого массива соответ.элементу второго массива, сравнивая элемент первого с индексом второго массива.
 
-// const typeOfElement = a.every(arrayCheck);
-// if (!typeOfElement) {
-//   console.log("Some elements are not numbers");
-// }
-
-// console.log("_____________ascending order");
-
-// const isSortedAscending = b.every((num, index, array) => {
-//   return index === 0 || num >= array[index - 1];
-// });
-
-// if (isSortedAscending) {
-//   console.log("Array is sorted is ascending order");
-// }
-
-// console.log("_____________descending order");
-
-// const isSortDescending = c.every((num, index, array) => {
-//   return index === 0 || num <= array[index - 1];
-// });
-
-// console.log(
-//   isSortDescending
-//     ? "Array is sorted is descending order"
-//     : "Array is not sorted is descending order"
-// );
-
-// console.log("_____________not sorted");
-
-// const isAscending = d.every((num, index, array) => {
-//   return index === 0 || num >= array[index - 1];
-// });
-
-// const isDescending = d.every((num, index, array) => {
-//   return index === 0 || num <= array[index - 1];
-// });
-
-// const notSorted = !isAscending && !isDescending;
-
-// if (notSorted) {
-//   console.log("Array is not sorted");
-// }
-
-// // сокращенный вариант проверки
-
-// const notSorted1 =
-//   !d.every((x, i, a) => i === 0 || x >= a[i - 1]) &&
-//   !d.every((x, i, a) => i === 0 || x <= a[i - 1]);
-
-// console.log(notSorted1 ? "Array is NOT sorted" : "Array is sorted");
-
-// checking for a type of element (should be a number)
-const arrayCheck = (inputArray) => {
-  if (inputArray.some((element) => typeof element !== "number")) {
-    return "Some elements are not numbers";
-  }
-
-  // sort in asceding order
-  if (
-    inputArray.every((element, index, array) =>
-      index > 0 ? element >= array[index - 1] : true
-    )
-  ) {
-    return "Array is sorted is ascending order";
-  }
-
-  // sort in desceding order
-  if (
-    inputArray.every((element, index, array) =>
-      index > 0 ? element <= array[index - 1] : true
-    )
-  ) {
-    return "Array is sorted is descending order";
-  }
-
-  // not sorted
-  return "Array is not sorted";
-};
-
-console.log(arrayCheck(a)); // Some elements are not numbers
-console.log(arrayCheck(b)); // Array is sorted is ascending order
-console.log(arrayCheck(c)); // Array is sorted is descending order
-console.log(arrayCheck(d)); // Array is not sorted
-
-/* Hint 1: Use "every" helper method to solve this.
-
-Hint 2: You should use all three parameters in the callback function "element", "index", "array".
-
-Hint 3: Each element in the array except first one should be compared to the previous
-*/
+console.log(arraysAreEqual(a, b)); // true
+console.log(arraysAreEqual(a, c)); // false
+console.log(arraysAreEqual(a, d)); // false
