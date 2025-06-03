@@ -203,24 +203,46 @@
  * Are Arrays equal or not
  */
 
-const a = [1, 2, 3];
-const b = [1, 2, 3];
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
 
-console.log(a === b); // false. Прямое сравнение массивов всегда будет давать результат false. Поскольку массив, как объект, указывает на ссылку памяти, где хранится "значение". И эти ссылки всегда будут разными, за исключением случая когда мы сравниваем один и тот же объект (массив).
+// console.log(a === b); // false. Прямое сравнение массивов всегда будет давать результат false. Поскольку массив, как объект, указывает на ссылку памяти, где хранится "значение". И эти ссылки всегда будут разными, за исключением случая когда мы сравниваем один и тот же объект (массив).
 
-/* Create a function "arraysAreEqual" with two parameters "arrayOne" and "arrayTwo". 
+// /* Create a function "arraysAreEqual" with two parameters "arrayOne" and "arrayTwo".
 
-If two arrays are equal (have same quantity of the elements and all elements match e.g. arrayOne[0] === arrayTwo[0] etc.) return "true".
+// If two arrays are equal (have same quantity of the elements and all elements match e.g. arrayOne[0] === arrayTwo[0] etc.) return "true".
 
-Otherwise return "false". */
+// Otherwise return "false". */
 
-const c = [2, 1, 3];
-const d = [1, 2, 3, 4];
+// const c = [2, 1, 3];
+// const d = [1, 2, 3, 4];
 
-const arraysAreEqual = (arrayOne, arrayTwo) =>
-  arrayOne.length === arrayTwo.length && // check if lenght of arrays is equal
-  arrayOne.every((element, index) => element === arrayTwo[index]); // проверяем каждый ли элемент из первого массива соответ.элементу второго массива, сравнивая элемент первого с индексом второго массива.
+// const arraysAreEqual = (arrayOne, arrayTwo) =>
+//   arrayOne.length === arrayTwo.length && // check if lenght of arrays is equal
+//   arrayOne.every((element, index) => element === arrayTwo[index]); // проверяем каждый ли элемент из первого массива соответ.элементу второго массива, сравнивая элемент первого с индексом второго массива.
 
-console.log(arraysAreEqual(a, b)); // true
-console.log(arraysAreEqual(a, c)); // false
-console.log(arraysAreEqual(a, d)); // false
+// console.log(arraysAreEqual(a, b)); // true
+// console.log(arraysAreEqual(a, c)); // false
+// console.log(arraysAreEqual(a, d)); // false
+
+/**
+ * CHALLENGE 7
+ *
+ * Check if Element is in Array
+ */
+
+// /* Create a function "elementFound" with two parameters "inputArray" and "searchElement".
+// If "searchElement" is found in the "inputArray" - return "true".
+// Otherwise return "false"
+
+// Hint: Use "some" helper method to solve this
+// */
+
+// const transport = ["Bus", "Car", "Bicycle", "Airplane"];
+
+// const elementFound = (inputArray, searchElement) =>
+//   inputArray.some((element) => element === searchElement);
+
+// console.log(elementFound(transport, "Bus")); // true
+// console.log(elementFound(transport, "Phone")); // false
+// console.log(elementFound(transport, "Airplane")); // true
