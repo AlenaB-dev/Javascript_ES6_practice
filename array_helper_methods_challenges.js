@@ -343,36 +343,105 @@ NOTE: We assume that "inputArray" may contain only primitive variables types
  * CHALLENGE 10
  *
  * REDUCE()
+ *
+ * Reduce array of objects
  */
 
-const posts = [
-  {
-    title: "How to find JavaScript developer job?",
-    postId: 3421,
-    comments: 25,
-  },
-  {
-    title: "Is it hard to learn ES6?",
-    postId: 5216,
-    comments: 3,
-  },
-  {
-    title: "Should I learn React or Angular?",
-    postId: 8135,
-    comments: 12,
-  },
-];
+// const posts = [
+//   {
+//     title: "How to find JavaScript developer job?",
+//     postId: 3421,
+//     comments: 25,
+//   },
+//   {
+//     title: "Is it hard to learn ES6?",
+//     postId: 5216,
+//     comments: 3,
+//   },
+//   {
+//     title: "Should I learn React or Angular?",
+//     postId: 8135,
+//     comments: 12,
+//   },
+// ];
 
-const minimalComentsQty = 10;
+// const minimalComentsQty = 10;
 
-/* Create a function "popularPostsIds" with two parameters "posts" and "minimalComentsQty".
+// /* Create a function "popularPostsIds" with two parameters "posts" and "minimalComentsQty".
 
-This function "popularPostsIds" should return an array of postIds of posts that have quantity of "comments" at least equal to "minimalComentsQty"
-*/
-const popularPostsIds = (posts, minimalComentsQty) =>
-  posts.reduce((postIds, post) => {
-    if (post.comments >= minimalComentsQty) postIds.push(post.postId);
-    return postIds;
-  }, []);
+// This function "popularPostsIds" should return an array of postIds of posts that have quantity of "comments" at least equal to "minimalComentsQty"
+// */
+// const popularPostsIds = (posts, minimalComentsQty) =>
+//   posts.reduce((postIds, post) => {
+//     if (post.comments >= minimalComentsQty) postIds.push(post.postId);
+//     return postIds;
+//   }, []);
 
-console.log(popularPostsIds(posts, minimalComentsQty)); // [3421, 8135]
+// console.log(popularPostsIds(posts, minimalComentsQty)); // [3421, 8135]
+
+/**
+ * CHALLENGE 11
+ *
+ * REDUCE()
+ *
+ * Reduce array of objects to object
+ */
+// const products = [
+//   {
+//     title: "Phone case",
+//     price: 23,
+//     quantity: 2,
+//     category: "Accessories",
+//   },
+//   {
+//     title: "Android phone",
+//     price: 150,
+//     quantity: 1,
+//     category: "Phones",
+//   },
+//   {
+//     title: "Headphones",
+//     price: 78,
+//     quantity: 1,
+//     category: "Accessories",
+//   },
+//   {
+//     title: "Sport Watch",
+//     price: 55,
+//     quantity: 2,
+//     category: "Watches",
+//   },
+// ];
+
+// /* Create a function "quantityByCategories" with one parameter "products".
+
+// This function "quantityByCategories" should return an object with keys equal to categories and values equal to sum of all quantities in each category.
+// */
+
+// const quantityByCategories = (products) =>
+//   products.reduce((acc, product) => {
+//     // add console.log in order to see whats happening inside
+//     console.log(
+//       "Acc is " +
+//         acc +
+//         JSON.stringify(acc) +
+//         " and product is " +
+//         JSON.stringify(product)
+//     );
+//     /**
+//      * Acc is [object Object]{} and product is {"title":"Phone case","price":23,"quantity":2,"category":"Accessories"}
+//      * Acc is [object Object]{"Accessories":2} and product is {"title":"Android phone","price":150,"quantity":1,"category":"Phones"}
+//      * Acc is [object Object]{"Accessories":2,"Phones":1} and product is {"title":"Headphones","price":78,"quantity":1,"category":"Accessories"}
+//      * Acc is [object Object]{"Accessories":3,"Phones":1} and product is {"title":"Sport Watch","price":55,"quantity":2,"category":"Watches"}
+//      */
+//     acc[product.category] = (acc[product.category] || 0) + product.quantity;
+//     return acc;
+//   }, {});
+
+// console.log(quantityByCategories(products));
+
+// /* {
+//   Accessories: 3,
+//   Phones: 1,
+//   Watches: 2
+// } */
