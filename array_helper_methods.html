@@ -102,7 +102,11 @@
       <a href="#map">map()</a>
       <a href="#filter">filter()</a>
       <a href="#find">find()</a>
-      <!-- Добавляй другие методы тут -->
+      <a href="#every">every()</a>
+      <a href="#some">some()</a>
+      <a href="#includes">insludes()</a>
+      <a href="#reduce">reduce()</a>
+      <a href="#sort">sort()</a>
     </nav>
 
     <!-- forEach -->
@@ -360,7 +364,7 @@ console.log(user); // { id: 2, name: "Bob" }
     </details>
 
     <!-- every() -->
-    <details id="everySome">
+    <details id="every">
       <summary>every()</summary>
       <p>
         The <code>every()</code> method in JavaScript is an array helper that
@@ -405,7 +409,7 @@ console.log(result); // false
     </details>
 
     <!-- some() -->
-    <details id="everySome">
+    <details id="some">
       <summary>some()</summary>
       <p>
         Let’s look at the <code>some()</code> array helper method — it’s the
@@ -474,9 +478,9 @@ const allAdults = users.every(user => user.age >= 18); // false
 </code></pre>
     </details>
 
-    <!-- include() -->
-    <details id="everySome">
-      <summary>include()</summary>
+    <!-- includes() -->
+    <details id="includes">
+      <summary>includes()</summary>
       <p>
         The <code>includes() </code>method is a simple and powerful JavaScript
         array helper that checks whether
@@ -531,7 +535,7 @@ console.log(users.includes({ name: "Alena" })); // false (different object refer
     </details>
 
     <!-- reduce() -->
-    <details open id="everySome">
+    <details id="reduce">
       <summary>reduce()</summary>
       <p>
         The <code>reduce()</code> array helper method in JavaScript is used to
@@ -586,12 +590,282 @@ console.log(totals); // { apple: 3, banana: 3 }
     </details>
 
     <!-- sort() -->
-    <details id="everySome">
+    <details open id="sort">
       <summary>sort()</summary>
-      <p></p>
+      <p>
+        The <code>sort()</code> method sorts the
+        <strong>elements of an array in place</strong> and returns the sorted
+        array.
+      </p>
       <h4>🔹 Syntax</h4>
-      <pre><code></code></pre>
-      <ul></ul>
+      <pre><code>array.sort([compareFunction]);
+</code></pre>
+      <ul>
+        <li>
+          <strong>compareFunction</strong> (optional): A function that defines
+          the sort order.
+        </li>
+      </ul>
+      <h4>⚠️ By default:</h4>
+      <ul>
+        <li>
+          <code>sort()</code> converts elements to strings and sorts them
+          <strong>alphabetically</strong> (Unicode order).
+        </li>
+        <li>
+          This means that
+          <strong>numbers are not sorted correctly</strong> without a compare
+          function
+        </li>
+      </ul>
+      <h4>🔹 Example 1: Sorting strings</h4>
+      <pre><code>const fruits = ["banana", "apple", "orange"];
+fruits.sort();
+
+console.log(fruits); // [ "apple", "banana", "orange" ]
+</code></pre>
+      <h4>🔹 Example 2: Sorting numbers (wrong way)</h4>
+      <pre><code>const numbers = [100, 25, 3, 7];
+numbers.sort();
+
+console.log(numbers); // [100, 25, 3, 7] — wrong, because it compares as strings!
+</code></pre>
+      <h4>✅ Correct way: use a compare function for numbers</h4>
+      <pre><code>const numbers = [100, 25, 3, 7];
+numbers.sort((a, b) => a - b); // Ascending order
+
+console.log(numbers); // [3, 7, 25, 100]
+</code></pre>
+      <p>Descending order:</p>
+      <pre><code>numbers.sort((a, b) => b - a);
+console.log(numbers); // [100, 25, 7, 3]
+</code></pre>
+      <h4>🔹 How compareFunction works:</h4>
+      <pre><code>(a, b) => a - b
+</code></pre>
+      <ul>
+        <li>If result < 0 → <code>a</code> comes before <code>b</code></li>
+        <li>If result > 0 → <code>b</code> comes before <code>a</code></li>
+        <li>If result = 0 → no change in order</li>
+      </ul>
+      <h4>🔹 Example 3: Sort array of objects by price</h4>
+      <pre><code>const products = [
+  { title: "Phone", price: 150 },
+  { title: "Headphones", price: 70 },
+  { title: "Case", price: 20 },
+];
+
+products.sort((a, b) => a.price - b.price); // ascending
+
+console.log(products);
+</code></pre>
+      <h2>📦 Common Sorting Algorithms</h2>
+      <h4>1. Bubble Sort</h4>
+      <ul>
+        <li>
+          Idea: Repeatedly swap adjacent elements if they are in the wrong
+          order.
+        </li>
+        <li>Time Complexity: O(n²)</li>
+        <li>Simple but inefficient for large arrays</li>
+      </ul>
+      <pre><code>function bubbleSort(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
+</code></pre>
+      <h4>2. Selection Sort</h4>
+      <ul>
+        <li>
+          Idea: Find the smallest item and put it in the correct position.
+        </li>
+        <li>Time Complexity: O(n²)</li>
+      </ul>
+      <pre><code>function selectionSort(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n; i++) {
+    let min = i;
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    [arr[i], arr[min]] = [arr[min], arr[i]];
+  }
+  return arr;
+}
+</code></pre>
+      <h4>3. Insertion Sort</h4>
+      <ul>
+        <li>Idea: Build a sorted array one item at a time.</li>
+        <li>Time Complexity: O(n²)</li>
+        <li>Efficient for small or nearly-sorted arrays</li>
+      </ul>
+      <pre><code>function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let value = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > value) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = value;
+  }
+  return arr;
+}
+</code></pre>
+      <h4>4. Merge Sort</h4>
+      <ul>
+        <li>
+          Idea: Divide and conquer. Split the array, sort each half, and merge.
+        </li>
+        <li>Time Complexity: O(n log n)</li>
+        <li>Stable and efficient</li>
+      </ul>
+      <pre><code>function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  let result = [], i = 0, j = 0;
+
+  while (i < left.length && j < right.length) {
+    result.push(left[i] < right[j] ? left[i++] : right[j++]);
+  }
+
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+</code></pre>
+      <h4>5. Quick Sort</h4>
+      <ul>
+        <li>
+          Idea: Pick a pivot, partition array, recursively sort the parts.
+        </li>
+        <li>Time Complexity: O(n log n) on average</li>
+        <li>Can be very fast, but not stable</li>
+      </ul>
+      <pre><code>function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const pivot = arr[arr.length - 1];
+  const left = [], right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] < pivot ? left.push(arr[i]) : right.push(arr[i]);
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+</code></pre>
+      <h2>📦 Stable vs Unstable Sort</h2>
+      <p>
+        🔸 A stable sort preserves the original order of equal. <br />
+        If two items have the same value, they will appear in the same order
+        after sorting as they were in the original array.
+      </p>
+      <h4>✅ Example: Stable Sort</h4>
+      <pre><code>const items = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Carol", age: 30 },
+];
+
+// Sort by age
+items.sort((a, b) => a.age - b.age);
+
+/*
+Result with stable sort:
+[
+  { name: "Bob", age: 25 },
+  { name: "Alice", age: 30 },  ← keeps order
+  { name: "Carol", age: 30 }   ← keeps order
+]
+*/
+</code></pre>
+      <p>Notice: Alice stays before Carol even though both have age 30.</p>
+      <p>
+        🔀 An unstable sort may change the relative order of equal. <br />
+        The algorithm only guarantees correct overall order, not original
+        position of duplicates.
+      </p>
+      <h4>❌ Example: Unstable Sort</h4>
+      <p>Using the same array:</p>
+      <pre><code>[
+  { name: "Bob", age: 25 },
+  { name: "Carol", age: 30 },
+  { name: "Alice", age: 30 }
+]
+// Alice comes after Carol → original order was changed.
+</code></pre>
+      <p>
+        🧠 Why Does Stability Matter? - When you're sorting by multiple fields,
+        you often rely on stability.
+      </p>
+      <h4>🔗 Example: Sort by name, then by age</h4>
+      <pre><code>const users = [
+  { name: "Eve", age: 25 },
+  { name: "Adam", age: 25 },
+  { name: "Eve", age: 20 },
+];
+
+// First: sort by name (stable)
+users.sort((a, b) => a.name.localeCompare(b.name));
+
+// Then: sort by age
+users.sort((a, b) => a.age - b.age);
+</code></pre>
+      <p>With a stable sort, users with the same age will keep name order.</p>
+      <table border="1">
+        <caption>
+          Stable and Unstable Sorts
+        </caption>
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Stable?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bubble sort</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td>Insertion Sort</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td>Merge Sort</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td>Selection Sort</td>
+            <td>❌ No</td>
+          </tr>
+          <tr>
+            <td>Quick Sort</td>
+            <td>❌ No</td>
+          </tr>
+          <tr>
+            <td>JavaScript .sort()</td>
+            <td>✅ Yes (since ES2019)</td>
+          </tr>
+        </tbody>
+      </table>
     </details>
 
     <script>
