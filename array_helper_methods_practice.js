@@ -1,11 +1,14 @@
 /**
  * FOREACH()
  *
+ *
+ * /
  * if in the loop will be make some mistake, such as:
  * let i = 1;
  * i > myArray.length;
  * i; - will create infinite loop
  * and we will get errors in results
+ *
  */
 // don't use for loop
 // const myArray = [1, true, "asd"];
@@ -21,6 +24,7 @@
 
 /**
  * MAP()
+ *
  *
  */
 
@@ -75,6 +79,8 @@
 
 /**
  * FILTER()
+ *
+ *
  */
 
 // const myNumbers = [10, 23, 8, 43, 9];
@@ -84,9 +90,11 @@
 // console.log(filteredNumbers); // [10, 23, 43]
 // console.log(myNumbers); // [10, 23, 8, 43, 9] - original array remains unchanged
 
-// /**
-//  * FIND()
-//  */
+/**
+ * FIND()
+ *
+ *
+ */
 
 // const myArray = [10, [], true, "asd", 22, false, {}];
 
@@ -101,12 +109,14 @@
 //   return typeof element === "string";
 // });
 
-// /**
-//  * EVERY()
-//  *
-//  * EXAMPLE 1
-//  * If all elements in the array are positive numbers
-//  */
+/**
+ * EVERY()
+ *
+ *
+ * EXAMPLE 1
+ * If all elements in the array are positive numbers
+ *
+ */
 
 // const myNumbers = [2, -3, 1, 10, -4];
 
@@ -117,9 +127,11 @@
 // const allPositiveCheck = myNumbers.every(isPositiveNumber);
 // console.log(allPositiveCheck); // false (because array contain negative numbers)
 
-// /**
-//  * SOME()
-//  */
+/**
+ * SOME()
+ *
+ *
+ */
 
 // const somePositiveCheck = myNumbers.some(isPositiveNumber);
 // console.log(somePositiveCheck); // true ()as array contain some positive numbers
@@ -127,7 +139,9 @@
 /**
  * EVERY() SOME()
  *
+ *
  * EXAMPLE 2
+ *
  * */
 
 // const items = [
@@ -163,6 +177,8 @@
 
 /**
  * INCLUDES()
+ *
+ *
  */
 
 // const myArray = [2, "asd", true, undefined, null, [1, 2]];
@@ -174,3 +190,63 @@
 // console.log("[1, 2]", myArray.includes([1, 2])); // [1, 2]false. Same result will be with object
 // console.log("null", myArray.includes(null)); // null - true
 // console.log("undefined", myArray.includes(undefined)); // undefined - true
+
+/**
+ * REDUCE()
+ *
+ *
+ */
+
+// // EXAMPLE 1 - sum of numbers
+
+// const myNumbers = [4, 3, 7, 1];
+
+// const sum = (arrayOfNumbers) =>
+//   arrayOfNumbers.reduce((accumulator, number) => {
+//     console.log("Accumulator is " + accumulator + " and number is " + number);
+//     /**Accumulator is 0 and number is 4;
+//      * Accumulator is 4 and number is 3;
+//      * Accumulator is 7 and number is 7;
+//      * Accumulator is 14 and number is 1
+//      */
+//     return accumulator + number;
+//   }, 0);
+
+// console.log(sum(myNumbers)); // 15
+
+// // EXAMPLE 2 - reduce array of objects to single array
+
+// const persons = [
+//   {
+//     name: "Veronika",
+//     age: 22,
+//   },
+//   {
+//     name: "Mike",
+//     age: 29,
+//   },
+//   {
+//     name: "Angelika",
+//     age: 24,
+//   },
+// ];
+
+// const personsNames = (arrayOfPersons) =>
+//   arrayOfPersons.reduce((names, person) => {
+//     names.push(person.name); // push names into the new array "names"
+//     return names;
+//   }, []);
+
+// console.log(personsNames(persons)); // ["Veronika", "Mike", "Angelika"] (3)
+
+// // EXAMPLE 3 - remove duplicates
+
+// const fruits = ["banana", "apple", "mango", "apple", "mango", "mango"];
+
+// const uniqueFruits = (arrayOfFruits) =>
+//   arrayOfFruits.reduce((uniqueElements, fruit) => {
+//     if (!uniqueElements.includes(fruit)) uniqueElements.push(fruit);
+//     return uniqueElements;
+//   }, []);
+
+// console.log(uniqueFruits(fruits)); // ["banana", "apple", "mango"] (3)
