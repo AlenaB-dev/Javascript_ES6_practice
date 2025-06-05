@@ -445,3 +445,70 @@ NOTE: We assume that "inputArray" may contain only primitive variables types
 //   Phones: 1,
 //   Watches: 2
 // } */
+
+/**
+ * CHALLENGE 12
+ *
+ * SORT()
+ *
+ * Array of objects
+ */
+// const products = [
+//   {
+//     title: "Phone case",
+//     price: 23,
+//     quantity: 2,
+//     category: "Accessories",
+//   },
+//   {
+//     title: "Android phone",
+//     price: 150,
+//     quantity: 1,
+//     category: "Phones",
+//   },
+//   {
+//     title: "Headphones",
+//     price: 78,
+//     quantity: 1,
+//     category: "Accessories",
+//   },
+//   {
+//     title: "Sport Watch",
+//     price: 55,
+//     quantity: 2,
+//     category: "Watches",
+//   },
+// ];
+
+// /* Create a function "sortProductsByPrice" with one parameter "products".
+
+// This function "sortProductsByPrice" should sort input array of products by price of each product in ascending order and return resulting array.
+// */
+// const sortProductsByPrice = (products) => {
+//   products.sort((a, b) => a.price - b.price);
+// }; /**
+// 0 {title: "Phone case", price: 23, quantity: 2, category: "Accessories"}
+// 1 {title: "Sport Watch", price: 55, quantity: 2, category: "Watches"}
+// 2 {title: "Headphones", price: 78, quantity: 1, category: "Accessories"}
+// 3 {title: "Android phone", price: 150, quantity: 1, category: "Phones"}*/
+
+// sortProductsByPrice(products);
+// /* Which sorting algorithm is used here in Google Chrome, Firefox, Safari, Node.js?
+// - Insertion sort. And Merge only in Safary.
+// Is this sorting stable or not? - Stable
+// */
+// // how to check in function type of sorting
+
+// const sortProductsByPriceCheckTypeOfSort = (products) => {
+//   products.sort((a, b) => {
+//     console.log(a.title, b.title); // this will show us what is order of sorting
+//     return a.price - b.price;
+//   });
+// };
+
+// sortProductsByPriceCheckTypeOfSort(products);
+
+// console.log(products);
+// /* Array of products sorted by price in ascending order.
+// Why original "products" array was mutated?
+//  - because sort() method mutated original array, it doesn't duplicate it*/
