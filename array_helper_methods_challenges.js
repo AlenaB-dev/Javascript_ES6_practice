@@ -512,3 +512,122 @@ NOTE: We assume that "inputArray" may contain only primitive variables types
 // /* Array of products sorted by price in ascending order.
 // Why original "products" array was mutated?
 //  - because sort() method mutated original array, it doesn't duplicate it*/
+
+/**
+ * CHALLENGE 13
+ *
+ * SORT()
+ *
+ * Long array of objects
+ */
+
+// const persons = [
+//   {
+//     name: "Andy",
+//     friendsQty: 10,
+//     index: 1,
+//   },
+//   {
+//     name: "Mike",
+//     friendsQty: 5,
+//     index: 2,
+//   },
+//   {
+//     name: "Sophia",
+//     friendsQty: 10,
+//     index: 3,
+//   },
+//   {
+//     name: "Joshua",
+//     friendsQty: 3,
+//     index: 4,
+//   },
+//   {
+//     name: "John",
+//     friendsQty: 10,
+//     index: 5,
+//   },
+//   {
+//     name: "Gabriella",
+//     friendsQty: 8,
+//     index: 6,
+//   },
+//   {
+//     name: "Tyler",
+//     friendsQty: 7,
+//     index: 7,
+//   },
+//   {
+//     name: "Dylan",
+//     friendsQty: 2,
+//     index: 8,
+//   },
+//   {
+//     name: "Sarah",
+//     friendsQty: 5,
+//     index: 9,
+//   },
+//   {
+//     name: "Alexa",
+//     friendsQty: 10,
+//     index: 10,
+//   },
+//   {
+//     name: "Henry",
+//     friendsQty: 10,
+//     index: 11,
+//   },
+//   {
+//     name: "Arianna",
+//     friendsQty: 10,
+//     index: 12,
+//   },
+// ];
+
+// /* Create a function "sortPersonsByFriendsQty" with one parameter "persons".
+
+// This function "sortPersonsByFriendsQty" should sort input array of persons by friendsQty of each person in ascending order and return resulting array.
+// */
+
+// const sortPersonsByFriendsQty = (persons) => {
+//   persons.sort((a, b) => a.friendsQty - b.friendsQty);
+//   return persons; // return resulting array
+// };
+
+// sortPersonsByFriendsQty(persons);
+// /* Which sorting algorithm is used here in Google Chrome, Firefox, Node.js?
+//  - Quick sort in Chrome(its used when array contains more then 10elements).
+//   And Merge in Safary.
+
+// Is this sorting stable or not? - Stable, as persons doesn't change there order (we can see it by persons index field) in Safari and Unstable in Chrome, as index changed there order.
+// */
+
+// console.log(persons);
+// /*
+// 0 {name: "Dylan", friendsQty: 2, index: 8}
+// 1 {name: "Joshua", friendsQty: 3, index: 4}
+// 2 {name: "Mike", friendsQty: 5, index: 2}
+// 3 {name: "Sarah", friendsQty: 5, index: 9}
+// 4 {name: "Tyler", friendsQty: 7, index: 7}
+// 5 {name: "Gabriella", friendsQty: 8, index: 6}
+// 6 {name: "Andy", friendsQty: 10, index: 1}
+// 7 {name: "Sophia", friendsQty: 10, index: 3}
+// 8 {name: "John", friendsQty: 10, index: 5}
+// 9 {name: "Alexa", friendsQty: 10, index: 10}
+// 10 {name: "Henry", friendsQty: 10, index: 11}
+// 11 {name: "Arianna", friendsQty: 10, index: 12}
+//  */
+
+// // checking type os sorting and qty of iteration
+// const checkTypeOfSortInPersonsArray = (persons) => {
+//   let it = 0; // this variable will count number of iteration
+//   persons.sort((a, b) => {
+//     console.log(a.name, b.name); // this will show us type of sorting
+//     it++;
+//     return a.friendsQty - b.friendsQty;
+//   });
+//   console.log("Qty of iteration is " + it); // Qty of iteration is 11
+//   return persons; // this will return resulting array
+// };
+
+// checkTypeOfSortInPersonsArray(persons);
