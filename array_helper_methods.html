@@ -110,7 +110,7 @@
     </nav>
 
     <!-- forEach -->
-    <details id="foreach">
+    <details open id="foreach">
       <summary>forEach()</summary>
       <p>
         The <code>forEach()</code> method is one of the most commonly used array
@@ -590,7 +590,7 @@ console.log(totals); // { apple: 3, banana: 3 }
     </details>
 
     <!-- sort() -->
-    <details open id="sort">
+    <details id="sort">
       <summary>sort()</summary>
       <p>
         The <code>sort()</code> method sorts the
@@ -866,6 +866,67 @@ users.sort((a, b) => a.age - b.age);
           </tr>
         </tbody>
       </table>
+      <h4>✅ Few tips</h4>
+      <ul>
+        <li>
+          <code>sort()</code> - without arguments all elements in the array will
+          be converted to string during sorting
+        </li>
+        <li>
+          <strong>Google Chrome, Node.js(V8)</strong> - Insertion sort(Stable
+          when Qty less then 10 elements); Quick sort(NOT stable, when QTY more
+          then 10 elements)
+        </li>
+        <li><strong>Mozilla Firefox(SpiderMonkey)</strong> - Insertion sort</li>
+        <li><strong>Safari (Apple's WebKit)</strong> - Merge sort (Stable)</li>
+      </ul>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Array helper method</th>
+            <th>Returns</th>
+          </tr>
+          <tbody>
+            <tr>
+            <td>forEach()</td>
+            <td>undefined</td>
+          </tr>
+          <tr>
+            <td>map()</td>
+            <td>New array with same length as input array</td>
+          </tr>
+          <tr>
+            <td>filter()</td>
+            <td>Subarray of the input array/Empty array</td>
+          </tr>
+          <tr>
+            <td>find()</td>
+            <td>Single element/undefined</td>
+          </tr>
+          <tr>
+            <td>every()</td>
+            <td>true/false</td>
+          </tr>
+          <tr>
+            <td>some()</td>
+            <td>true/false</td>
+          </tr>
+          <tr>
+            <td>includes()</td>
+            <td>true/false</td>
+          </tr>
+          <tr>
+            <td>reduce()</td>
+            <td>Single value(number, object, array, boolean etc.)</td>
+          </tr>
+          <tr>
+            <td>sort()</td>
+            <td>Mutated input array</td>
+          </tr>
+
+          </tbody>
+        </thead>
+      </table>
     </details>
 
     <script>
@@ -887,9 +948,9 @@ users.sort((a, b) => a.age - b.age);
 
       function updateToggleButton(theme) {
         if (theme === "dark") {
-          themeToggleButton.textContent = "☀️ Toggle Theme";
+          themeToggleButton.textContent = "🌙  Toggle Theme";
         } else {
-          themeToggleButton.textContent = "🌙 Toggle Theme";
+          themeToggleButton.textContent = "☀️ Toggle Theme";
         }
       }
     </script>
