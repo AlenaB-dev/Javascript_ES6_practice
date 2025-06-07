@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest/Spread operators. Default function parameters.</title>
+    <style>
+      :root {
+        --bg-color-light: #f9f9f9;
+        --text-color-light: #333;
+        --bg-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --code-bg-light: #eee;
+        --code-bg-dark: #2a2a2a;
+        --accent-color: #007acc;
+      }
+
+      html[data-theme="light"] {
+        --bg-color: var(--bg-color-light);
+        --text-color: var(--text-color-light);
+        --code-bg: var(--code-bg-light);
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
+        --code-bg: var(--code-bg-dark);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        margin-right: 1rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      details {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--code-bg);
+        border-radius: 6px;
+        background: var(--code-bg);
+        padding: 0.5rem 1rem;
+      }
+
+      summary {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: var(--code-bg);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      🌙 Toggle Theme
+    </button>
+
+    <h1>📚 Rest/Spread operators. Default function parameters.</h1>
+
+    <!-- rest operator -->
+    <details open id="#rest">
+      <summary>Rest</summary>
+      <p>
+        The rest operator in JavaScript is written as three dots:
+        <code>...</code>. It allows to collect
+        <strong>multiple elements into a single array</strong> or object. It's
+        mostly used in <strong>function parameters</strong> and in
+        <strong>destructuring</strong>.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>function myFunction(...args) {
+  console.log(args);
+}
+</code></pre>
+      <p>
+        Here, <code>args</code> becomes an array containing all the arguments
+        passed to <code>myFunction</code>.
+      </p>
+      <h4>✅ Common Uses</h4>
+      <p>
+        <strong>1. In Function Parameters.</strong> <br />To collect remaining
+        arguments into an array:
+      </p>
+      <pre><code>function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3)); // 6
+</code></pre>
+      <p>
+        <strong>2. In Array Destructuring.</strong>To gather the "rest" of the
+        items:
+      </p>
+      <pre><code>const [first, second, ...others] = [10, 20, 30, 40];
+console.log(first);  // 10
+console.log(second); // 20
+console.log(others); // [30, 40]
+</code></pre>
+      <p>
+        <strong>3. In Object Destructuring.</strong>To gather remaining
+        properties:
+      </p>
+      <pre><code>const user = { name: "Alice", age: 30, city: "London" };
+const { name, ...rest } = user;
+
+console.log(name); // Alice
+console.log(rest); // { age: 30, city: "London" }
+</code></pre>
+      <h4>⚠️ Difference from Spread Operator</h4>
+      <ul>
+        <li>Rest gathers into a collection (e.g., <code>...args</code>)</li>
+        <li>
+          Spread spreads out elements (e.g., <code>myFunc(...array)</code>)
+        </li>
+      </ul>
+      <p>
+        They look the same <code>(...)</code> but behave oppositely, depending
+        on context.
+      </p>
+    </details>
+
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+
+      // Устанавливаем тему при загрузке
+      const savedTheme = localStorage.getItem("theme");
+      const initialTheme = savedTheme || "light";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      updateToggleButton(initialTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateToggleButton(newTheme);
+      }
+
+      function updateToggleButton(theme) {
+        if (theme === "dark") {
+          themeToggleButton.textContent = "🌙  Toggle Theme";
+        } else {
+          themeToggleButton.textContent = "☀️ Toggle Theme";
+        }
+      }
+    </script>
+  </body>
+</html>
