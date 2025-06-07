@@ -98,7 +98,7 @@
     <h1>📚 Rest/Spread operators. Default function parameters.</h1>
 
     <!-- rest operator -->
-    <details open id="#rest">
+    <details id="#rest">
       <summary>Rest</summary>
       <p>
         The rest operator in JavaScript is written as three dots:
@@ -158,6 +158,61 @@ console.log(rest); // { age: 30, city: "London" }
         on context.
       </p>
     </details>
+
+    <!-- spread operator -->
+    <details open id="#spread">
+      <summary>Spread</summary>
+      <h4>🔹 Syntax</h4>
+      <p>
+        Spread operator in JavaScript — it's also written as <code>...</code>,
+        just like the rest operator, but it does the opposite: instead of
+        gathering items into one, it spreads them out.
+      </p>
+      <p>
+        It allows an <strong>iterable</strong> (like an array or string) or an
+        object to be expanded in places where
+        <strong>multiple elements or key-value pairs</strong> are expected.
+      </p>
+      <h4>✅ Common Uses</h4>
+      <p><strong>1. Copying Arrays</strong></p>
+      <pre><code>const arr1 = [1, 2, 3];
+const arr2 = [...arr1]; // makes a shallow copy
+
+console.log(arr2); // [1, 2, 3]
+</code></pre>
+      <p><strong>2. Combining Arrays</strong></p>
+      <pre><code>const a = [1, 2];
+const b = [3, 4];
+const combined = [...a, ...b];
+
+console.log(combined); // [1, 2, 3, 4]
+</code></pre>
+      <p><strong>3. Spreading in Function Calls</strong></p>
+      <pre><code>function add(x, y, z) {
+  return x + y + z;
+}
+
+const nums = [1, 2, 3];
+console.log(add(...nums)); // 6
+</code></pre>
+      <p><strong>4. Copying or Merging Objects</strong></p>
+      <pre><code>const user = { name: "Alice", age: 25 };
+const updatedUser = { ...user, city: "London" };
+
+console.log(updatedUser);
+// { name: 'Alice', age: 25, city: 'London' }
+</code></pre>
+      <p><strong>5. Spreading Strings into Characters</strong></p>
+      <pre><code>const word = "Hi!";
+const letters = [...word];
+
+console.log(letters); // ["H", "i", "!"]
+</code></pre>
+      <p>
+        👉 Spread is used when giving values. Rest is used when receiving them.
+      </p>
+    </details>
+
     <script src="rest_spread_defaultFn_practice.js"></script>
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
