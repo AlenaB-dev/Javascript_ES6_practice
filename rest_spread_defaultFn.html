@@ -97,8 +97,13 @@
 
     <h1>📚 Rest/Spread operators. Default function parameters.</h1>
 
+    <nav>
+      <a href="#rest">rest operator</a>
+      <a href="#spread">spread operator</a>
+      <a href="#defaultFnParam">default function parameters</a>
+    </nav>
     <!-- rest operator -->
-    <details id="#rest">
+    <details open id="rest">
       <summary>Rest</summary>
       <p>
         The rest operator in JavaScript is written as three dots:
@@ -160,7 +165,7 @@ console.log(rest); // { age: 30, city: "London" }
     </details>
 
     <!-- spread operator -->
-    <details open id="#spread">
+    <details id="spread">
       <summary>Spread</summary>
       <h4>🔹 Syntax</h4>
       <p>
@@ -211,6 +216,61 @@ console.log(letters); // ["H", "i", "!"]
       <p>
         👉 Spread is used when giving values. Rest is used when receiving them.
       </p>
+    </details>
+
+    <!-- default function parameters-->
+    <details id="defaultFnParam">
+      <summary>Default function parameters</summary>
+      <h4>🔹 What Are Default Parameters?</h4>
+      <p>
+        They allow to
+        <strong>set default values for function arguments</strong>, so if no
+        value (or <code>undefined</code>) is passed, the default is used
+        instead.
+      </p>
+      <h4>🔹 Syntax</h4>
+      <pre><code>function greet(name = "Guest") {
+  console.log(`Hello, ${name}!`);
+}
+
+greet();           // Hello, Guest!
+greet("Alena");    // Hello, Alena!
+</code></pre>
+      <h4>🔹 How It Works</h4>
+      <ul>
+        If an argument is:
+        <li>not provided → default is used</li>
+        <li>explicitly set to <code>undefined</code> → default is used</li>
+        <li>
+          set to <code>null, 0, false, ""</code> → default is NOT used (these
+          are valid values)
+        </li>
+      </ul>
+      <pre><code>function showMessage(msg = "No message") {
+  console.log(msg);
+}
+
+showMessage();          // No message
+showMessage(undefined); // No message
+showMessage(null);      // null (default NOT used)
+</code></pre>
+      <h4>🧠 You Can Use Expressions Too</h4>
+      <pre><code>function makeTotal(a, b = a * 2) {
+  return a + b;
+}
+
+console.log(makeTotal(3));    // 3 + (3*2) = 9
+console.log(makeTotal(3, 4)); // 3 + 4 = 7
+</code></pre>
+      <h4>⚠️ Order Matters</h4>
+      <p>
+        Parameters with default values should go <strong>after</strong> required
+        ones.
+      </p>
+      <pre><code>function greet(greeting, name = "friend") {
+  console.log(`${greeting}, ${name}`);
+}
+</code></pre>
     </details>
 
     <script src="rest_spread_defaultFn_practice.js"></script>
