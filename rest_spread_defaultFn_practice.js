@@ -155,3 +155,63 @@
 
 // const splitStringOnWords = myStr.split(" "); // просто добавили пробел меджу кавычек
 // console.log(splitStringOnWords); // ["Hey", "there"] (2) - этого результата невозможно достичь с помощью оператора spread.
+
+/**
+ * DEFAULT FUNCTION PARAMETERS
+ *
+ * EXAMPLE 1
+ *
+ */
+
+// const multiplier = (num, mult) => num * mult;
+
+// console.log(multiplier(10, 3)); // 30
+// console.log(multiplier(2)); // NaN (because 5 * undefined - second value)
+
+// // with default value
+// const multiplierDefault = (num, mult = 2) => num * mult;
+
+// console.log(multiplierDefault(10, 3)); // 30 (10 * 3)
+// console.log(multiplierDefault(5)); // 10 (5 * 2) - "mult" will get default value 2
+// console.log(multiplierDefault()); // NaN - "num" value will be initialized with "indefined"
+
+// /**
+//  *
+//  * EXAMPLE 2
+//  *
+//  */
+
+// const groceryItem = (
+//   title,
+//   qty,
+//   item = {
+//     groceryItemTitle: title,
+//     groceryItemQty: qty,
+//   }
+// ) => {
+//   console.log(title, qty, item); // [Log] Banana – 5 – {groceryItemTitle: "Banana", groceryItemQty: 5}
+// };
+
+// groceryItem("Banana", 5);
+
+// /**
+//  *
+//  * EXAMPLE 3
+//  *
+//  */
+// const warning = (title) => {
+//   console.log( // Title and color are not set
+//     title !== undefined
+//       ? `Title of the button is ${title}. But color is not set`
+//       : `Title and color are not set`
+//   );
+//   throw new Error("btn function must be called with two arguments"); // Error: btn function must be called with two arguments
+// };
+// const btn = (title = warning(), color = warning()) => {
+//   console.log(title); // Button 1
+
+//   // create new "Button" with title and backgroi=ung color. And incert this button into the DOM
+// };
+
+// btn("Button 1", "grey");
+// btn("Button 2");
