@@ -100,36 +100,91 @@
     <!-- Enhanced object literals -->
 
     <p>
-      In JavaScript, object literals are a concise way to create objects.
-      Enhanced object literals, introduced in ECMAScript 2015 (ES6), provide
-      additional syntax features that make object creation even more expressive
-      and readable.
+      Enhanced Object Literals are a set of new, cleaner, and more concise ways
+      to write object properties and methods introduced in ES6 (ES2015). They
+      help make your code easier to read and write.
     </p>
+
+    <h4>🔹 Key Features of Enhanced Object Literals:</h4>
     <p>
-      Before ES6, creating objects with object literals involved a more verbose
-      syntax:
+      1. Property Shorthand. <br />
+      If the property name is the same as the variable name, you can omit the
+      value:
     </p>
-    <pre><code>var person = {
-  name: 'John',
-  age: 30,
-  address: {
-    street: '123 Main St',
-    city: 'Anytown',
-    state: 'CA'
+
+    <pre><code>const name = "Alice";
+const age = 25;
+
+// Old way:
+const person = { name: name, age: age };
+
+// New shorthand:
+const person = { name, age };
+</code></pre>
+    <p>
+      2. Method Shorthand. <br />
+      You can define methods without the function keyword:
+    </p>
+    <pre><code>const obj = {
+  greet() {
+    console.log("Hello!");
   }
-};</code></pre>
-    <p>With ES6, you can use the following syntax:</p>
-    <h4>🔹 Syntax</h4>
-    <pre><code>const person = {
-  name: 'John',
-  age: 30,
-  address: {
-    street: '123 Main St',
-    city,
-    state
+};
+</code></pre>
+    <p>Instead of:</p>
+    <pre><code>
+  const obj = {
+  greet: function() {
+    console.log("Hello!");
   }
-};</code></pre>
-    <h4>📦 Here are some key features of enhanced object literals:</h4>
+};
+</code></pre>
+    <p>
+      3. Computed Property Names. <br />
+      You can use expressions inside square brackets <code>[]</code> to define
+      property names dynamically:
+    </p>
+    <pre><code>
+  const propName = "score";
+const obj = {
+  [propName]: 100
+};
+
+console.log(obj.score); // 100
+
+</code></pre>
+    <p>
+      4. Defining properties and methods using variables or functions already in
+      scope.
+    </p>
+    <h4>🔹 Example using all features together:</h4>
+    <pre><code>
+  const prefix = "user";
+const id = 123;
+
+const user = {
+  id,
+  name: "Bob",
+  [`${prefix}_id`]: id,
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+
+user.greet();        // Hi, I'm Bob
+console.log(user.user_id); // 123
+
+</code></pre>
+    <h4>🔸 Why you might get errors when working with object literals:</h4>
+    <ul>
+      <li>Missing commas between properties.</li>
+      <li>Forgetting to use square brackets for computed property names.</li>
+      <li>
+        Using ES6 features in an environment or context that doesn’t support
+        them.
+      </li>
+    </ul>
+    <h4>📦 Summary of key features of enhanced object literals:</h4>
     <ol>
       <li>
         <strong>Property Shorthand:</strong> When the property name matches the
@@ -153,46 +208,7 @@
         to merge objects.
       </li>
     </ol>
-    <pre><code>// Property shorthand
-const person = {
-  name,
-  age,
-  address: {
-    street,
-    city,
-    state
-  }
-};
 
-// Computed property names
-const person = {
-  [`name${i}`]: `John${i}`,
-  age: 30
-};
-
-// Method definitions
-const person = {
-  sayHello() {
-    console.log('Hello!');
-  }
-};
-
-// Object property value shorthand
-const person = {
-  name: 'John',
-  sayHello() {
-    console.log(`Hello, ${this.name}!`);
-  }
-};
-
-// Spread operator
-const person = {
-  ...defaultPerson,
-  name: 'John'
-};
-
-// Object destructuring
-const { name, age } = person;</code></pre>
     <script src="enhanced_object_literals_practice.js"></script>
     <script src="enhanced_object_literals_challenge.js"></script>
 
