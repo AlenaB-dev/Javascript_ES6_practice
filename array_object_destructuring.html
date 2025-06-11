@@ -96,7 +96,7 @@
     </button>
 
     <h1>📚 Array and Object destructuring</h1>
-    <details open id="array_destructuring">
+    <details id="array_destructuring">
       <summary>Array destructuring</summary>
       <p>
         <strong>Array destructuring</strong> in JavaScript is a convenient way
@@ -146,8 +146,71 @@ console.log(c); // 3
 </code></pre>
     </details>
 
-    <details id="object_destructuring">
+    <details open id="object_destructuring">
       <summary>Object destructuring</summary>
+      <p>
+        <strong>Object destructuring</strong> lets you extract properties from
+        an object and assign them to variables in a clean, readable way.
+      </p>
+      <h4>✅ Basic Syntax:</h4>
+      <pre><code>const person = { name: "Alice", age: 30 };
+
+const { name, age } = person;
+
+console.log(name); // "Alice"
+console.log(age);  // 30
+</code></pre>
+      <h4>✅ Renaming Variables:</h4>
+      <p>You can rename variables while destructuring:</p>
+      <pre><code>const user = { id: 101, username: "Mark" };
+
+const { id: userId, username: name } = user;
+
+console.log(userId); // 101
+console.log(name);   // "Mark"
+</code></pre>
+      <h4>✅ Default Values:</h4>
+      <p>
+        Use default values for properties that might be <code>undefined:</code>
+      </p>
+      <pre><code>const { a = 1, b = 2 } = { a: 10 };
+
+console.log(a); // 10
+console.log(b); // 2 (default value)
+</code></pre>
+      <h4>✅ Nested Destructuring:</h4>
+      <p>You can extract values from nested objects:</p>
+      <pre><code>const person = {
+  name: "Tom",
+  address: {
+    city: "London",
+    zip: "E1 6AN"
+  }
+};
+
+const { address: { city, zip } } = person;
+
+console.log(city); // "London"
+console.log(zip);  // "E1 6AN"
+</code></pre>
+      <h4>✅ Destructuring in Function Parameters:</h4>
+      <p>You can destructure directly in function arguments:</p>
+      <pre><code>function greet({ name, age }) {
+  console.log(`Hello ${name}, age ${age}`);
+}
+
+const user = { name: "Lena", age: 28 };
+greet(user); // Hello Lena, age 28
+</code></pre>
+      <h4>✅ Rest Syntax:</h4>
+      <p>Use the rest operator to gather the remaining properties:</p>
+      <pre><code>const user = { id: 1, name: "Eva", age: 25 };
+
+const { name, ...rest } = user;
+
+console.log(name); // "Eva"
+console.log(rest); // { id: 1, age: 25 }
+</code></pre>
     </details>
     <script src="array_object_destructuring_practice.js"></script>
     <script src="array_object_destructuring_challenges.js"></script>
