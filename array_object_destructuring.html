@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array and Object destructuring</title>
+    <style>
+      :root {
+        --bg-color-light: #f9f9f9;
+        --text-color-light: #333;
+        --bg-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --code-bg-light: #eee;
+        --code-bg-dark: #2a2a2a;
+        --accent-color: #007acc;
+      }
+
+      html[data-theme="light"] {
+        --bg-color: var(--bg-color-light);
+        --text-color: var(--text-color-light);
+        --code-bg: var(--code-bg-light);
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
+        --code-bg: var(--code-bg-dark);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        margin-right: 1rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      details {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--code-bg);
+        border-radius: 6px;
+        background: var(--code-bg);
+        padding: 0.5rem 1rem;
+      }
+
+      summary {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: var(--code-bg);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      🌙 Toggle Theme
+    </button>
+
+    <h1>📚 Array and Object destructuring</h1>
+    <details open id="array_destructuring">
+      <summary>Array destructuring</summary>
+      <p>
+        <strong>Array destructuring</strong> in JavaScript is a convenient way
+        to extract values from arrays and assign them to variables in a single,
+        concise statement.
+      </p>
+      <h4>🔹 Basic Syntax:</h4>
+      <pre><code>const array = [1, 2, 3];
+const [a, b, c] = array;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+</code></pre>
+      <h4>🔹 Skip Elements:</h4>
+      <p>You can skip elements using commas:</p>
+      <pre><code>
+const [first, , third] = [10, 20, 30];
+console.log(first); // 10
+console.log(third); // 30
+</code></pre>
+      <h4>🔹 Default Values:</h4>
+      <p>You can set default values if the item is <code>undefined:</code></p>
+      <pre><code>const [a = 1, b = 2, c = 3] = [10];
+console.log(a); // 10
+console.log(b); // 2 (default)
+console.log(c); // 3 (default)
+</code></pre>
+      <h4>🔹 Swapping Variables:</h4>
+      <p>A common trick:</p>
+      <pre><code>let x = 1, y = 2;
+[x, y] = [y, x];
+console.log(x); // 2
+console.log(y); // 1
+</code></pre>
+      <h4>🔹 Rest Syntax:</h4>
+      <p>You can collect the remaining elements:</p>
+      <pre><code>const [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // 1
+console.log(rest); // [2, 3, 4]
+</code></pre>
+      <h4>🔹 Nested Destructuring:</h4>
+      <pre><code>const [a, [b, c]] = [1, [2, 3]];
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+</code></pre>
+    </details>
+
+    <details id="object_destructuring">
+      <summary>Object destructuring</summary>
+    </details>
+
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+
+      // Устанавливаем тему при загрузке
+      const savedTheme = localStorage.getItem("theme");
+      const initialTheme = savedTheme || "light";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      updateToggleButton(initialTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateToggleButton(newTheme);
+      }
+
+      function updateToggleButton(theme) {
+        if (theme === "dark") {
+          themeToggleButton.textContent = "🌙  Toggle Theme";
+        } else {
+          themeToggleButton.textContent = "☀️ Toggle Theme";
+        }
+      }
+    </script>
+  </body>
+</html>
