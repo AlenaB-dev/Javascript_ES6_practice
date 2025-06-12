@@ -56,3 +56,58 @@
 //   25
 // ); /* call here "minMax" function with arguments 18, 23, 103, 70, 80, 25 */
 // console.log(min, max); // 18, 103
+
+/**
+ * CHALLENGE 3
+ *
+ *
+ */
+/*
+Modify "personInfo" function to match console.log output at the end of the challenge.
+
+Object that is returned by "personInfo" function must contain only shorthand property names.
+*/
+
+// const personInfo = ({
+//   name,
+//   age: personAge,
+//   location: { country: origin, city: homeCity },
+//   friendsQty = 0,
+//   recordCreatedAt = new Date().getFullYear(),
+// }) => {
+//   return {
+//     name,
+//     personAge,
+//     origin,
+//     homeCity,
+//     friendsQty,
+//     recordCreatedAt,
+//   };
+// };
+
+// const person = {
+//   name: "Alice",
+//   age: 19,
+//   location: {
+//     country: "England",
+//     city: "London",
+//   },
+// };
+
+// console.log(personInfo(person));
+// /*
+// {
+//   name: "Alice",
+//   personAge: 19,
+//   origin: "England",
+//   homeCity: "London",
+//   friendsQty: 0,
+//   recordCreatedAt: *current year*
+// }
+// */
+
+/**
+ * CHALLENGE 4
+ *
+ *
+ */
