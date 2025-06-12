@@ -96,6 +96,8 @@
     </button>
 
     <h1>📚 Array and Object destructuring</h1>
+
+    <!--array destructuring-->
     <details id="array_destructuring">
       <summary>Array destructuring</summary>
       <p>
@@ -146,7 +148,8 @@ console.log(c); // 3
 </code></pre>
     </details>
 
-    <details open id="object_destructuring">
+    <!--object destructuring-->
+    <details id="object_destructuring">
       <summary>Object destructuring</summary>
       <p>
         <strong>Object destructuring</strong> lets you extract properties from
@@ -212,6 +215,63 @@ console.log(name); // "Eva"
 console.log(rest); // { id: 1, age: 25 }
 </code></pre>
     </details>
+
+    <!--variable names and default values-->
+    <details id="varNames_default_values">
+      <summary>
+        New variable names and default values in object destructuring
+      </summary>
+      <p>
+        It is possible to rename properties and also assign default values at
+        the same time.
+      </p>
+      <h4>✅ Example: Renaming + Default Values</h4>
+      <pre><code>const user = {
+  firstName: "John",
+  age: 35
+};
+
+const {
+  firstName: name = "Anonymous",   // rename and default
+  age,
+  country = "Unknown"              // default value (property doesn't exist)
+} = user;
+
+console.log(name);    // "John"       ← renamed from firstName
+console.log(age);     // 35
+console.log(country); // "Unknown"    ← default value used
+</code></pre>
+      <h4>🧠 Breakdown:</h4>
+      <ul>
+        <li>
+          <code>firstName: name</code> → takes <code>user.firstName</code> and
+          stores it in a variable named name
+        </li>
+        <li>
+          <code>name = "Anonymous"</code> → if <code>firstName</code> is missing
+          or <code>undefined</code>, <code>name</code> will be
+          <code>"Anonymous"</code>
+        </li>
+        <li>
+          <code>country = "Unknown"</code> → default value used because
+          <code>user.country</code> is not defined
+        </li>
+      </ul>
+      <h4>✅ Another Example:</h4>
+      <pre><code>const settings = {
+  theme: "dark"
+};
+
+const {
+  theme: currentTheme = "light",
+  fontSize = 14
+} = settings;
+
+console.log(currentTheme); // "dark"
+console.log(fontSize);     // 14 (default value)
+</code></pre>
+    </details>
+
     <script src="array_object_destructuring_practice.js"></script>
     <script src="array_object_destructuring_challenges.js"></script>
     <script>
