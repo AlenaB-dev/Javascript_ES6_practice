@@ -256,3 +256,64 @@
 
 // const { a, b, c } = myObject;
 // console.log(a, b, c); // 11 true undefined
+
+/**
+ * EXAMPLE 8
+ *
+ * Default values
+ *
+ */
+
+// const myObject = {
+//   a: 11,
+//   b: true,
+// };
+
+// const { a, b = "default value", c = "default value" } = myObject;
+// console.log(a, b, c); // 11 true "default value"
+
+/**
+ * EXAMPLE 9
+ *
+ * Default values and new variable names
+ *
+ */
+
+// const myObject = {
+//   a: 11,
+//   b: true,
+// };
+
+// const { a: newA, b: newB, c: newC = "default value" } = myObject;
+
+// console.log(newA, newB, newC); // 11 true "default value"
+
+/**
+ * EXAMPLE 10
+ *
+ * Nested object destructuring
+ *
+ */
+
+// const myObject = {
+//   a: 1,
+//   b: 2,
+//   nestedObject: {
+//     c: 22,
+//     d: 4,
+//   },
+// };
+
+// const { a: a, b: b, nestedObject: nestedObject } = myObject;
+// const { c, d } = nestedObject; // destructuring nested object
+//console.log(a, b, nestedObject); // 1 – 2 – {c: 22, d: 4}
+
+// combining two string above in one
+
+// const {
+//   a: a,
+//   b: b,
+//   nestedObject: { c: c, d: newD, e: newE = "default value" },
+// } = myObject;
+
+// console.log(a, b, c, newD, newE); // 1 – 2 – 22 – 4 - "default value"
