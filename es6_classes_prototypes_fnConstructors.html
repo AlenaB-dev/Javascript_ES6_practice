@@ -378,7 +378,7 @@ console.log(Object.getPrototypeOf(dog) === animal); // true (standard)
     </details>
 
     <!--prototype-->
-    <details open id="prototype">
+    <details id="prototype">
       <summary>Prototype</summary>
       <p>
         A <strong>prototype</strong> is just a
@@ -440,8 +440,142 @@ dog.walk();            // "Animal walks"
       </ol>
     </details>
 
+    <!--native prototype-->
+    <details open id="nativePrototype">
+      <summary>Native Prototypes</summary>
+      <p>
+        Native prototypes are the built-in prototypes that come with JavaScript
+        — they are the prototypes of built-in types like
+        <code>Array, Object, Function, String,</code> etc. <br />
+        When you create a new string, array, or function, JavaScript
+        automatically links it to the corresponding native prototype to give it
+        default behavior.
+      </p>
+      <h4>📦 Example of Native Prototypes:</h4>
+      <pre><code>const arr = [1, 2, 3];
+console.log(arr.join('-')); // Uses Array.prototype.join
+
+const str = "hello";
+console.log(str.toUpperCase()); // Uses String.prototype.toUpperCase()
+
+function greet() {}
+console.log(greet.call); // Uses Function.prototype.call
+</code></pre>
+      <p>
+        Each of these objects <code>(arr, str, greet)</code> automatically
+        inherits from a native prototype:
+      </p>
+      <ul>
+        <li><code>arr → Array.prototype</code></li>
+        <li><code>str → String.prototype</code></li>
+        <li><code>greet → Function.prototype</code></li>
+      </ul>
+      <h4>🔗 Prototype Chain Example:</h4>
+      <pre><code>const arr = [1, 2, 3];
+
+console.log(Object.getPrototypeOf(arr) === Array.prototype); // true
+console.log(Object.getPrototypeOf(Array.prototype) === Object.prototype); // true
+</code></pre>
+      <p>Chain:</p>
+      <pre><code>arr → Array.prototype → Object.prototype → null
+</code></pre>
+      <h4>🧱 Built-in Native Prototypes</h4>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Type</th>
+
+            <th>Native Prototype</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Object</td>
+            <td>Object.prototype</td>
+          </tr>
+          <tr>
+            <td>Array</td>
+            <td>Array.prototype</td>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td>String.prototype</td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td>Number.prototype</td>
+          </tr>
+          <tr>
+            <td>Function</td>
+            <td>Function.prototype</td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td>Boolean.prototype</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>Date.prototype</td>
+          </tr>
+          <tr>
+            <td>RegExp</td>
+            <td>RegExp.prototype</td>
+          </tr>
+          <tr>
+            <td>Error</td>
+            <td>Error.prototype</td>
+          </tr>
+          <tr>
+            <td>Map/Set</td>
+            <td>Map.prototype / Set.prototype</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Each of these prototypes provides default methods and properties that
+        are shared by all instances of that type.
+      </p>
+      <h4>🚫 Caution: Modifying Native Prototypes</h4>
+      <p>
+        You can modify native prototypes, but it's not recommended in real-world
+        code because it can: <br />
+        - Break compatibility with other code/libraries. <br />
+        - Make your code hard to understand or debug
+      </p>
+      <pre><code>Array.prototype.sayHi = function () {
+  console.log("Hi from array");
+};
+
+[1, 2, 3].sayHi(); // works, but not a good practice
+</code></pre>
+      <h4>✅ Use Case: Polyfills</h4>
+      <p>
+        The one time modifying native prototypes is acceptable is when you're
+        writing polyfills — adding missing features to older environments.
+      </p>
+      <pre><code>if (!Array.prototype.includes) {
+  Array.prototype.includes = function (value) {
+    return this.indexOf(value) !== -1;
+  };
+}
+</code></pre>
+      <h4>🔚 Summary</h4>
+      <ul>
+        <li>
+          Native prototypes are the prototypes of JavaScript's built-in types.
+        </li>
+        <li>
+          They provide shared functionality like
+          <code>.map(), .toString(), .call(), </code>etc.
+        </li>
+        <li>
+          Use them to understand inheritance, but avoid modifying them unless
+          you're writing polyfills.
+        </li>
+      </ul>
+    </details>
+
     <!---->
-    <details></details>
 
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
