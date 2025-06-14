@@ -46,6 +46,26 @@
         border-radius: 5px;
         cursor: pointer;
       }
+      #scrollToTopBtn {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        display: none;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 12px 16px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+      }
+
+      #scrollToTopBtn:hover {
+        background-color: #555;
+      }
 
       nav {
         margin-bottom: 2rem;
@@ -94,9 +114,11 @@
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
       🌙 Toggle Theme
     </button>
+    <button id="scrollToTopBtn" title="Up">↑</button>
 
     <h1>📚 ES6 classes, Prototypes and Function constructors</h1>
 
+    <!--class-based and prototype-based language -->
     <details id="typeOfLang">
       <summary>Class-based and prototype-based programming languages.</summary>
       <h4>🏫 Class-Based Languages</h4>
@@ -190,6 +212,8 @@ dog.speak(); // Output: Animal speaks
         </tbody>
       </table>
     </details>
+
+    <!--prototype chane-->
     <details open id="prototypeChaine">
       <summary>Prototype Chain</summary>
       <p>
@@ -266,6 +290,9 @@ myDog.eat();  // eating → inherited from Animal
       <pre><code>myDog --> Dog.prototype --> Animal.prototype --> Object.prototype --> null
 </code></pre>
     </details>
+
+    <!---->
+    <details></details>
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
 
@@ -290,6 +317,24 @@ myDog.eat();  // eating → inherited from Animal
           themeToggleButton.textContent = "☀️ Toggle Theme";
         }
       }
+    </script>
+    <script>
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.style.display = "block";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
     </script>
   </body>
 </html>
