@@ -97,8 +97,8 @@
 
     <h1>📚 ES6 classes, Prototypes and Function constructors</h1>
 
-    <details open id="typeOfLang">
-      <summary>Class-based and prototype-based programming languages:</summary>
+    <details id="typeOfLang">
+      <summary>Class-based and prototype-based programming languages.</summary>
       <h4>🏫 Class-Based Languages</h4>
       <p>
         In <strong>class-based languages</strong>, classes are the blueprints
@@ -190,7 +190,82 @@ dog.speak(); // Output: Animal speaks
         </tbody>
       </table>
     </details>
+    <details open id="prototypeChaine">
+      <summary>Prototype Chain</summary>
+      <p>
+        In JavaScript, the prototype chain is a mechanism by which objects
+        inherit properties and methods from other objects.
+      </p>
+      <h4>🔗 What is a Prototype Chain?</h4>
+      <p>When you try to access a property or method on an object:</p>
+      <ol>
+        <li>JavaScript first looks on the object itself.</li>
+        <li>
+          If not found, it looks at the object's prototype
+          <code>([[Prototype]])</code>.
+        </li>
+        <li>
+          hen it continues up the chain until it either finds the property or
+          reaches <code>null</code>.
+        </li>
+      </ol>
+      <h4>📦 Example:</h4>
+      <pre><code>const animal = {
+  eats: true
+};
 
+const dog = Object.create(animal); // dog.__proto__ === animal
+dog.barks = true;
+
+console.log(dog.barks); // true (own property)
+console.log(dog.eats);  // true (inherited from prototype)
+</code></pre>
+      <p>
+        <code>dog</code> doesn't have <code>eats</code>, so JavaScript looks in
+        <code>dog.__proto__</code>, which is <code>animal</code>.
+      </p>
+      <h4>🔍 How It Looks Internally</h4>
+      <pre><code>dog --> animal --> Object.prototype --> null
+</code></pre>
+      <ul>
+        <li>dog inherits from animal</li>
+        <li>animal inherits from Object.prototype</li>
+        <li>Object.prototype is the top-level object</li>
+        <li>Object.prototype.__proto__ is null → end of the chain</li>
+      </ul>
+      <h4>📌 Checking the Prototype Chain</h4>
+      <pre><code>console.log(dog.__proto__ === animal); // true
+console.log(Object.getPrototypeOf(dog) === animal); // true (preferred way)
+</code></pre>
+      <h4>⚠️ Note</h4>
+      <p>
+        You should avoid using __proto__ in production code — it’s non-standard
+        and slower. Use:
+      </p>
+      <pre><code>Object.getPrototypeOf(obj);     // to read prototype
+Object.setPrototypeOf(obj, p);  // to set prototype
+</code></pre>
+      <h4>🧪 Prototype Chain in Classes</h4>
+      <pre><code>class Animal {
+  eat() {
+    console.log("eating");
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("barking");
+  }
+}
+
+const myDog = new Dog();
+myDog.bark(); // barking
+myDog.eat();  // eating → inherited from Animal
+</code></pre>
+      <p>Here:</p>
+      <pre><code>myDog --> Dog.prototype --> Animal.prototype --> Object.prototype --> null
+</code></pre>
+    </details>
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
 
