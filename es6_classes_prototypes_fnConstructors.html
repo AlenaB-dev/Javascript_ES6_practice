@@ -292,7 +292,7 @@ myDog.eat();  // eating → inherited from Animal
     </details>
 
     <!--__proto__ and [[Prototype]]-->
-    <details open id="protoAndProtorype">
+    <details id="protoAndProtorype">
       <summary>__proto__ and [[Prototype]]</summary>
       <h4>🧬 <code>[[Prototype]]</code> (Internal Property)</h4>
       <ul>
@@ -377,7 +377,72 @@ console.log(Object.getPrototypeOf(dog) === animal); // true (standard)
       </table>
     </details>
 
+    <!--prototype-->
+    <details open id="prototype">
+      <summary>Prototype</summary>
+      <p>
+        A <strong>prototype</strong> is just a
+        <strong>regular object</strong> that another object uses as a template
+        to inherit properties and methods. <br />
+        Every JavaScript object has a hidden internal property called
+        <code>[[Prototype]]</code>, which points to its
+        <strong>prototype</strong> — another object.
+      </p>
+      <h4>🧩 Why It Matters</h4>
+      <ul>
+        <li>Prototypes allow inheritance in JavaScript.</li>
+        <li>
+          If you try to access a property or method that doesn't exist on the
+          object, JavaScript looks up the prototype chain to see if it exists on
+          the prototype.
+        </li>
+      </ul>
+      <h4>🔧 Example:</h4>
+      <pre><code>const animal = {
+  eats: true,
+  walk() {
+    console.log("Animal walks");
+  }
+};
+
+const dog = Object.create(animal); // dog inherits from animal
+
+console.log(dog.eats); // true → found in animal
+dog.walk();            // "Animal walks"
+</code></pre>
+      <ul>
+        Here:
+        <li>
+          <code>dog</code> has no <code>eats</code> or
+          <code>walk</code> properties.
+        </li>
+        <li>
+          So JavaScript looks at <code>dog.[[Prototype]]</code> → which is
+          <code>animal</code>.
+        </li>
+      </ul>
+      <h4>🔍 Prototype Chain</h4>
+      <p>Every object has a <code>[[Prototype]]</code>, forming a chain:</p>
+      <pre><code>dog → animal → Object.prototype → null
+</code></pre>
+      <h4>📌 Summary</h4>
+      <ol>
+        <li>
+          A prototype is an object used as a fallback source of properties and
+          methods.
+        </li>
+        <li>Prototypes make inheritance possible in JavaScript.</li>
+        <li>Objects are connected via a prototype chain.</li>
+        <li>
+          Use <code>Object.getPrototypeOf(obj)</code> to safely get an object's
+          prototype.
+        </li>
+      </ol>
+    </details>
+
     <!---->
+    <details></details>
+
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
 
