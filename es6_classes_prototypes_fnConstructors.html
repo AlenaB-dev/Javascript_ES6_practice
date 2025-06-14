@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6 classes, Prototypes and Function constructors</title>
+    <style>
+      :root {
+        --bg-color-light: #f9f9f9;
+        --text-color-light: #333;
+        --bg-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --code-bg-light: #eee;
+        --code-bg-dark: #2a2a2a;
+        --accent-color: #007acc;
+      }
+
+      html[data-theme="light"] {
+        --bg-color: var(--bg-color-light);
+        --text-color: var(--text-color-light);
+        --code-bg: var(--code-bg-light);
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
+        --code-bg: var(--code-bg-dark);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        margin-right: 1rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      details {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--code-bg);
+        border-radius: 6px;
+        background: var(--code-bg);
+        padding: 0.5rem 1rem;
+      }
+
+      summary {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: var(--code-bg);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      🌙 Toggle Theme
+    </button>
+
+    <h1>📚 ES6 classes, Prototypes and Function constructors</h1>
+
+    <details open id="typeOfLang">
+      <summary>Class-based and prototype-based programming languages:</summary>
+      <h4>🏫 Class-Based Languages</h4>
+      <p>
+        In <strong>class-based languages</strong>, classes are the blueprints
+        for creating objects.
+      </p>
+      <ul>
+        <li>
+          You define a class, which describes the structure and behavior
+          (methods and properties).
+        </li>
+        <li>
+          Then you create instances (objects) from that class using a
+          constructor.
+        </li>
+        <li>
+          Objects are based on their class and usually cannot change their
+          structure once created.
+        </li>
+      </ul>
+      <p><strong>Examples:</strong>Java, C++, C#, Python (partly)</p>
+      <p>🔧 Example in Java (Class-Based):</p>
+      <pre><code>class Animal {
+    void speak() {
+        System.out.println("Animal speaks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal(); // Create object from class
+        myAnimal.speak();               // Calls the method
+    }
+}
+</code></pre>
+      <h4>🧬 Prototype-Based Languages</h4>
+      <p>
+        In <strong>prototype-based languages</strong>, there are no classes.
+        Instead, objects inherit directly from other objects called prototypes.
+      </p>
+      <ul>
+        <li>You create an object and use it as a prototype for new objects.</li>
+        <li>Objects can be cloned or extended at runtime.</li>
+        <li>Inheritance is more dynamic and flexible.</li>
+      </ul>
+      <p><strong>Examples</strong>: JavaScript, Lua</p>
+      <p>🔧 Example in JavaScript (Prototype-Based):</p>
+      <pre><code>const animal = {
+    speak: function () {
+        console.log("Animal speaks");
+    }
+};
+
+const dog = Object.create(animal); // dog inherits from animal
+dog.speak(); // Output: Animal speaks
+</code></pre>
+      <h4>🆚 Key Difference</h4>
+      <table border="1">
+        <caption>
+          Class-Based vs Prototype-Based Languages
+        </caption>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Class-Based</th>
+            <th>Prototype-Based</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Structure</td>
+            <td>Uses classes</td>
+            <td>Uses objects directly</td>
+          </tr>
+          <tr>
+            <td>Inheritance</td>
+            <td>Class-based inheritance</td>
+            <td>Prototype-based inheritance</td>
+          </tr>
+          <tr>
+            <td>Flexibility</td>
+            <td>More rigid (class structure)</td>
+            <td>More dynamic and flexible</td>
+          </tr>
+          <tr>
+            <td>Object creation</td>
+            <td>From class using constructor</td>
+            <td>By cloning or linking objects</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+
+      // Устанавливаем тему при загрузке
+      const savedTheme = localStorage.getItem("theme");
+      const initialTheme = savedTheme || "light";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      updateToggleButton(initialTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateToggleButton(newTheme);
+      }
+
+      function updateToggleButton(theme) {
+        if (theme === "dark") {
+          themeToggleButton.textContent = "🌙  Toggle Theme";
+        } else {
+          themeToggleButton.textContent = "☀️ Toggle Theme";
+        }
+      }
+    </script>
+  </body>
+</html>
