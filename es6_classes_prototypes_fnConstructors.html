@@ -214,7 +214,7 @@ dog.speak(); // Output: Animal speaks
     </details>
 
     <!--prototype chane-->
-    <details open id="prototypeChaine">
+    <details id="prototypeChaine">
       <summary>Prototype Chain</summary>
       <p>
         In JavaScript, the prototype chain is a mechanism by which objects
@@ -291,8 +291,93 @@ myDog.eat();  // eating → inherited from Animal
 </code></pre>
     </details>
 
+    <!--__proto__ and [[Prototype]]-->
+    <details open id="protoAndProtorype">
+      <summary>__proto__ and [[Prototype]]</summary>
+      <h4>🧬 <code>[[Prototype]]</code> (Internal Property)</h4>
+      <ul>
+        <li>
+          <code>[[Prototype]]</code> is an internal, hidden property of every
+          object in JavaScript.
+        </li>
+        <li>
+          It refers to the object's prototype — the object from which it
+          inherits properties and methods.
+        </li>
+        <li>
+          You can’t access <code>[[Prototype]]</code> directly — it’s a concept
+          defined by the JavaScript engine.
+        </li>
+      </ul>
+      <h4>🧪 <code>__proto__</code> (Legacy Accessor)</h4>
+      <ul>
+        <li>
+          <code>__proto__</code> is a non-standard way to access or set the
+          <code>[[Prototype]]</code> of an object.
+        </li>
+        <li>It does point to the same object as <code>[[Prototype]]</code>.</li>
+        <li>
+          It's supported by all modern browsers for compatibility, but not
+          recommended for regular use.
+        </li>
+      </ul>
+      <h4>✅ The Preferred Way</h4>
+      <p>Use standard methods from <code>Object:</code></p>
+      <pre><code>Object.getPrototypeOf(obj);     // gets [[Prototype]]
+Object.setPrototypeOf(obj, proto); // sets [[Prototype]]
+</code></pre>
+      <p>These are clean, official, and preferred for modern code.</p>
+      <h4>🧱 Example</h4>
+      <pre><code>const animal = { eats: true };
+const dog = Object.create(animal); // sets animal as prototype
+
+console.log(dog.eats); // true
+console.log(dog.__proto__ === animal);           // true (legacy way)
+console.log(Object.getPrototypeOf(dog) === animal); // true (standard)
+</code></pre>
+      <h4>🔄 Summary Table</h4>
+      <table border="1">
+        <caption>
+          Comparison: [[Prototype]] vs __proto__ vs Standard Methods
+        </caption>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>What It Is</th>
+            <th>Can Access?</th>
+            <th>Recommended?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>[[Prototype]]</code></td>
+            <td>Internal reference to another object</td>
+            <td>❌ (not directly)</td>
+            <td>✅ (conceptually)</td>
+          </tr>
+          <tr>
+            <td><code>__proto__</code></td>
+            <td>Accessor for <code>[[Prototype]]</code> (legacy)</td>
+            <td>✅ (<code>obj.__proto__</code>)</td>
+            <td>❌ (legacy)</td>
+          </tr>
+          <tr>
+            <td><code>Object.getPrototypeOf()</code></td>
+            <td>Standard way to read prototype</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td><code>Object.setPrototypeOf()</code></td>
+            <td>Standard way to set prototype</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
     <!---->
-    <details></details>
     <script>
       const themeToggleButton = document.getElementById("themeToggle");
 
