@@ -124,7 +124,7 @@
       <a href="#protoAndProtorype">__proto__ and [[Prototype]]</a>
       <a href="#prototype">Prototype</a>
       <a href="#nativePrototype">Native Prototypes</a>
-      <a href="#"></a>
+      <a href="#functionConstructor">Function Constructors</a>
     </nav>
 
     <!--class-based and prototype-based language -->
@@ -584,8 +584,103 @@ console.log(Object.getPrototypeOf(Array.prototype) === Object.prototype); // tru
       </ul>
     </details>
 
-    <!---->
-    <details open id="#"></details>
+    <!--function Constructors-->
+    <details open id="functionConstructor">
+      <summary>Function Constructors</summary>
+      <p>
+        A function constructor in JavaScript is a way to create object templates
+        using a regular function, which is invoked with the
+        <code>new</code> keyword. It’s an older but still valid way of creating
+        objects before the <code>class</code> syntax was introduced in ES6.
+      </p>
+      <h4>✅ Basic Syntax</h4>
+      <pre><code>function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.sayHello = function () {
+    console.log(`Hello, my name is ${this.name}`);
+  };
+}
+
+const user1 = new Person("Alice", 30);
+user1.sayHello(); // Hello, my name is Alice
+</code></pre>
+      <h4>⚙️ How It Works</h4>
+      <p>When you use <code>new Person("Alice", 30):</code></p>
+      <ol>
+        <li>A new empty object is created.</li>
+        <li>
+          <code>this</code> inside the constructor points to this new object.
+        </li>
+        <li>Properties and methods are assigned to <code>this.</code></li>
+        <li>
+          The object is returned automatically (unless you explicitly return
+          something else).
+        </li>
+      </ol>
+      <h4>📌 Best Practice: Use Prototypes for Methods</h4>
+      <pre><code>function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.sayHello = function () {
+  console.log(`Hi, I'm ${this.name}`);
+};
+
+const user2 = new Person("Bob", 25);
+user2.sayHello(); // Hi, I'm Bob
+</code></pre>
+      <h4>🔄 Function Constructor vs. Class</h4>
+      <pre><code>// Function constructor
+function Car(model) {
+  this.model = model;
+}
+Car.prototype.drive = function () {
+  console.log(`Driving ${this.model}`);
+};
+
+// Class syntax (same as above, but modern)
+class Car {
+  constructor(model) {
+    this.model = model;
+  }
+
+  drive() {
+    console.log(`Driving ${this.model}`);
+  }
+}
+</code></pre>
+      <h4>⚠️ Common Pitfalls</h4>
+      <ul>
+        <li>
+          Forgetting <code>new</code>: If you call
+          <code>Person("Alice", 30)</code> without <code>new</code>,
+          <code>this</code> will refer to <code>window</code> (in browsers), and
+          the object won’t be created correctly.
+        </li>
+        <li>
+          Avoid using arrow functions for constructor functions
+          (<code>=></code>) — they don’t bind <code>this</code> correctly for
+          object creation.
+        </li>
+      </ul>
+      <h4>🧠 Summary</h4>
+      <ul>
+        <li>
+          Function constructors are functions meant to be called with
+          <code>new</code>.
+        </li>
+        <li>They initialize new objects using <code>this</code>.</li>
+        <li>
+          It's better to put methods on <code>.prototype</code> for efficiency.
+        </li>
+        <li>
+          Modern code often uses the <code>class</code> syntax, but function
+          constructors still work.
+        </li>
+      </ul>
+    </details>
 
     <script src="es6_classes_prototypes_fnConstructors_practice.js"></script>
     <script src="es6_classes_prototypes_fnConstructors_challenges.js"></script>
