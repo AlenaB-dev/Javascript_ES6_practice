@@ -34,18 +34,81 @@
  *
  */
 
-function CivilPlane(props) {
-  console.log(this); // CivilPlane {}
-  console.log(this.__proto__); // {}
-  this.numberOfSeats = props.numberOfSeats;
-  console.log(this); // CivilPlane {numberOfSeats: 4}
-}
+// function CivilPlane(props) {
+//   console.log(this); // CivilPlane {}
+//   console.log(this.__proto__); // {}
+//   this.numberOfSeats = props.numberOfSeats;
+//   console.log(this); // CivilPlane {numberOfSeats: 4}
+// }
 
-const propsForSmallPlane = {
-  numberOfSeats: 4,
-};
+// const propsForSmallPlane = {
+//   numberOfSeats: 4,
+// };
 
-const smallPlane = new CivilPlane(propsForSmallPlane);
-console.log(smallPlane); // CivilPlane {numberOfSeats: 4}
+// const smallPlane = new CivilPlane(propsForSmallPlane);
+// console.log(smallPlane); // CivilPlane {numberOfSeats: 4}
 
-console.log(smallPlane.__proto__ === CivilPlane.prototype); // true
+// console.log(smallPlane.__proto__ === CivilPlane.prototype); // true
+
+/**
+ * EXAMPLE 3
+ *
+ * Don't do this.
+ * Method "seatsInfo" will be added to every inctsnce of the prototype
+ *
+ */
+
+// function CivilPlane(props) {
+//   this.numberOfSeats = props.numberOfSeats;
+//   this.seatsInfo = function () {
+//     console.log(`Number od seats in the plane is ${this.numberOfSeats}`);
+//   };
+// }
+
+// const propsForSmallPlane = {
+//   numberOfSeats: 4,
+// };
+
+// const smallPlane = new CivilPlane(propsForSmallPlane);
+
+// const propsForLargePlane = {
+//   numberOfSeats: 230,
+// };
+
+// const largePlane = new CivilPlane(propsForLargePlane);
+
+/**
+ * EXAMPLE 4
+ *
+ * Correct.
+ * Method is adde to the prototype. And other instances inherite this method.
+ */
+
+// function CivilPlane(props) {
+//   this.numberOfSeats = props.numberOfSeats;
+// }
+
+// CivilPlane.prototype.seatsInfo = function () {
+//   console.log(`Number od seats in the plane is ${this.numberOfSeats}`);
+// };
+
+// // new method modifying property os specofic instance (number of seats)
+// CivilPlane.prototype.modifySeatsNumber = function (newSearsQty) {
+//   this.numberOfSeats = newSearsQty;
+// };
+
+// const propsForSmallPlane = {
+//   numberOfSeats: 4,
+// };
+
+// const smallPlane = new CivilPlane(propsForSmallPlane);
+
+// const propsForLargePlane = {
+//   numberOfSeats: 230,
+// };
+
+// const largePlane = new CivilPlane(propsForLargePlane);
+
+// smallPlane.seatsInfo(); // Number od seats in the plane is 4
+// smallPlane.modifySeatsNumber(12); // modifies property of the small plane
+// smallPlane.seatsInfo(); // Number od seats in the plane is 12
