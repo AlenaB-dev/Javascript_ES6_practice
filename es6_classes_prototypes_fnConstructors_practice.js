@@ -25,10 +25,20 @@
 /**
  * EXAMPLE 2
  *
+ * Create new instance of the prototype using "new" syntax:
+ * 1. Function constructor is called.
+ * 2. New object {} is created.
+ * 3. __proto__ is added.
+ * 4. New props are added (optional).
+ * 5. Object is returned by constructor function.
+ *
  */
 
 function CivilPlane(props) {
+  console.log(this); // CivilPlane {}
+  console.log(this.__proto__); // {}
   this.numberOfSeats = props.numberOfSeats;
+  console.log(this); // CivilPlane {numberOfSeats: 4}
 }
 
 const propsForSmallPlane = {
