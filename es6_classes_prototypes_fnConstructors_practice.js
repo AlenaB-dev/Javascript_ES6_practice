@@ -153,52 +153,53 @@
  * CivilPlane.prototype -> Airplane.prototype -> Object.prototype
  *
  */
-function Airplane(props) {
-  this.wingspan = props.wingspan;
-  this.maxRangeOfFlight = props.maxRangeOfFlight;
-}
 
-// new method of Airplane Object
-Airplane.prototype.airplaneInfo = function () {
-  console.log(
-    `Wingspan of the airplane is ${this.wingspan} and maximal range of flight is ${this.maxRangeOfFlight}`
-  );
-};
+// function Airplane(props) {
+//   this.wingspan = props.wingspan;
+//   this.maxRangeOfFlight = props.maxRangeOfFlight;
+// }
 
-function CivilPlane(props) {
-  Airplane.call(this, props); // добавили новый метод и его вызов, для передачи новых параметров
-  this.numberOfSeats = props.numberOfSeats;
-}
+// // new method of Airplane Object
+// Airplane.prototype.airplaneInfo = function () {
+//   console.log(
+//     `Wingspan of the airplane is ${this.wingspan} and maximal range of flight is ${this.maxRangeOfFlight}`
+//   );
+// };
 
-// присвоели объекту Airplane свойства объекта CivilPlane
-CivilPlane.prototype = Object.create(Airplane.prototype);
-console.log(CivilPlane.prototype.__proto__ === Airplane.prototype); // true
+// function CivilPlane(props) {
+//   Airplane.call(this, props); // добавили новый метод и его вызов, для передачи новых параметров
+//   this.numberOfSeats = props.numberOfSeats;
+// }
 
-// with this line we correctly inserted Airplane.prototype in prototype chain.
-CivilPlane.prototype.constructor = CivilPlane;
-console.log(CivilPlane.prototype.constructor === CivilPlane); // true
+// // присвоели объекту Airplane свойства объекта CivilPlane
+// CivilPlane.prototype = Object.create(Airplane.prototype);
+// console.log(CivilPlane.prototype.__proto__ === Airplane.prototype); // true
 
-CivilPlane.prototype.seatsInfo = function () {
-  console.log(`Number od seats in the plane is ${this.numberOfSeats}`);
-};
+// // with this line we correctly inserted Airplane.prototype in prototype chain.
+// CivilPlane.prototype.constructor = CivilPlane;
+// console.log(CivilPlane.prototype.constructor === CivilPlane); // true
 
-// new method modifying property os specofic instance (number of seats)
-CivilPlane.prototype.modifySeatsNumber = function (newSearsQty) {
-  this.numberOfSeats = newSearsQty;
-};
+// CivilPlane.prototype.seatsInfo = function () {
+//   console.log(`Number od seats in the plane is ${this.numberOfSeats}`);
+// };
 
-const propsForSmallPlane = {
-  numberOfSeats: 4,
-  wingspan: 20,
-  maxRangeOfFlight: 1000,
-};
+// // new method modifying property os specofic instance (number of seats)
+// CivilPlane.prototype.modifySeatsNumber = function (newSearsQty) {
+//   this.numberOfSeats = newSearsQty;
+// };
 
-const smallPlane = new CivilPlane(propsForSmallPlane);
+// const propsForSmallPlane = {
+//   numberOfSeats: 4,
+//   wingspan: 20,
+//   maxRangeOfFlight: 1000,
+// };
 
-const propsForLargePlane = {
-  numberOfSeats: 230,
-  wingspan: 60,
-  maxRangeOfFlight: 4000,
-};
+// const smallPlane = new CivilPlane(propsForSmallPlane);
 
-const largePlane = new CivilPlane(propsForLargePlane);
+// const propsForLargePlane = {
+//   numberOfSeats: 230,
+//   wingspan: 60,
+//   maxRangeOfFlight: 4000,
+// };
+
+// const largePlane = new CivilPlane(propsForLargePlane);
