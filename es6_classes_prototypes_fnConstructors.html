@@ -125,6 +125,7 @@
       <a href="#prototype">Prototype</a>
       <a href="#nativePrototype">Native Prototypes</a>
       <a href="#functionConstructor">Function Constructors</a>
+      <a href="#objectCreate">Object.create()</a>
     </nav>
 
     <!--class-based and prototype-based language -->
@@ -585,7 +586,7 @@ console.log(Object.getPrototypeOf(Array.prototype) === Object.prototype); // tru
     </details>
 
     <!--function Constructors-->
-    <details open id="functionConstructor">
+    <details id="functionConstructor">
       <summary>Function Constructors</summary>
       <p>
         A function constructor in JavaScript is a way to create object templates
@@ -678,6 +679,88 @@ class Car {
         <li>
           Modern code often uses the <code>class</code> syntax, but function
           constructors still work.
+        </li>
+      </ul>
+    </details>
+
+    <!--object.create()-->
+    <details open id="objectCreate">
+      <summary>Object.create()</summary>
+      <p>
+        <code>Object.create()</code> is a built-in method used to create a new
+        object, setting its prototype to an existing object you specify.
+      </p>
+      <h4>✅ Syntax</h4>
+      <pre><code>Object.create(prototype, propertiesObject);
+</code></pre>
+      <ul>
+        <li>
+          <code>prototype</code> — an object to be set as the prototype of the
+          new object.
+        </li>
+        <li>
+          <code>propertiesObject</code> (optional) — an object containing
+          property descriptors (like <code>writable, enumerable,</code> etc.).
+        </li>
+      </ul>
+      <h4>🔧 Example</h4>
+      <pre><code>const personPrototype = {
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+
+const person1 = Object.create(personPrototype);
+person1.name = "Alice";
+person1.greet(); // Hi, I'm Alice
+</code></pre>
+      <p>✅ <code>person1</code> inherits from <code>personPrototype.</code></p>
+      <h4>🧱 How is this Different from a Constructor?</h4>
+      <p>With constructor:</p>
+      <pre><code>function Person(name) {
+  this.name = name;
+}
+Person.prototype.greet = function () {
+  console.log(`Hi, I'm ${this.name}`);
+};
+const user = new Person("Bob");
+</code></pre>
+      <p>With <code>Object.create()</code>:</p>
+      <pre><code>const personPrototype = {
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+const user = Object.create(personPrototype);
+user.name = "Bob";
+</code></pre>
+      <p>
+        Both achieve similar behavior (prototype-based inheritance), but
+        <code>Object.create()</code> is more explicit and flexible, especially
+        useful for prototyping or lightweight inheritance.
+      </p>
+      <h4>🛠 Example with propertiesObject</h4>
+      <pre><code>const person = Object.create(Object.prototype, {
+  name: {
+    value: "Charlie",
+    writable: true,
+    enumerable: true
+  },
+  greet: {
+    value: function () {
+      console.log(`Hi, I'm ${this.name}`);
+    }
+  }
+});
+
+person.greet(); // Hi, I'm Charlie
+</code></pre>
+      <h4>⚠️ When to Use <code>Object.create()</code>?</h4>
+      <ul>
+        <li>When you want to create an object with a specific prototype.</li>
+        <li>When you want fine-grained control over property descriptors.</li>
+        <li>
+          When you don’t need constructor functions or <code>class</code>.
         </li>
       </ul>
     </details>
