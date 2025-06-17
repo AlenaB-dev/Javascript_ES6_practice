@@ -112,3 +112,35 @@
 // smallPlane.seatsInfo(); // Number od seats in the plane is 4
 // smallPlane.modifySeatsNumber(12); // modifies property of the small plane
 // smallPlane.seatsInfo(); // Number od seats in the plane is 12
+
+/**
+ * EXAMPLE 5
+ *
+ * Object.create()
+ *
+ */
+
+const Parent = {
+  type: "Parent",
+  typeInfo: function () {
+    console.log(`Hello from ${this.type}`);
+  },
+  modifyType: function (newType) {
+    this.type = newType;
+  },
+};
+console.log(Parent.type); //  Parent
+Parent.typeInfo(); // Hello from Parent
+
+console.log(Parent.prototype); // undefined
+
+const child = Object.create(Parent);
+
+console.log(child.__proto__ === Parent); // true
+
+child.type = "Child";
+child.typeInfo(); // Hello from Child
+
+child.modifyType("Modyfied Child");
+console.log(child.type); // Modyfied Child
+child.typeInfo(); // Hello from Modyfied Child
