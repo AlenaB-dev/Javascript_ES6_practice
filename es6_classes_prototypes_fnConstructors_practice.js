@@ -120,27 +120,85 @@
  *
  */
 
-const Parent = {
-  type: "Parent",
-  typeInfo: function () {
-    console.log(`Hello from ${this.type}`);
-  },
-  modifyType: function (newType) {
-    this.type = newType;
-  },
+// const Parent = {
+//   type: "Parent",
+//   typeInfo: function () {
+//     console.log(`Hello from ${this.type}`);
+//   },
+//   modifyType: function (newType) {
+//     this.type = newType;
+//   },
+// };
+// console.log(Parent.type); //  Parent
+// Parent.typeInfo(); // Hello from Parent
+
+// console.log(Parent.prototype); // undefined
+
+// const child = Object.create(Parent);
+
+// console.log(child.__proto__ === Parent); // true
+
+// child.type = "Child";
+// child.typeInfo(); // Hello from Child
+
+// child.modifyType("Modyfied Child");
+// console.log(child.type); // Modyfied Child
+// child.typeInfo(); // Hello from Modyfied Child
+
+/**
+ * EXAMPLE 6
+ *
+ * Function constructors
+ * Protorype chaine.
+ * CivilPlane.prototype -> Airplane.prototype -> Object.prototype
+ *
+ */
+function Airplane(props) {
+  this.wingspan = props.wingspan;
+  this.maxRangeOfFlight = props.maxRangeOfFlight;
+}
+
+// new method of Airplane Object
+Airplane.prototype.airplaneInfo = function () {
+  console.log(
+    `Wingspan of the airplane is ${this.wingspan} and maximal range of flight is ${this.maxRangeOfFlight}`
+  );
 };
-console.log(Parent.type); //  Parent
-Parent.typeInfo(); // Hello from Parent
 
-console.log(Parent.prototype); // undefined
+function CivilPlane(props) {
+  Airplane.call(this, props); // добавили новый метод и его вызов, для передачи новых параметров
+  this.numberOfSeats = props.numberOfSeats;
+}
 
-const child = Object.create(Parent);
+// присвоели объекту Airplane свойства объекта CivilPlane
+CivilPlane.prototype = Object.create(Airplane.prototype);
+console.log(CivilPlane.prototype.__proto__ === Airplane.prototype); // true
 
-console.log(child.__proto__ === Parent); // true
+// with this line we correctly inserted Airplane.prototype in prototype chain.
+CivilPlane.prototype.constructor = CivilPlane;
+console.log(CivilPlane.prototype.constructor === CivilPlane); // true
 
-child.type = "Child";
-child.typeInfo(); // Hello from Child
+CivilPlane.prototype.seatsInfo = function () {
+  console.log(`Number od seats in the plane is ${this.numberOfSeats}`);
+};
 
-child.modifyType("Modyfied Child");
-console.log(child.type); // Modyfied Child
-child.typeInfo(); // Hello from Modyfied Child
+// new method modifying property os specofic instance (number of seats)
+CivilPlane.prototype.modifySeatsNumber = function (newSearsQty) {
+  this.numberOfSeats = newSearsQty;
+};
+
+const propsForSmallPlane = {
+  numberOfSeats: 4,
+  wingspan: 20,
+  maxRangeOfFlight: 1000,
+};
+
+const smallPlane = new CivilPlane(propsForSmallPlane);
+
+const propsForLargePlane = {
+  numberOfSeats: 230,
+  wingspan: 60,
+  maxRangeOfFlight: 4000,
+};
+
+const largePlane = new CivilPlane(propsForLargePlane);
