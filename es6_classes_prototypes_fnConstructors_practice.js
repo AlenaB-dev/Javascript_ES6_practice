@@ -466,3 +466,127 @@
 // const myMouse = new ComputerMouse({ compatibility: ["Mac"], type: "Optical" });
 
 // console.log(myMouse);
+
+/**
+ *
+ * EXAMPLE 16
+ *
+ * Classess. Part 3
+ *
+ * Adding methoods to different classes (parent and child)
+ *
+ */
+
+// class ComputerAccessories {
+//   constructor(props) {
+//     this.compatibility = props.compatibility || ["PC", "Mac"];
+//   }
+// // parent's method
+//   compatibilityInfo() {
+//     this.compatibility.forEach((element) => {
+//       console.log(`Accessory is compatible with ${element}`);
+//     });
+//   }
+// }
+
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(props) {
+//     super(props);
+//     this.type = props.type;
+//   }
+// // child's method
+//   mouseInfo() {
+//     console.log(`Type of the mouse is ${this.type}`);
+//   }
+// }
+
+// const myMouse = new ComputerMouse({
+//   compatibility: ["Mac", "Tablet"],
+//   type: "Optical",
+// });
+
+// console.log(myMouse);
+
+// myMouse.compatibilityInfo(); // Accessory is compatible with Mac // Accessory is compatible with Tablet
+
+// myMouse.mouseInfo(); // Type of the mouse is Optical
+
+/**
+ *
+ * EXAMPLE 17
+ *
+ * Classess. Part 3
+ *
+ * Analizing structure. typeof and insctanceof in classess.
+ *
+ */
+
+// class ComputerAccessories {
+//   constructor(props) {
+//     this.compatibility = props.compatibility || ["PC", "Mac"];
+//   }
+//   // parent's method
+//   compatibilityInfo() {
+//     this.compatibility.forEach((element) => {
+//       console.log(`Accessory is compatible with ${element}`);
+//     });
+//   }
+// }
+
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(props) {
+//     super(props);
+//     this.type = props.type;
+//   }
+//   // child's method
+//   mouseInfo() {
+//     console.log(`Type of the mouse is ${this.type}`);
+//   }
+// }
+
+// const myMouse = new ComputerMouse({
+//   compatibility: ["Mac", "Tablet"],
+//   type: "Optical",
+// });
+
+// console.log(typeof ComputerMouse); // function
+// console.log(myMouse instanceof ComputerMouse); // true
+// console.log(myMouse instanceof ComputerAccessories); // true
+// console.log(myMouse instanceof Object); // true
+// console.log(typeof ComputerMouse.prototype); // object
+// console.log(typeof ComputerMouse.prototype.constructor); // function
+// console.log(ComputerMouse.prototype.constructor === ComputerMouse); // true
+
+/**
+ *
+ * EXAMPLE 18
+ *
+ * Classess. Part 3
+ *
+ * Statci methods
+ *
+ */
+
+// class ComputerMouse {
+//   constructor(props) {
+//     this.type = props.type;
+//   }
+
+//   static ownClassMethods() {
+//     console.log(`This class sets props for the Mouse`);
+//   }
+
+//   mouseInfo() {
+//     console.log(`Type of the mouse is ${this.type}`);
+//   }
+// }
+
+// const myMouse = new ComputerMouse({ type: "Gaming" });
+
+// console.log(myMouse); // ComputerMouse {type: 'Gaming'}
+
+// myMouse.mouseInfo(); // Type of the mouse is Gaming
+
+// // myMouse.ownClassMethods(); // Uncaught TypeError: myMouse.ownClassMethods is not a function
+
+// ComputerMouse.ownClassMethods(); // This class sets props for the Mouse
