@@ -108,6 +108,26 @@
       ul {
         margin-left: 1.5rem;
       }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #908181;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        border: 1px solid #908181;
+        padding: 12px 16px;
+        text-align: left;
+      }
+      th {
+        background-color: #2c3e50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #ac9a9a;
+      }
     </style>
   </head>
   <body>
@@ -126,6 +146,7 @@
       <a href="#nativePrototype">Native Prototypes</a>
       <a href="#functionConstructor">Function Constructors</a>
       <a href="#objectCreate">Object.create()</a>
+      <a href="#classes">Classes</a>
     </nav>
 
     <!--class-based and prototype-based language -->
@@ -684,7 +705,7 @@ class Car {
     </details>
 
     <!--object.create()-->
-    <details open id="objectCreate">
+    <details id="objectCreate">
       <summary>Object.create()</summary>
       <p>
         <code>Object.create()</code> is a built-in method used to create a new
@@ -763,6 +784,150 @@ person.greet(); // Hi, I'm Charlie
           When you don’t need constructor functions or <code>class</code>.
         </li>
       </ul>
+    </details>
+
+    <!--classes-->
+    <details open id="classes">
+      <summary>Classes</summary>
+      <p>
+        JavaScript ES6 classes are a more readable, cleaner way to create
+        constructor functions and set up inheritance. But under the hood, it's
+        still prototype-based.
+      </p>
+      <h4>✅ Basic Syntax</h4>
+      <pre><code>class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old.`);
+  }
+}
+
+const user = new Person("Alice", 30);
+user.greet(); // Hi, I'm Alice and I'm 30 years old.
+</code></pre>
+      <ul>
+        <li><code>class Person {}</code> defines a class.</li>
+        <li>
+          <code>constructor()</code> runs when you call
+          <code>new Person(...)</code>.
+        </li>
+        <li>
+          <code>greet()</code> is a method that’s stored in
+          <code>Person.prototype</code>.
+        </li>
+      </ul>
+      <h4>🔄 Inheritance with <code>extends</code></h4>
+      <p>You can create child classes that inherit from a parent class.</p>
+      <pre><code>class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound.`);
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const myDog = new Dog("Rex");
+myDog.speak(); // Rex barks.
+</code></pre>
+      <ul>
+        <li><code>extends</code> means Dog inherits from Animal.</li>
+        <li>
+          <code>super(name)</code> inside <code>Dog</code> would call
+          <code>Animal</code>’s constructor.
+        </li>
+      </ul>
+      <h4>⚙️ <code>super() </code>in Constructor</h4>
+      <pre><code>class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, color) {
+    super(name); // calls Animal constructor
+    this.color = color;
+  }
+
+  describe() {
+    console.log(`${this.name} is a ${this.color} cat.`);
+  }
+}
+
+const kitty = new Cat("Mittens", "black");
+kitty.describe(); // Mittens is a black cat.
+</code></pre>
+      <h4>🔢 Static Methods</h4>
+      <p>Static methods belong to the class itself, not instances.</p>
+      <pre><code>class MathHelper {
+  static square(x) {
+    return x * x;
+  }
+}
+
+console.log(MathHelper.square(5)); // 25
+</code></pre>
+      <p>
+        You can’t call square() on an object created from the class — only on
+        the class itself.
+      </p>
+
+      <table border="1">
+        <caption>
+          💡 Summary Table
+        </caption>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>class</code></td>
+            <td>Defines a class</td>
+            <td><code>class Person {}</code></td>
+          </tr>
+          <tr>
+            <td><code>constructor()</code></td>
+            <td>Special method to initialize</td>
+            <td><code>constructor(name) {}</code></td>
+          </tr>
+          <tr>
+            <td>Instance method</td>
+            <td>Shared by all instances</td>
+            <td><code>greet() {}</code></td>
+          </tr>
+          <tr>
+            <td><code>extends</code></td>
+            <td>Inheritance</td>
+            <td><code>class Dog extends Animal {}</code></td>
+          </tr>
+          <tr>
+            <td><code>super()</code></td>
+            <td>Calls parent class constructor</td>
+            <td><code>super(name)</code></td>
+          </tr>
+          <tr>
+            <td><code>static</code></td>
+            <td>Defines class-level methods</td>
+            <td><code>static add() {}</code></td>
+          </tr>
+        </tbody>
+      </table>
     </details>
 
     <script src="es6_classes_prototypes_fnConstructors_practice.js"></script>
