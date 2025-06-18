@@ -312,3 +312,157 @@
 //     method1() {}
 //     method2(props) {}
 // }
+
+/**
+ *
+ * EXAMPLE 12
+ *
+ * Classess. Part 2
+ *
+ * Default values for propeties
+ *
+ */
+
+// class ComputerMouse {
+//   constructor(props) {
+//     this.type = props.type || "Computer"; // default value will be return even if value is "falsy"
+//     this.color = props.color;
+//     this.interface =
+//       props.interface !== undefined ? props.interface : "Not specified"; // another option to set default value
+//   }
+// }
+// // Never assign "undefined" as a value for any variable. If variable should not have any value use "null" instead.
+// // Value "undefined" should be reserved for cases when variable doesn't exist.
+
+// const propsForWirelessMouse = {
+//   type: "Wireless",
+//   color: "black",
+//   interface: "Blootooth",
+// };
+
+// const wirelessMouse = new ComputerMouse(propsForWirelessMouse);
+
+// const propsForGenericMouse = {
+//   color: "red",
+//   type: "",
+//   interface: "",
+// };
+
+// const genericMouse = new ComputerMouse(propsForGenericMouse);
+// console.log(genericMouse); // ComputerMouse {type: 'Computer', color: 'red', interface: ''}
+
+/**
+ *
+ * EXAMPLE 13
+ *
+ * Classess. Part 2
+ *
+ * Class methods
+ *
+ */
+
+// class ComputerMouse {
+//   constructor(props) {
+//     this.type = props.type;
+//     this.color = props.color;
+//     this.interface = props.interface;
+//   }
+//   // adding methods
+//   mouseInfo() {
+//     console.log(`Type of the mouse is ${this.type} and color is ${this.color}`);
+//   }
+
+//   // , // COMMA is not allowed - Uncaught SyntaxError: Unexpected token ','
+
+//   changeMouseType(newType) {
+//     this.type = newType;
+//   }
+// }
+
+// const propsForWirelessMouse = {
+//   type: "Wireless",
+//   color: "black",
+//   interface: "Blootooth",
+// };
+
+// const wirelessMouse = new ComputerMouse(propsForWirelessMouse);
+
+// console.log(wirelessMouse);
+
+// wirelessMouse.mouseInfo(); // Type of the mouse is Wireless and color is black
+
+// wirelessMouse.changeMouseType("USB");
+// console.log(wirelessMouse); // ComputerMouse {type: 'USB', color: 'black', interface: 'Blootooth'}
+// wirelessMouse.mouseInfo(); // Type of the mouse is USB and color is black
+
+/**
+ *
+ * EXAMPLE 14
+ *
+ * Classess. Part 2
+ *
+ * Class extensions (add new class to the prototype chaine)
+ *
+ */
+
+// class ComputerAccessories {
+//   constructor(props) {
+//     this.compatibility = props.compatibility || ["PC", "Mac"];
+//   }
+// }
+
+// // class ComputerMouse extends ComputerAccessories {} // constructor of the ComputerAccessories will be called automatically
+
+// // default behaviour if constructor is not specified (shown what happens under the hood)
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(...allProps) { // rest operator
+//     super(...allProps); // spread operator
+//   }
+// }
+
+// const myMouse = new ComputerMouse({ compatibility: ["Mac"] });
+
+// console.log(myMouse);
+
+/**
+ *
+ * EXAMPLE 15
+ *
+ * Classess. Part 2
+ *
+ * Set properties in different classes
+ *
+ */
+
+// class ComputerAccessories {
+//   constructor(props) {
+//     this.compatibility = props.compatibility || ["PC", "Mac"];
+//   }
+// }
+
+// super() must be present in the constructor
+
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(props) { // Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor at new ComputerMouse
+//     this.type = props.type;
+//   }
+// }
+
+// // super() is called whtout arguments
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(props) {
+//     super(); // Uncaught TypeError: Cannot read properties of undefined (reading 'compatibility')
+//     this.type = props.type;
+//   }
+// }
+
+// class ComputerMouse extends ComputerAccessories {
+//   constructor(props) {
+//     super(props); // ComputerMouse {compatibility: Array(1), type: 'Optical'}
+//     this.type = props.type;
+//   }
+// }
+
+// const myMouse = new ComputerMouse({ compatibility: ["Mac"], type: "Optical" });
+
+// console.log(myMouse);
