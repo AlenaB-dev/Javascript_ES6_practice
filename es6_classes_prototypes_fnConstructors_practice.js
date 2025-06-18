@@ -203,3 +203,112 @@
 // };
 
 // const largePlane = new CivilPlane(propsForLargePlane);
+
+/**
+ *
+ * EXAMPLE 7
+ *
+ * Classess. Part 1
+ *
+ * Class declaration and instance of the class
+ *
+ */
+
+// class MyClass {}
+
+// const firstInctance = new MyClass();
+
+// console.log(firstInctance); // MyClass {}
+
+// console.log(firstInctance.__proto__ === MyClass.prototype); // true
+// console.log(MyClass.prototype.constructor === MyClass); // true
+
+// console.log(MyClass.prototype.__proto__ === Object.prototype); // true
+
+/**
+ *
+ * EXAMPLE 8
+ *
+ * Classess. Part 1
+ *
+ * Hoisting (not hoisted)
+ *
+ * Class can be accessed only after its declaration in the code
+ *
+ */
+// const firstInctance = new MyClass(); // Uncaught ReferenceError: Cannot access 'MyClass' before initialization
+
+// class MyClass {}
+
+/**
+ *
+ * EXAMPLE 9
+ *
+ * Classess. Part 1
+ *
+ * Class Expression.
+ *
+ */
+
+// const MyClass = class {};
+
+// const firstInctance = new MyClass();
+
+// console.log(firstInctance); // MyClass {}
+
+// console.log(firstInctance.__proto__ === MyClass.prototype); // true
+
+/**
+ *
+ * EXAMPLE 10
+ *
+ * Classess. Part 1
+ *
+ * Constructor method in the class
+ *
+ */
+
+// class ComputerMouse {
+//   constructor(props) {
+//     this.type = props.type;
+//     this.color = props.color;
+//     this.interface = props.interface;
+//   }
+// }
+
+// const propsForWirelessMouse = {
+//   type: "Wireless",
+//   color: "black",
+//   interface: "Blootooth",
+// };
+
+// const wirelessMouse = new ComputerMouse(propsForWirelessMouse);
+
+// console.log(wirelessMouse); // ComputerMouse {type: 'Wireless', color: 'black', interface: 'Blootooth'}
+
+/**
+ *
+ * EXAMPLE 11
+ *
+ * Classess. Part 1
+ *
+ * Class is not object literal and its method are not shorthand methods names.
+ *
+ */
+
+// // incorrect syntax
+// class ComputerMouse {
+//     title: "My Title", // Unexpected identifier 'title'
+//   constructor: function(props) { // Unexpected identifier 'constructor'
+//     this.type = props.type;
+//     this.color = props.color;
+//     this.interface = props.interface;
+//   }
+// }
+
+// // correct syntax
+// class ComputerMouse {
+//     constructor() {}
+//     method1() {}
+//     method2(props) {}
+// }
