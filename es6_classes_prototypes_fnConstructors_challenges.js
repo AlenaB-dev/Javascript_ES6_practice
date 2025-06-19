@@ -155,3 +155,86 @@
 // myTV instanceof ElectricDevice; // true
 // myTV instanceof Product; // true
 // myTV instanceof Object; // true
+
+/**
+ * CHALLENGE 3
+ *
+ * Convert function constructors to classes
+ *
+ */
+
+// class Product {
+//   constructor(props) {
+//     this.price = props.price;
+//   }
+
+//   priceInfo() {
+//     console.log(`Price of the product is ${this.price}`);
+//   }
+// }
+
+// if class has only one property, we can do distructuring
+
+class Product {
+  constructor({ price }) {
+    this.price = price;
+  }
+
+  priceInfo() {
+    console.log(`Price of the product is ${this.price}`);
+  }
+}
+
+class ElectricDevice extends Product {
+  // one more example with distructuring
+
+  //   constructor(price, energyEfficiencyClass) {
+  //     super(price);
+  //     this.energyEfficiencyClass = energyEfficiencyClass;
+  //   }
+
+  constructor(props) {
+    super(props);
+    this.energyEfficiencyClass = this.energyEfficiencyClass;
+  }
+
+  energyInfo() {
+    console.log(`Energy Efficiency Class is ${this.energyEfficiencyClass}`);
+  }
+}
+
+class TV extends ElectricDevice {
+  constructor(props) {
+    super(props);
+    this.model = props.model;
+    this.diagonal = props.diagonal;
+  }
+}
+
+const myTV = new TV({
+  model: "A1620",
+  price: 1200,
+  energyEfficiencyClass: "A+",
+  diagonal: 42,
+});
+
+/**
+ * VERIFICATION
+ */
+console.log(myTV);
+/* {
+  model: "A1620",
+  price: 1200,
+  energyEfficiencyClass: "A+",
+  diagonal: 42,
+  __proto__: ...
+} */
+
+myTV.energyInfo(); // "Energy Efficiency Class is A+"
+
+myTV.priceInfo(); // Price of the product is 1200
+
+myTV instanceof TV; // true
+myTV instanceof ElectricDevice; // true
+myTV instanceof Product; // true
+myTV instanceof Object; // true
