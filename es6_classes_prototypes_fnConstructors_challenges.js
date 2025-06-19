@@ -163,9 +163,21 @@
  *
  */
 
+// // class Product {
+// //   constructor(props) {
+// //     this.price = props.price;
+// //   }
+
+// //   priceInfo() {
+// //     console.log(`Price of the product is ${this.price}`);
+// //   }
+// // }
+
+// // if class has only one property, we can do distructuring
+
 // class Product {
-//   constructor(props) {
-//     this.price = props.price;
+//   constructor({ price }) {
+//     this.price = price;
 //   }
 
 //   priceInfo() {
@@ -173,68 +185,101 @@
 //   }
 // }
 
-// if class has only one property, we can do distructuring
+// class ElectricDevice extends Product {
+//   // one more example with distructuring
 
-class Product {
-  constructor({ price }) {
-    this.price = price;
-  }
+//   //   constructor(price, energyEfficiencyClass) {
+//   //     super(price);
+//   //     this.energyEfficiencyClass = energyEfficiencyClass;
+//   //   }
 
-  priceInfo() {
-    console.log(`Price of the product is ${this.price}`);
-  }
-}
+//   constructor(props) {
+//     super(props);
+//     this.energyEfficiencyClass = this.energyEfficiencyClass;
+//   }
 
-class ElectricDevice extends Product {
-  // one more example with distructuring
+//   energyInfo() {
+//     console.log(`Energy Efficiency Class is ${this.energyEfficiencyClass}`);
+//   }
+// }
 
-  //   constructor(price, energyEfficiencyClass) {
-  //     super(price);
-  //     this.energyEfficiencyClass = energyEfficiencyClass;
-  //   }
+// class TV extends ElectricDevice {
+//   constructor(props) {
+//     super(props);
+//     this.model = props.model;
+//     this.diagonal = props.diagonal;
+//   }
+// }
 
-  constructor(props) {
-    super(props);
-    this.energyEfficiencyClass = this.energyEfficiencyClass;
-  }
+// const myTV = new TV({
+//   model: "A1620",
+//   price: 1200,
+//   energyEfficiencyClass: "A+",
+//   diagonal: 42,
+// });
 
-  energyInfo() {
-    console.log(`Energy Efficiency Class is ${this.energyEfficiencyClass}`);
-  }
-}
+// /**
+//  * VERIFICATION
+//  */
+// console.log(myTV);
+// /* {
+//   model: "A1620",
+//   price: 1200,
+//   energyEfficiencyClass: "A+",
+//   diagonal: 42,
+//   __proto__: ...
+// } */
 
-class TV extends ElectricDevice {
-  constructor(props) {
-    super(props);
-    this.model = props.model;
-    this.diagonal = props.diagonal;
-  }
-}
+// myTV.energyInfo(); // "Energy Efficiency Class is A+"
 
-const myTV = new TV({
-  model: "A1620",
-  price: 1200,
-  energyEfficiencyClass: "A+",
-  diagonal: 42,
-});
+// myTV.priceInfo(); // Price of the product is 1200
+
+// myTV instanceof TV; // true
+// myTV instanceof ElectricDevice; // true
+// myTV instanceof Product; // true
+// myTV instanceof Object; // true
 
 /**
- * VERIFICATION
+ *
+ * CHALLENGE 4
+ *
+ * Extend Array
+ *
+ * Create new class "ExtendedArray" that should extend built-in "Array".
+ *
+ * Add two custom methods to the new class:
+ * 1. "sum" - it should return sum of all elements in the array
+ * 2. "onlyNumbers" - it should return new array that will contain only numbers from the source array
+ *
+ * Create several instances of the new "ExtendedArray" class and test both methods "sum" and "onlyNumbers"
  */
-console.log(myTV);
-/* {
-  model: "A1620",
-  price: 1200,
-  energyEfficiencyClass: "A+",
-  diagonal: 42,
-  __proto__: ...
-} */
 
-myTV.energyInfo(); // "Energy Efficiency Class is A+"
+// class Array {
+//   constructor(props) {}
+// }
 
-myTV.priceInfo(); // Price of the product is 1200
+// class ExtendedArray extends Array {
+//   sum() {
+//     return this.reduce((sum, el) => sum + el);
+//   }
 
-myTV instanceof TV; // true
-myTV instanceof ElectricDevice; // true
-myTV instanceof Product; // true
-myTV instanceof Object; // true
+//   onlyNumbers() {
+//     return this.filter((el) => typeof el === "number");
+//   }
+// }
+
+// const myArray1 = new ExtendedArray(1, 2, 3);
+
+// console.log(myArray1.sum()); // 6
+// console.log(myArray1.onlyNumbers()); // ExtendedArray(3) [1, 2, 3]
+
+// myArray1.push("asd");
+
+// console.log(myArray1); // ExtendedArray(4) [1, 2, 3, 'asd']
+
+// const myArray2 = new ExtendedArray(true, null, 12);
+// console.log(myArray2.onlyNumbers()); // ExtendedArray [12]
+// console.log(myArray2.sum()); // 13
+
+// const filteredArray = myArray2.onlyNumbers();
+// console.log(filteredArray); // [12] - still instanceof ExtentedArray
