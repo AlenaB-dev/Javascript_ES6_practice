@@ -481,7 +481,7 @@
 //   constructor(props) {
 //     this.compatibility = props.compatibility || ["PC", "Mac"];
 //   }
-// // parent's method
+//   // parent's method
 //   compatibilityInfo() {
 //     this.compatibility.forEach((element) => {
 //       console.log(`Accessory is compatible with ${element}`);
@@ -494,7 +494,7 @@
 //     super(props);
 //     this.type = props.type;
 //   }
-// // child's method
+//   // child's method
 //   mouseInfo() {
 //     console.log(`Type of the mouse is ${this.type}`);
 //   }
@@ -563,7 +563,7 @@
  *
  * Classess. Part 3
  *
- * Statci methods
+ * Static methods
  *
  */
 
