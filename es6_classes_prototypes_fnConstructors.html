@@ -147,6 +147,7 @@
       <a href="#functionConstructor">Function Constructors</a>
       <a href="#objectCreate">Object.create()</a>
       <a href="#classes">Classes</a>
+      <a href="#reactAndES6Classes">React and ES6 classes</a>
     </nav>
 
     <!--class-based and prototype-based language -->
@@ -787,7 +788,7 @@ person.greet(); // Hi, I'm Charlie
     </details>
 
     <!--classes-->
-    <details open id="classes">
+    <details id="classes">
       <summary>Classes</summary>
       <p>
         JavaScript ES6 classes are a more readable, cleaner way to create
@@ -928,6 +929,94 @@ console.log(MathHelper.square(5)); // 25
           </tr>
         </tbody>
       </table>
+    </details>
+
+    <!--react and ES6 classes-->
+    <details open id="reactAndES6Classes">
+      <summary>React and ES6 classes</summary>
+      <p>
+        In React, ES6 classes are commonly used to define class components — one
+        of the two main types of components (the other being function
+        components). Here's a quick breakdown of how React and ES6 classes are
+        connected:
+      </p>
+      <p>
+        🔹 An ES6 class is a JavaScript construct introduced in ECMAScript 2015
+        (ES6) that allows you to create objects and handle inheritance more
+        cleanly.
+      </p>
+      <pre><code>class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound`);
+  }
+}
+</code></pre>
+      <h4>🔹 React Class Components</h4>
+      <p>
+        A React class component is a JavaScript class that extends
+        <code>React.Component</code>. It must have a
+        <code>render()</code> method that returns JSX.
+      </p>
+      <p>🔸 Basic Syntax</p>
+      <pre><code>import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  handleClick = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.handleClick}>Inrease</button>
+      </div>
+    );
+  }
+}
+
+export default MyComponent;
+</code></pre>
+      <h4>🔹 Key ES6 Features Used in React Classes</h4>
+      <ul>
+        <li><code>class</code> - Defines the component</li>
+        <li>
+          <code>constructor()</code> - Initializes state and binds methods
+        </li>
+        <li>
+          <code>super(props)</code> - Calls the parent class's constructor
+          (needed before using <code>this</code>)
+        </li>
+        <li><code>this.state</code> - Holds local state</li>
+        <li>
+          <code>this.setState()</code> - Updates state and re-renders the
+          component
+        </li>
+        <li>
+          Arrow functions <code>=></code> - Binds methods to class instance
+          without using <code>.bind(this)</code>
+        </li>
+        <li>
+          <code>import/export</code> - For modular code and component reuse
+        </li>
+      </ul>
+      <h4>🔹 When to Use Class Components</h4>
+      <p>
+        Today, function components with hooks are recommended for most cases.
+        Class components are still used in older codebases and for understanding
+        the history of React.
+      </p>
     </details>
 
     <script src="es6_classes_prototypes_fnConstructors_practice.js"></script>
