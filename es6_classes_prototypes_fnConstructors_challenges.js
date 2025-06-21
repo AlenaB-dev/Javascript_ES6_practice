@@ -319,3 +319,78 @@
 
 // existingArray.customPush(2); // New element 2 was just added to the array
 // console.log(existingArray); // CustomArray(2) [1, 2]
+
+/**
+ *
+ * CHALLENGE 6
+ *
+ * Classes in React. Additional button
+ *
+ * Add one more button with color "secondary".
+ * Also change styles of the existing and new buttons
+ * using property "variant".
+ *
+ * You can use one of the following values:
+ * "text", "flat", "outlined", "contained", "raised", "fab", "extendedFab"
+//  */
+// class MyButton extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { clickedQty: 0 };
+//   }
+
+//   render() {
+//     return React.createElement(
+//       window["material-ui"].Button,
+//       {
+//         variant: this.props.variant,
+//         color: this.props.color,
+//         onClick: () =>
+//           this.setState({
+//             clickedQty: ++this.state.clickedQty,
+//           }),
+//       },
+//       this.state.clickedQty > 0
+//         ? `Button was clicked ${this.state.clickedQty} times`
+//         : "Click me!!!"
+//     );
+//   }
+// }
+// // button 1
+// const button1 = React.createElement(MyButton, {
+//   color: "primary",
+//   variant: "outlined",
+// });
+
+// const buttonContainer1 = document.getElementById("button1");
+
+// ReactDOM.render(button1, buttonContainer1);
+
+// // button 2
+// const button2 = React.createElement(MyButton, {
+//   color: "secondary",
+//   variant: "extendedFab",
+// });
+
+// const buttonContainer2 = document.getElementById("button2");
+
+// ReactDOM.render(button2, buttonContainer2);
+
+/**
+ * html file for challenge 6
+ * <body>
+    <h2>Classes in React</h2>
+
+    <div id="button1"></div>
+    <br />
+    <br />
+    <div id="button2"></div>
+
+    <script src="src/react.development.js"></script>
+    <script src="src/react-dom.development.js"></script>
+
+    <script src="src/material-ui.production.min.js"></script>
+
+    <script src="index.js"></script>
+  </body>
+ */
