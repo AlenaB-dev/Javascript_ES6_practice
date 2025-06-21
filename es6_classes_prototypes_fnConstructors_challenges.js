@@ -254,10 +254,6 @@
  * Create several instances of the new "ExtendedArray" class and test both methods "sum" and "onlyNumbers"
  */
 
-// class Array {
-//   constructor(props) {}
-// }
-
 // class ExtendedArray extends Array {
 //   sum() {
 //     return this.reduce((sum, el) => sum + el);
@@ -273,7 +269,7 @@
 // console.log(myArray1.sum()); // 6
 // console.log(myArray1.onlyNumbers()); // ExtendedArray(3) [1, 2, 3]
 
-// myArray1.push("asd");
+// myArray1.customPush("asd");
 
 // console.log(myArray1); // ExtendedArray(4) [1, 2, 3, 'asd']
 
@@ -297,13 +293,29 @@
  *
  * It should perform following actions:
  * 1. Add new element to the existing array
- * (don't use "push" method for this)
+ * (don't use "customPush" method for this)
  * 2. Modify "length" property of the array (increment it)
  * 3. Log following line to the console:
  * "New element <ELEMENT> was just added to the array"
  *
- * Create instance of the new "CustomArray" class and test new method "customPush" and compare it with "push"
+ * Create instance of the new "CustomArray" class and test new method "customPush" and compare it with "customPush"
  *
- * What will happen if name of the custom method in the "CustomArray" class will be also "push" instead of "customPush"?
+ * What will happen if name of the custom method in the "CustomArray" class will be also "customPush" instead of "customPush"?
  * Try this.
  */
+
+// class CustomArray extends Array {
+//   customPush(newElement) {
+//     this[this.length] = newElement; // length property is updated automatically
+
+//     console.log(`New element ${newElement} was just added to the array`);
+//   }
+// }
+
+// const existingArray = new CustomArray();
+
+// existingArray.customPush(1); // New element 1 was just added to the array
+// console.log(existingArray); // CustomArray [1]
+
+// existingArray.customPush(2); // New element 2 was just added to the array
+// console.log(existingArray); // CustomArray(2) [1, 2]
