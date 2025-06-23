@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Babel introduction</title>
+    <style>
+      :root {
+        --bg-color-light: #f9f9f9;
+        --text-color-light: #333;
+        --bg-color-dark: #1e1e1e;
+        --text-color-dark: #e0e0e0;
+        --code-bg-light: #eee;
+        --code-bg-dark: #2a2a2a;
+        --accent-color: #007acc;
+      }
+
+      html[data-theme="light"] {
+        --bg-color: var(--bg-color-light);
+        --text-color: var(--text-color-light);
+        --code-bg: var(--code-bg-light);
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
+        --code-bg: var(--code-bg-dark);
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #scrollToTopBtn {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        display: none;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 12px 16px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+      }
+
+      #scrollToTopBtn:hover {
+        background-color: #b2a8a8;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      nav a {
+        margin-right: 1rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      details {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--code-bg);
+        border-radius: 6px;
+        background: var(--code-bg);
+        padding: 0.5rem 1rem;
+      }
+
+      summary {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: var(--code-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: var(--code-bg);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #908181;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        border: 1px solid #908181;
+        padding: 12px 16px;
+        text-align: left;
+      }
+      th {
+        background-color: #2c3e50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #ac9a9a;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+      🌙 Toggle Theme
+    </button>
+    <button id="scrollToTopBtn" title="Up">↑</button>
+    <h1>📚 Babel introduction</h1>
+
+    <!--bable-->
+    <details id="babel">
+      <summary>Babel</summary>
+      <p>
+        Babel is a JavaScript compiler — a tool that takes modern JavaScript
+        code and transforms it into a version that can run in older browsers or
+        environments that don’t support the latest features.
+      </p>
+      <ul>
+        Babel allows:
+        <li>Use modern JavaScript (ES6+) syntax and features</li>
+        <li>
+          Convert (transpile) that code into older JavaScript (like ES5) so that
+          it works in browsers like Internet Explorer
+        </li>
+        <li>
+          Write cleaner, more powerful code without worrying about browser
+          compatibility
+        </li>
+      </ul>
+      <h4>Why is Babel useful?</h4>
+      <p>JavaScript evolves quickly. For example:</p>
+      <pre><code>// Modern syntax (ES6+)
+const sum = (a, b) => a + b;
+</code></pre>
+      <p>Older browsers don’t understand this syntax. Babel converts it to:</p>
+      <pre><code>// Compatible syntax (ES5)
+var sum = function(a, b) {
+  return a + b;
+};
+</code></pre>
+      <h4>Common use cases:</h4>
+      <ul>
+        <li>
+          Frontend development with frameworks like React, Vue, or Angular
+        </li>
+        <li>Working with TypeScript or JSX (React’s HTML-in-JS syntax)</li>
+        <li>Building apps that must support older browsers</li>
+      </ul>
+      <h4>Babel works with:</h4>
+      <ul>
+        <li>Plugins (to transform specific features)</li>
+        <li>
+          Presets (collections of plugins, like
+          <code>@babel/preset-env</code> or
+          <code>@babel/preset-react)</code>
+        </li>
+        <li>
+          Webpack or other build tools, so you rarely use Babel on its own
+        </li>
+      </ul>
+    </details>
+
+    <!--transpiler-->
+    <details open id="transpiler">
+      <summary>Transpiler</summary>
+      <p>
+        <strong>Transpile = Transform + Compile.</strong>To transpile code means
+        to convert code written in one version of a language (or one language)
+        into another version of the same or similar language.
+      </p>
+      <h4>In JavaScript, “transpile” usually means:</h4>
+      <p>Convert modern JavaScript → older JavaScript</p>
+      <p>For example:</p>
+      <pre><code>// Modern JavaScript (ES6+)
+let sum = (a, b) => a + b;
+</code></pre>
+      <p>Gets transpiled into:</p>
+      <pre><code>// Older JavaScript (ES5)
+var sum = function(a, b) {
+  return a + b;
+};
+</code></pre>
+      <h4>Why is this important?</h4>
+      <p>
+        Older browsers (like Internet Explorer) don’t understand new syntax
+        like:
+      </p>
+      <ul>
+        <li>let and const</li>
+        <li>Arrow functions (=>)</li>
+        <li>Classes</li>
+        <li>Modules (import, export)</li>
+        <li>Optional chaining (?.)</li>
+        <li>JSX (React syntax)</li>
+      </ul>
+      <table>
+        <caption>
+          Transpiling vs Compiling
+        </caption>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Converts from…</th>
+            <th>Converts to…</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Transpile</strong></td>
+            <td>One version of a language</td>
+            <td>Another version of the same/similar language</td>
+          </tr>
+          <tr>
+            <td><strong>Compile</strong></td>
+            <td>One language (e.g., TypeScript, Java)</td>
+            <td>Completely different language or bytecode</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        So:
+        <li>Babel transpiles ES6+ → ES5 JavaScript</li>
+        <li>TypeScript compiles TypeScript → JavaScript</li>
+      </ul>
+    </details>
+
+    <!--scripts-->
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle");
+
+      // Устанавливаем тему при загрузке
+      const savedTheme = localStorage.getItem("theme");
+      const initialTheme = savedTheme || "light";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      updateToggleButton(initialTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateToggleButton(newTheme);
+      }
+
+      function updateToggleButton(theme) {
+        if (theme === "dark") {
+          themeToggleButton.textContent = "🌙  Toggle Theme";
+        } else {
+          themeToggleButton.textContent = "☀️ Toggle Theme";
+        }
+      }
+    </script>
+    <script>
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.style.display = "block";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>
