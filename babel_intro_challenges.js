@@ -38,3 +38,32 @@
 // }
 
 // console.timeEnd("Function 2 with ES5 features"); // Function 2 with ES5 features: 0.02001953125 ms
+
+/**
+ * CHALLENGE 2
+ *
+ * Detect feature support in the Browser
+ *
+ */
+
+// function featureCheck() {
+//   try {
+//     eval("`Test String`;");
+//   } catch (e) {
+//     return false;
+//   }
+//   return true;
+// }
+
+// if (featureCheck()) {
+//   console.log(`Hello from ES6`); // Hello from ES6
+// } else {
+//   console.log(`Hello from ES5`); // erroer Invalid charactor // because was use taplate literal string
+// }
+
+// // to make it work in es5
+// if (featureCheck()) {
+//   console.log("Hello from ES6"); //
+// } else {
+//   console.log("Hello from ES5"); // Hello from ES5 // check in IE
+// }
