@@ -102,13 +102,13 @@
  * Object literal
  */
 
-const num = {
-  value: 100,
-  info: function () {
-    console.log(this); // num object > num.info() [Log] {value: 100, info: function} (arrow_function_practice.js, line 108) < 100
-    return this.value;
-  },
-};
+// const num = {
+//   value: 100,
+//   info: function () {
+//     console.log(this); // num object > num.info() [Log] {value: 100, info: function} (arrow_function_practice.js, line 108) < 100
+//     return this.value;
+//   },
+// };
 
 /**
  * EXAMPLE 2
@@ -116,10 +116,10 @@ const num = {
  * Function constructor
  */
 
-function GroceryItem(title, kind) {
-  this.title = title;
-  this.kind = kind;
-}
+// function GroceryItem(title, kind) {
+//   this.title = title;
+//   this.kind = kind;
+// }
 
 // // using arrow function we will get an error - TypeError: function is not a constructor (evaluating 'new GroceryItem("Apple", "fruit")')
 // const GroceryItem = (title, kind) => {
@@ -138,11 +138,11 @@ GroceryItem.prototype.info = function () {
 //   return this.title + " is " + this.kind;
 // };
 
-const apple = new GroceryItem("Apple", "fruit");
-console.log(apple); // GroceryItem {title: "Apple", kind: "fruit"}
+// const apple = new GroceryItem("Apple", "fruit");
+// console.log(apple); // GroceryItem {title: "Apple", kind: "fruit"}
 
-const brocolli = new GroceryItem("Brocolli", "vegetable");
-console.log(brocolli);
+// const brocolli = new GroceryItem("Brocolli", "vegetable");
+// console.log(brocolli);
 
 /**
  * Arguments in the Functions
@@ -186,13 +186,13 @@ console.log(brocolli);
  * solution
  */
 
-const sum3 = (...arguments) => {
-  console.log(arguments); // [1, 2, 3, 4, 5] (5)
-  console.log(typeof arguments); // object
-  console.log(Array.isArray(arguments)); // true. Arguments initially is Array and also object. In regular functions its an Object.
+// const sum3 = (...arguments) => {
+//   console.log(arguments); // [1, 2, 3, 4, 5] (5)
+//   console.log(typeof arguments); // object
+//   console.log(Array.isArray(arguments)); // true. Arguments initially is Array and also object. In regular functions its an Object.
 
-  const argumentsArray = Array.from(arguments);
-  console.log(argumentsArray); // [1, 2, 3, 4, 5] (5)
-};
+//   const argumentsArray = Array.from(arguments);
+//   console.log(argumentsArray); // [1, 2, 3, 4, 5] (5)
+// };
 
-sum3(1, 2, 3, 4, 5);
+// sum3(1, 2, 3, 4, 5);

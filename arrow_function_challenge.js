@@ -48,18 +48,18 @@
 // createButton();
 
 // реализация при создании нескольких кнопок. У каждой кнопки будет свой счетчик.
-const createButton = (title) => {
-  const btn = document.createElement("button");
-  let clicks = 0;
+// const createButton = (title) => {
+//   const btn = document.createElement("button");
+//   let clicks = 0;
 
-  btn.innerHTML = title;
-  btn.addEventListener("click", function () {
-    console.log("Button was clicked");
-    console.log(this);
-    this.innerHTML = "Button was clicked " + ++clicks + " times";
-  });
-  document.body.appendChild(btn);
-};
-createButton("Click");
-createButton("Another click");
-createButton("One more click button");
+//   btn.innerHTML = title;
+//   btn.addEventListener("click", function () {
+//     console.log("Button was clicked");
+//     console.log(this);
+//     this.innerHTML = "Button was clicked " + ++clicks + " times";
+//   });
+//   document.body.appendChild(btn);
+// };
+// createButton("Click");
+// createButton("Another click");
+// createButton("One more click button");
