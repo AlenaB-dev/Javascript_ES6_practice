@@ -311,7 +311,7 @@ var sum = function(a, b) {
     </details>
 
     <!--user agent-->
-    <details open id="userAgent">
+    <details id="userAgent">
       <summary>User Agent</summary>
       <p>
         A User Agent is a small piece of information your browser or app sends
@@ -344,6 +344,43 @@ var sum = function(a, b) {
       <pre><code>Mozilla/5.0 (iPhone; CPU iPhone OS 16_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
 </code></pre>
       <p>This tells the site: “I’m an iPhone using Safari.”</p>
+    </details>
+
+    <!--serve files and browsers-->
+    <details open id="serveFilesAndBrowsers">
+      <summary>Serve different JavaScript files to different browsers</summary>
+      <p>
+        You can serve different JavaScript files to different browsers (e.g.
+        modern vs legacy), and it's a common strategy for performance and
+        compatibility.
+      </p>
+      <h4>✅ Use case:</h4>
+      <ul>
+        <li>Modern browsers can use fast, small ES6+ code</li>
+        <li>Older browsers need ES5-transpiled code (via Babel)</li>
+      </ul>
+      <h4>
+        ✅ Solution: Dual Bundles with
+        <code> &lt;script type="module"&gt and nomodule </code>
+      </h4>
+      <p>🔧 HTML Example:</p>
+      <pre><code>&lt;!-- Modern browsers (ES6 modules) --&gt;
+&lt;script type="module" src="main.es6.js"&gt;&lt;/script&gt;
+
+&lt;!-- Older browsers (ES5 fallback) --&gt;
+&lt;script nomodule src="main.es5.js"&gt;&lt;/script&gt;
+</code></pre>
+      <p>🔍 What happens:</p>
+      <ul>
+        <li>
+          Modern browsers load <code>main.es6.js</code> and ignore
+          <code>nomodule</code>
+        </li>
+        <li>
+          Old browsers (that don’t support <code>type="module"</code>) ignore
+          the first script and load the fallback
+        </li>
+      </ul>
     </details>
 
     <!--scripts-->
