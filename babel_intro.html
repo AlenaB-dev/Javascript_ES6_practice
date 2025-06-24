@@ -140,7 +140,7 @@
     <h1>📚 Babel introduction</h1>
 
     <!--bable-->
-    <details open id="babel">
+    <details id="babel">
       <summary>Babel</summary>
       <p>
         Babel is a JavaScript compiler — a tool that takes modern JavaScript
@@ -308,6 +308,42 @@ var sum = function(a, b) {
         ❗ But: Old browsers don’t understand ES6. <br />
         That’s why Babel is used to transpile ES6 to ES5.
       </p>
+    </details>
+
+    <!--user agent-->
+    <details open id="userAgent">
+      <summary>User Agent</summary>
+      <p>
+        A User Agent is a small piece of information your browser or app sends
+        to a website when it makes a request. It tells the server what kind of
+        device, browser, and operating system you're using.
+      </p>
+      <h4>🧩 Example of a User Agent string:</h4>
+      <pre><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15
+</code></pre>
+      <p>
+        This says: <br />
+        - You're using Safari <br />
+        - On a Mac <br />
+        - Running macOS 10.15.7
+      </p>
+      <h4>✅ Why is a User Agent important?</h4>
+      <ul>
+        It helps websites:
+        <li>Adapt content to your device (mobile vs desktop)</li>
+        <li>Serve compatible code (e.g. old vs modern JavaScript)</li>
+        <li>Track statistics (browser popularity, OS use)</li>
+        <li>Sometimes for security or analytics</li>
+      </ul>
+      <h4>⚠️ Can it be faked?</h4>
+      <p>
+        Yes. It’s just a text string, so developers and bots can spoof (fake) a
+        user agent.
+      </p>
+      <h4>📱 Short example for mobile:</h4>
+      <pre><code>Mozilla/5.0 (iPhone; CPU iPhone OS 16_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1
+</code></pre>
+      <p>This tells the site: “I’m an iPhone using Safari.”</p>
     </details>
 
     <!--scripts-->
