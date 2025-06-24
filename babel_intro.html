@@ -354,6 +354,17 @@ var sum = function(a, b) {
         modern vs legacy), and it's a common strategy for performance and
         compatibility.
       </p>
+      <ol>
+        <li>Decide on the server which file version to send to the browser.</li>
+        <li>
+          Send same JS file to all browsers and use browser/feater detection.
+        </li>
+        <li>
+          Manipulate DOM on the client and inject link to certain JS file using
+          browser/feature detection.
+        </li>
+      </ol>
+
       <h4>✅ Use case:</h4>
       <ul>
         <li>Modern browsers can use fast, small ES6+ code</li>
