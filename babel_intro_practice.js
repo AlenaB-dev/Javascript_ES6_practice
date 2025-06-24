@@ -51,10 +51,10 @@
  * Browser detection on the client
  */
 
-var userAgent = navigator.userAgent;
+// var userAgent = navigator.userAgent;
 
-if (userAgent.indexOf("Chrome") > -1) {
-  console.log(`Hello from ES6`); // Hello from ES6 // on google crome
-} else {
-  console.log(`Hello from ES5`); // invalid character // on internet explore, as here we use template literals - feature of ES6.
-}
+// if (userAgent.indexOf("Chrome") > -1) {
+//   console.log(`Hello from ES6`); // Hello from ES6 // on google crome
+// } else {
+//   console.log(`Hello from ES5`); // invalid character // on internet explore, as here we use template literals - feature of ES6.
+// }
