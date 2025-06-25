@@ -395,7 +395,7 @@ var sum = function(a, b) {
     </details>
 
     <!--babel installation-->
-    <details open id="bableInstall">
+    <details id="bableInstall">
       <summary>Babel Installation</summary>
       <h4>✅ 1. Local Babel Installation (recommended)</h4>
       <p>
@@ -431,6 +431,72 @@ var sum = function(a, b) {
       <p>2. You can now run Babel from anywhere, for example:</p>
       <pre><code>babel input.js --out-file output.js --presets=@babel/preset-env
 </code></pre>
+    </details>
+
+    <!--bable plugins nad presets-->
+    <details id="babelPluginsAndPresets">
+      <summary>Babel plugins and presets</summary>
+      <h4>🔧 What are Babel Plugins?</h4>
+      <p>
+        Plugins are small tools that tell Babel how to transform specific pieces
+        of JavaScript.
+      </p>
+      <h4>📌 Examples:</h4>
+      <ul>
+        <li>
+          <code>@babel/plugin-transform-arrow-functions</code>: turns arrow
+          functions (<code>=></code>) into regular functions
+        </li>
+        <li>
+          <code>@babel/plugin-transform-classes</code>: converts ES6
+          <code>class</code> syntax into ES5-compatible code
+        </li>
+      </ul>
+      <p>
+        🔹 You can include individual plugins like this in
+        <code> .babelrc</code>:
+      </p>
+      <pre><code>{
+  "plugins": ["@babel/plugin-transform-arrow-functions"]
+}
+</code></pre>
+      <h4>📦 What are Babel Presets?</h4>
+      <p>
+        Presets are collections of plugins — grouped together to support a
+        broader set of features.
+      </p>
+      <p>📌 Most popular preset:</p>
+      <p>
+        <code> @babel/preset-env</code>: Automatically adds the necessary
+        plugins based on your target browser or environment
+      </p>
+      <pre><code>{
+  "presets": ["@babel/preset-env"]
+}
+</code></pre>
+      <p>
+        This is the most common setup because it smartly decides which plugins
+        to use, depending on your settings.
+      </p>
+      <h4>🎯 Example .babelrc with both:</h4>
+      <pre><code>{
+  "presets": ["@babel/preset-env"],
+  "plugins": ["@babel/plugin-transform-arrow-functions"]
+}
+</code></pre>
+      <ul>
+        This means:
+        <li>Use all plugins from <code>preset-env</code></li>
+        <li>
+          Plus force arrow functions to be transformed, even if
+          <code>preset-env</code> might skip them
+        </li>
+      </ul>
+      <h4>🔍 When to use plugins vs presets?</h4>
+      <p>✅ Presets - When need to easily cover modern JS features</p>
+      <p>
+        ⚙️ Plugins - When need to fine control over specific syntax transforms
+      </p>
     </details>
 
     <!--scripts-->
