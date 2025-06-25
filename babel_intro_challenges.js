@@ -58,7 +58,7 @@
 // if (featureCheck()) {
 //   console.log(`Hello from ES6`); // Hello from ES6
 // } else {
-//   console.log(`Hello from ES5`); // erroer Invalid charactor // because was use taplate literal string
+//   console.log("Hello from ES5"); // erroer Invalid charactor // because was use taplate literal string
 // }
 
 // // to make it work in es5
@@ -66,4 +66,33 @@
 //   console.log("Hello from ES6"); //
 // } else {
 //   console.log("Hello from ES5"); // Hello from ES5 // check in IE
+// }
+
+/**
+ * CHALLENGE 3
+ *
+ * Insert different script tags into the DOM
+ *
+ */
+
+// function featureCheck() {
+//   try {
+//     eval("`Test String`;");
+//   } catch (e) {
+//     return false;
+//   }
+//   return true;
+// }
+
+// // new function that ads script tag
+// function insertScript(type) {
+//   var el = document.createElement("script"); // created new script tag
+//   el.src = "src/" + type + ".js"; // set src property
+//   document.body.appendChild(el); // apend dcript tag at the end of the body
+// }
+
+// if (featureCheck()) {
+//   insertScript("es6");
+// } else {
+//   insertScript("es5");
 // }
