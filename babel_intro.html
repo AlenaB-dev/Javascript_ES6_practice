@@ -394,6 +394,45 @@ var sum = function(a, b) {
       </ul>
     </details>
 
+    <!--babel installation-->
+    <details open id="bableInstall">
+      <summary>Babel Installation</summary>
+      <h4>✅ 1. Local Babel Installation (recommended)</h4>
+      <p>
+        Installing Babel locally means it's only used within your project. This
+        is the best practice for most cases.
+      </p>
+      <p>📦 Steps:</p>
+      <p>1. Initialize a project (if you haven’t already):</p>
+      <pre><code>npm init -y
+</code></pre>
+      <p>2. Install Babel core packages locally:</p>
+      <pre><code>npm install --save-dev @babel/core @babel/cli @babel/preset-env
+</code></pre>
+      <p>
+        3. Create a Babel config file in your project root, called .babelrc:
+      </p>
+      <pre><code>{
+  "presets": ["@babel/preset-env"]
+}
+</code></pre>
+      <p>4. Transpile your code:</p>
+      <pre><code>npx babel src --out-dir dist
+</code></pre>
+      <h4>🌐 2. Global Babel Installation (optional)</h4>
+      <p>
+        Installing Babel globally can be useful for quick testing from any
+        folder, but not recommended for production use.
+      </p>
+      <p>📦 Steps:</p>
+      <p>1. Install Babel CLI globally:</p>
+      <pre><code>npm install -g @babel/cli @babel/core @babel/preset-env
+</code></pre>
+      <p>2. You can now run Babel from anywhere, for example:</p>
+      <pre><code>babel input.js --out-file output.js --presets=@babel/preset-env
+</code></pre>
+    </details>
+
     <!--scripts-->
     <script src="babel_intro_practice.js"></script>
     <script src="babel_intro_challenges.js"></script>
